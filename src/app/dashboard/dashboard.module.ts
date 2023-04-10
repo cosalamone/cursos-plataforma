@@ -6,8 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import { ListaAbmModule } from '../lista-abm/lista-abm.module';
 import { ListaAlumnosModule } from '../lista-alumnos/lista-alumnos.module';
+import { FormAbmAlumnosModule } from '../form-abm-alumnos/form-abm-alumnos.module';
 
 
 
@@ -24,8 +24,8 @@ import { ListaAlumnosModule } from '../lista-alumnos/lista-alumnos.module';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    ListaAbmModule,
-    ListaAlumnosModule
+    ListaAlumnosModule,
+    FormAbmAlumnosModule
   ],
   exports: [
     DashboardComponent

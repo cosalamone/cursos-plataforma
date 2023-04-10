@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListaAbmComponent } from './lista-abm.component';
+import { FormAbmAlumnosComponent } from './form-abm-alumnos.component';
 
 
 
 @NgModule({
   declarations: [
-    ListaAbmComponent
+    FormAbmAlumnosComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    ListaAbmComponent
+    FormAbmAlumnosComponent
   ]
 })
-export class ListaAbmModule { }
+export class FormAbmAlumnosModule { }

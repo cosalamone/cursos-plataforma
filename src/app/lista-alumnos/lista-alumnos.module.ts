@@ -10,6 +10,9 @@ import { ListaAlumnosComponent } from './lista-alumnos.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ListaAlumnosComponent
   ]
 })
 export class ListaAlumnosModule { }

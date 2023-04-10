@@ -1,4 +1,6 @@
 <mat-drawer-container class="example-container" autosize>
+
+  <!-- SIDEBAR -->
   <mat-drawer #drawer class="example-sidenav" mode="side">
 
     <mat-list role="list">
@@ -11,9 +13,12 @@
 
   </mat-drawer>
 
+
+  <!-- TOOLBAR -->
   <div class="example-sidenav-content">
     <mat-toolbar color="primary">
-      <button type="button" (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <button type="button" (click)="drawer.toggle()" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button>
       <span>Plataforma Cursos </span>
@@ -26,8 +31,11 @@
       </button>
     </mat-toolbar>
 
+
+    <!-- CUERPO DE LA PAGINA -->
     <main>
-      <p>lasjdal</p>
+      <app-lista-alumnos></app-lista-alumnos>
+      <app-form-abm-alumnos></app-form-abm-alumnos>
     </main>
   </div>
 
