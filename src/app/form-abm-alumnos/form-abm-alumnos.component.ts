@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
-interface Ciudad {
-  value: string;
-  viewValue: string;
-}
+
 
 
 @Component({
@@ -16,26 +14,23 @@ export class FormAbmAlumnosComponent {
 
 
 
-  ciudades: Ciudad[] = [
-    {value: '1 CABA', viewValue:'Ciudad de Buenos Aires'},
-    {value: '2 CBA', viewValue: 'Cordoba'},
-    {value: '3 SFE', viewValue: 'Santa Fe'} ,
-    {value: '4 SMA', viewValue: 'San Martin de los Andes'}
-  ];
 
   nombreApellidoMinLength: number = 3;
+  dniMinLength: number = 7;
+  telefonoMinLength: number = 8;
 
   nombreControl = new FormControl('', [Validators.required, Validators.minLength(this.nombreApellidoMinLength)]);
   apellidoControl = new FormControl('', [Validators.required, Validators.minLength(this.nombreApellidoMinLength)]);
   emailControl = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],);
-  telefonoControl = new FormControl('');
-  ciudadControl = new FormControl('');
+  dniControl = new FormControl('', [Validators.required, Validators.minLength(this.dniMinLength)]);
+
+  telefonoControl = new FormControl('', [Validators.required, Validators.minLength(this.telefonoMinLength)]);
 
 
 
   registerForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder) {
+  constructor(public formBuilder: FormBuilder, private dialogRef: MatDialogRef<FormAbmAlumnosComponent>) {
 
 
     this.registerForm = this.formBuilder.group({
@@ -43,8 +38,8 @@ export class FormAbmAlumnosComponent {
       nombre: this.nombreControl,
       apellido: this.apellidoControl,
       email: this.emailControl,
+      dni: this.dniControl,
       telefono: this.telefonoControl,
-      ciudad: this.ciudadControl,
 
     })
 
@@ -60,12 +55,14 @@ export class FormAbmAlumnosComponent {
     return this.emailControl.hasError('pattern') ? 'El correo ingresado no es valido' : '';
   }
 
-  onSubmit(): void {
-   if (this.registerForm.valid) {
-    console.log(this.registerForm.value)
 
-   } else {
-    alert('El formulario está incompleto')
-   }
+  guardar(): void {
+    if (this.registerForm.valid){
+      this.dialogRef.close(this.registerForm.value)
+    } else {
+      this.registerForm.markAllAsTouched();
+    }
+
+
   }
 }

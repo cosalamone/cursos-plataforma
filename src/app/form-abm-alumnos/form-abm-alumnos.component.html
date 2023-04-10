@@ -1,67 +1,81 @@
+<h2 mat-dialog-title>Datos del alumno </h2>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+<div mat-dialog-content>
+  <form [formGroup]="registerForm">
 
-  <div>
-    <mat-form-field [formGroup]="registerForm" appearance="fill">
-      <mat-label>Nombre</mat-label>
+    <div>
+      <mat-form-field [formGroup]="registerForm" appearance="fill">
+        <mat-label>Nombre</mat-label>
 
-      <input [formControl]="nombreControl" matInput>
-      <mat-error *ngIf="nombreControl.invalid">Minimo {{nombreApellidoMinLength}} caracteres</mat-error>
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
-  </div>
-
-
-  <div>
-    <mat-form-field [formGroup]="registerForm" appearance="fill">
-      <mat-label>Apellido</mat-label>
-
-      <input [formControl]="apellidoControl" matInput >
-      <mat-error *ngIf="apellidoControl.invalid">Minimo {{nombreApellidoMinLength}} caracteres</mat-error>
-
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
-  </div>
+        <input [formControl]="nombreControl" matInput>
+        <mat-error *ngIf="nombreControl.invalid">Minimo {{nombreApellidoMinLength}} caracteres</mat-error>
+        <mat-icon matSuffix></mat-icon>
+      </mat-form-field>
+    </div>
 
 
-  <div>
+    <div>
+      <mat-form-field [formGroup]="registerForm" appearance="fill">
+        <mat-label>Apellido</mat-label>
 
-    <mat-form-field [formGroup]="registerForm" appearance="fill">
-      <mat-label>E-mail</mat-label>
-      <input [formControl]="emailControl" matInput >
-      <mat-error *ngIf="emailControl.invalid">{{getErrorMessage()}}</mat-error>
-      <mat-icon matSuffix>mail</mat-icon>
+        <input [formControl]="apellidoControl" matInput>
+        <mat-error *ngIf="apellidoControl.invalid">Minimo {{nombreApellidoMinLength}} caracteres</mat-error>
+
+        <mat-icon matSuffix></mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div>
+
+      <mat-form-field [formGroup]="registerForm" appearance="fill">
+        <mat-label>DNI</mat-label>
+        <input [formControl]="dniControl" matInput>
+        <mat-error *ngIf="emailControl.invalid">Mínimo {{dniMinLength}} dígitos</mat-error>
+        <mat-icon matSuffix></mat-icon>
 
 
-    </mat-form-field>
-  </div>
+      </mat-form-field>
+    </div>
+
+    <div>
+
+      <mat-form-field [formGroup]="registerForm" appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input [formControl]="emailControl" matInput>
+        <mat-error *ngIf="emailControl.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-icon matSuffix>mail</mat-icon>
 
 
-  <div>
-    <mat-form-field [formGroup]="registerForm" appearance="fill">
-      <mat-label>Telefono</mat-label>
+      </mat-form-field>
+    </div>
 
-      <input [formControl]="telefonoControl" matInput >
-      <mat-icon matSuffix>phone</mat-icon>
 
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field [formGroup]="registerForm" appearance="fill">
+        <mat-label>Telefono</mat-label>
 
-  <div>
-    <mat-form-field [formControl]="ciudadControl" appearance="fill">
-      <mat-label>Ciudad</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.value">
-          {{ciudad.viewValue}}
-        </mat-option>
-      </mat-select>
-      <mat-icon matSuffix> </mat-icon>
+        <input [formControl]="telefonoControl" matInput>
+        <mat-error *ngIf="telefonoControl.invalid">Mínimo {{telefonoMinLength}} dígitos</mat-error>
 
-    </mat-form-field>
-  </div>
+        <mat-icon matSuffix>phone</mat-icon>
 
-  <button type="submit">
-    Guardar
-  </button>
+      </mat-form-field>
+    </div>
 
-</form>
+
+
+    <div mat-dialog-actions>
+      <button mat-button="primary">
+        Cancelar
+      </button>
+
+      <button (click)="guardar()" mat-button="primary">
+        Guardar
+      </button>
+
+    </div>
+
+
+  </form>
+
+</div>
