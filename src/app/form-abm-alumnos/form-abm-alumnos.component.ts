@@ -12,9 +12,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class FormAbmAlumnosComponent {
 
-
-
-
   nombreApellidoMinLength: number = 3;
   dniMinLength: number = 7;
   telefonoMinLength: number = 8;
@@ -22,9 +19,8 @@ export class FormAbmAlumnosComponent {
   nombreControl = new FormControl('', [Validators.required, Validators.minLength(this.nombreApellidoMinLength)]);
   apellidoControl = new FormControl('', [Validators.required, Validators.minLength(this.nombreApellidoMinLength)]);
   emailControl = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],);
-  dniControl = new FormControl('', [Validators.required, Validators.minLength(this.dniMinLength)]);
-
-  telefonoControl = new FormControl('', [Validators.required, Validators.minLength(this.telefonoMinLength)]);
+  dniControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(this.dniMinLength) ]);
+  telefonoControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(this.telefonoMinLength)]);
 
 
 
@@ -57,7 +53,7 @@ export class FormAbmAlumnosComponent {
 
 
   guardar(): void {
-    if (this.registerForm.valid){
+    if (this.registerForm.valid) {
       this.dialogRef.close(this.registerForm.value)
     } else {
       this.registerForm.markAllAsTouched();

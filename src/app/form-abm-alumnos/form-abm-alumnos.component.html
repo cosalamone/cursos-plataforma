@@ -30,7 +30,7 @@
       <mat-form-field [formGroup]="registerForm" appearance="fill">
         <mat-label>DNI</mat-label>
         <input [formControl]="dniControl" matInput>
-        <mat-error *ngIf="emailControl.invalid">Mínimo {{dniMinLength}} dígitos</mat-error>
+        <mat-error *ngIf="dniControl.invalid">Mínimo {{dniMinLength}} dígitos</mat-error>
         <mat-icon matSuffix></mat-icon>
 
 
@@ -41,7 +41,7 @@
 
       <mat-form-field [formGroup]="registerForm" appearance="fill">
         <mat-label>E-mail</mat-label>
-        <input [formControl]="emailControl" matInput>
+        <input [formControl]="emailControl" matInput >
         <mat-error *ngIf="emailControl.invalid">{{getErrorMessage()}}</mat-error>
         <mat-icon matSuffix>mail</mat-icon>
 
@@ -54,7 +54,7 @@
       <mat-form-field [formGroup]="registerForm" appearance="fill">
         <mat-label>Telefono</mat-label>
 
-        <input [formControl]="telefonoControl" matInput>
+        <input [formControl]="telefonoControl" matInput >
         <mat-error *ngIf="telefonoControl.invalid">Mínimo {{telefonoMinLength}} dígitos</mat-error>
 
         <mat-icon matSuffix>phone</mat-icon>
@@ -75,7 +75,10 @@
 
     </div>
 
-
+    <button (click)="guardar()" mat-button="primary">
+      GuardarCambios
+    </button>
   </form>
 
 </div>
+
