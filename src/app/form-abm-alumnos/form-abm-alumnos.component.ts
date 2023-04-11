@@ -20,7 +20,7 @@ export class FormAbmAlumnosComponent {
   nombreControl = new FormControl('', [Validators.required, Validators.minLength(this.nombreApellidoMinLength)]);
   apellidoControl = new FormControl('', [Validators.required, Validators.minLength(this.nombreApellidoMinLength)]);
   emailControl = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],);
-  dniControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(this.dniMinLength) ]);
+  dniControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(this.dniMinLength)]);
   telefonoControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(this.telefonoMinLength)]);
 
 
@@ -29,7 +29,7 @@ export class FormAbmAlumnosComponent {
 
   constructor(public formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<FormAbmAlumnosComponent>,
-    @Inject (MAT_DIALOG_DATA) public data: {alumno: Alumno}) {
+    @Inject(MAT_DIALOG_DATA) public data: { alumno: Alumno }) {
 
     this.registerForm = this.formBuilder.group({
 
@@ -41,7 +41,9 @@ export class FormAbmAlumnosComponent {
 
     })
 
-    console.log(this.emailControl.value)
+    if (data) {
+      this.registerForm.patchValue(data['alumno']);
+    }
   }
 
 
@@ -60,7 +62,7 @@ export class FormAbmAlumnosComponent {
     } else {
       this.registerForm.markAllAsTouched();
     }
-
+    console.log('datos tomados del formulario' + this.registerForm.value.nombre)
 
   }
 }

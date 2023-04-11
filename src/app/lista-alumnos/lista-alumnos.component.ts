@@ -59,14 +59,22 @@ export class ListaAlumnosComponent {
         alumno,
       }
     });
-     // Creando un nuevo array en el dataSource
-     dialog.afterClosed().subscribe((valor) => {
+    // Creando un nuevo array en el dataSource
+    dialog.afterClosed().subscribe((valor) => {
       if (valor) {
         this.dataSource.data = [...this.dataSource.data, valor];
       }
     });
+
+  }
+
+  eliminarAlumno(alumno: Alumno): void {
+    let idAlumnoAEliminar = alumno.id;
+    let posicionAEliminar = this.dataSource.data.findIndex(alumno => alumno.id === idAlumnoAEliminar)
+    this.dataSource.data.splice(posicionAEliminar, 1);
+    this.dataSource.data = [...this.dataSource.data]
+    console.log(posicionAEliminar)
+
   }
 
 }
-
-
