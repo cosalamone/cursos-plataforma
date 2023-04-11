@@ -67,7 +67,9 @@ export class ListaAlumnosComponent {
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
         let alumno: Alumno = valor
-        console.log('array original' + this.dataSource)
+
+        console.log('array original' + this.dataSource.data)
+
         let idAlumnoAModificar = alumno.id
 
         let posicionAEditar = this.dataSource.data.findIndex(alumno => alumno.id === idAlumnoAModificar)
