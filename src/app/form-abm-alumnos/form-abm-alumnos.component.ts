@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Alumno } from 'src/interfaces/alumno';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -62,7 +63,12 @@ export class FormAbmAlumnosComponent {
     } else {
       this.registerForm.markAllAsTouched();
     }
+
     console.log('datos tomados del formulario' + this.registerForm.value.nombre)
 
+  }
+
+  cerrarDialog(){
+    this.dialogRef.close()
   }
 }

@@ -15,8 +15,7 @@ export class ListaAlumnosComponent {
 
   displayedColumns: string[] = [
     'posicion',
-    'nombre',
-    'apellido',
+    'nombreCompleto',
     'dni',
     'telefono',
     'email',
@@ -32,6 +31,8 @@ export class ListaAlumnosComponent {
 
   constructor(private matDialog: MatDialog,
     private alumnosService: AlumnosService) {
+
+    // FX PARA OBTENER ARRAY DE ALUMNOS DE ALUMNOS.JSON (A FUTURO UNA API) - Utiliza AlumnosService
     this.alumnosService
       .getAlumnos()
       .subscribe(
@@ -53,20 +54,35 @@ export class ListaAlumnosComponent {
 
   }
 
+
   editarAlumno(alumno: Alumno) {
     const dialog = this.matDialog.open(FormAbmAlumnosComponent, {
       data: {
         alumno,
       }
     });
-    // Creando un nuevo array en el dataSource
+
+
+    // find alumno and replace - guardar todo en datasource para que se implima en tabla
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
-        this.dataSource.data = [...this.dataSource.data, valor];
+        let alumno: Alumno = valor
+        console.log('array original' + this.dataSource)
+        let idAlumnoAModificar = alumno.id
+
+        let posicionAEditar = this.dataSource.data.findIndex(alumno => alumno.id === idAlumnoAModificar)
+
+        let nuevoArray=this.dataSource.data[posicionAEditar]= alumno;
+
+        console.log ('nuevo array' + nuevoArray )
+
       }
     });
 
   }
+
+
+
 
   eliminarAlumno(alumno: Alumno): void {
     let idAlumnoAEliminar = alumno.id;
