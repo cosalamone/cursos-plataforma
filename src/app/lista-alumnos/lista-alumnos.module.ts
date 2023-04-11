@@ -6,9 +6,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormAbmAlumnosModule } from '../form-abm-alumnos/form-abm-alumnos.module';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 
 
@@ -26,12 +27,11 @@ import {MatMenuModule} from '@angular/material/menu';
     MatIconModule,
     MatDialogModule,
     FormAbmAlumnosModule,
-    MatMenuModule
-
+    MatMenuModule,
 
   ],
   exports: [
     ListaAlumnosComponent
-  ]
+  ],
 })
 export class ListaAlumnosModule { }

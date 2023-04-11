@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    DashboardModule
+    DashboardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Alumno } from 'src/interfaces/alumno';
 
 
 
@@ -26,8 +27,9 @@ export class FormAbmAlumnosComponent {
 
   registerForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private dialogRef: MatDialogRef<FormAbmAlumnosComponent>) {
-
+  constructor(public formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<FormAbmAlumnosComponent>,
+    @Inject (MAT_DIALOG_DATA) public data: {alumno: Alumno}) {
 
     this.registerForm = this.formBuilder.group({
 
