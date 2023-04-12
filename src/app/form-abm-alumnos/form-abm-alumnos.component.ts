@@ -59,7 +59,7 @@ export class FormAbmAlumnosComponent {
 
   guardar(): void {
     if (this.registerForm.valid) {
-      this.dialogRef.close(this.registerForm.value)
+      this.dialogRef.close({ ...this.registerForm.value, id: this.data.alumno.id })
     } else {
       this.registerForm.markAllAsTouched();
     }
