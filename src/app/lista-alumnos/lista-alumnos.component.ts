@@ -10,9 +10,12 @@ import { Alumno } from 'src/interfaces';
   templateUrl: './lista-alumnos.component.html',
   styleUrls: ['./lista-alumnos.component.scss'],
 })
+
 export class ListaAlumnosComponent {
+
+
   displayedColumns: string[] = [
-    'posicion',
+    'id',
     'nombreCompleto',
     'dni',
     'telefono',
@@ -44,7 +47,12 @@ export class ListaAlumnosComponent {
     // Creando un nuevo array en el dataSource
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
-        this.dataSource.data = [...this.dataSource.data, valor];
+        let alumno: Alumno = valor;
+        let newId = Math.max(...this.dataSource.data.map(x=>x.id)) + 1;
+
+        alumno.id = newId;
+
+        this.dataSource.data = [...this.dataSource.data, alumno];
       }
     });
   }
@@ -56,7 +64,7 @@ export class ListaAlumnosComponent {
       },
     });
 
-    // find alumno and replace - guardar todo en datasource para que se implima en tabla
+    // find alumno and replace - guardar todo en datasource para que se implima nueva tabla
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
         let alumno: Alumno = valor;
@@ -85,4 +93,6 @@ export class ListaAlumnosComponent {
     this.dataSource.data = [...this.dataSource.data];
     console.log(posicionAEliminar);
   }
+
+
 }

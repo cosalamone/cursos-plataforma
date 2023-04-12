@@ -1,7 +1,6 @@
 [
   {
     "id": 1,
-    "posicion": 1,
     "nombre": "Armando",
     "apellido": "Perez",
     "dni": 1123234,
@@ -10,7 +9,6 @@
   },
   {
     "id": 2,
-    "posicion": 2,
     "nombre": "Marina",
     "apellido": "Cerezo",
     "dni": 123644,
@@ -19,7 +17,6 @@
   },
   {
     "id": 3,
-    "posicion": 3,
     "nombre": "Maria",
     "apellido": "Ayala",
     "dni": 12765634,
@@ -28,7 +25,6 @@
   },
   {
     "id": 4,
-    "posicion": 4,
     "nombre": "Carlos",
     "apellido": "String",
     "dni": 12890834,
@@ -37,7 +33,6 @@
   },
   {
     "id": 5,
-    "posicion": 5,
     "nombre": "Brian",
     "apellido": "Otero",
     "dni": 85235783,
@@ -46,7 +41,6 @@
   },
   {
     "id": 6,
-    "posicion": 6,
     "nombre": "Oscar",
     "apellido": "Basile",
     "dni": 16786234,
@@ -55,7 +49,6 @@
   },
   {
     "id": 7,
-    "posicion": 7,
     "nombre": "Nelida",
     "apellido": "Paredes",
     "dni": 74542416,
@@ -64,7 +57,6 @@
   },
   {
     "id": 8,
-    "posicion": 8,
     "nombre": "Omar",
     "apellido": "Martinez",
     "dni": 85421356,
@@ -73,7 +65,6 @@
   },
   {
     "id": 9,
-    "posicion": 9,
     "nombre": "Florencia",
     "apellido": "Rodriguez",
     "dni": 97423421,
@@ -82,7 +73,6 @@
   },
   {
     "id": 10,
-    "posicion": 10,
     "nombre": "Luciano",
     "apellido": "Vidal",
     "dni": 7563453,

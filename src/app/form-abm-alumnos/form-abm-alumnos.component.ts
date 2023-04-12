@@ -2,10 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Alumno } from 'src/interfaces/alumno';
-import { MatTableDataSource } from '@angular/material/table';
-
-
-
 
 @Component({
   selector: 'app-form-abm-alumnos',
@@ -45,6 +41,7 @@ export class FormAbmAlumnosComponent {
     if (data) {
       this.registerForm.patchValue(data['alumno']);
     }
+
   }
 
 
@@ -59,12 +56,10 @@ export class FormAbmAlumnosComponent {
 
   guardar(): void {
     if (this.registerForm.valid) {
-      this.dialogRef.close({ ...this.registerForm.value, id: this.data.alumno.id })
+      this.dialogRef.close({ ...this.registerForm.value, id: this.data?.alumno?.id ?? null })
     } else {
       this.registerForm.markAllAsTouched();
     }
-
-    console.log('datos tomados del formulario' + this.registerForm.value.nombre)
 
   }
 

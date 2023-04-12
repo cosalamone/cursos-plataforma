@@ -13,10 +13,10 @@
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <!-- Columna posicion -->
-  <ng-container matColumnDef="posicion">
-    <th mat-header-cell *matHeaderCellDef appFontSize> No. </th>
-    <td mat-cell *matCellDef="let alumno, let i = index"> {{i + 1}} </td>
+  <!-- Columna ID -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef appFontSize> ID </th>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.id}}  </td>
   </ng-container>
 
   <!-- Columna nombre completo-->
