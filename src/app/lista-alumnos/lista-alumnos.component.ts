@@ -8,11 +8,9 @@ import { Alumno } from 'src/interfaces';
 @Component({
   selector: 'app-lista-alumnos',
   templateUrl: './lista-alumnos.component.html',
-  styleUrls: ['./lista-alumnos.component.scss']
+  styleUrls: ['./lista-alumnos.component.scss'],
 })
-
 export class ListaAlumnosComponent {
-
   displayedColumns: string[] = [
     'posicion',
     'nombreCompleto',
@@ -23,15 +21,15 @@ export class ListaAlumnosComponent {
   ];
   dataSource!: MatTableDataSource<any, any>;
 
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor(private matDialog: MatDialog,
-    private alumnosService: AlumnosService) {
-
+  constructor(
+    private matDialog: MatDialog,
+    private alumnosService: AlumnosService
+  ) {
     // FX PARA OBTENER ARRAY DE ALUMNOS DE ALUMNOS.JSON (A FUTURO UNA API) - Utiliza AlumnosService
     this.alumnosService
       .getAlumnos()
@@ -40,59 +38,51 @@ export class ListaAlumnosComponent {
       );
   }
 
-
   abrirFormABMAlumnos(): void {
-    const dialog = this.matDialog.open(FormAbmAlumnosComponent)
+    const dialog = this.matDialog.open(FormAbmAlumnosComponent);
 
     // Creando un nuevo array en el dataSource
-    dialog.afterClosed().subscribe(valor => {
+    dialog.afterClosed().subscribe((valor) => {
       if (valor) {
-
         this.dataSource.data = [...this.dataSource.data, valor];
       }
-    })
-
+    });
   }
-
 
   editarAlumno(alumno: Alumno) {
     const dialog = this.matDialog.open(FormAbmAlumnosComponent, {
       data: {
         alumno,
-      }
+      },
     });
-
 
     // find alumno and replace - guardar todo en datasource para que se implima en tabla
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
-        let alumno: Alumno = valor
+        let alumno: Alumno = valor;
 
-        console.log('array original' + this.dataSource.data)
+        console.log('array original' + this.dataSource.data);
 
-        let idAlumnoAModificar = alumno.id
+        let idAlumnoAModificar = alumno.id;
 
-        let posicionAEditar = this.dataSource.data.findIndex(alumno => alumno.id === idAlumnoAModificar)
+        let posicionAEditar = this.dataSource.data.findIndex(
+          (alumno) => alumno.id === idAlumnoAModificar
+        );
 
-        let nuevoArray=this.dataSource.data[posicionAEditar]= alumno;
+        this.dataSource.data[posicionAEditar] = alumno;
 
-        console.log ('nuevo array' + nuevoArray )
-
+        this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
     });
-
   }
-
-
-
 
   eliminarAlumno(alumno: Alumno): void {
     let idAlumnoAEliminar = alumno.id;
-    let posicionAEliminar = this.dataSource.data.findIndex(alumno => alumno.id === idAlumnoAEliminar)
+    let posicionAEliminar = this.dataSource.data.findIndex(
+      (alumno) => alumno.id === idAlumnoAEliminar
+    );
     this.dataSource.data.splice(posicionAEliminar, 1);
-    this.dataSource.data = [...this.dataSource.data]
-    console.log(posicionAEliminar)
-
+    this.dataSource.data = [...this.dataSource.data];
+    console.log(posicionAEliminar);
   }
-
 }
