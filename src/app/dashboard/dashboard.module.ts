@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { ListaAlumnosModule } from '../lista-alumnos/lista-alumnos.module';
 import { FormAbmAlumnosModule } from '../form-abm-alumnos/form-abm-alumnos.module';
+import { TablaCursosModule } from '../tabla-cursos/tabla-cursos.module';
 
 
 
@@ -25,7 +26,8 @@ import { FormAbmAlumnosModule } from '../form-abm-alumnos/form-abm-alumnos.modul
     MatButtonModule,
     MatListModule,
     ListaAlumnosModule,
-    FormAbmAlumnosModule
+    FormAbmAlumnosModule,
+    TablaCursosModule
   ],
   exports: [
     DashboardComponent

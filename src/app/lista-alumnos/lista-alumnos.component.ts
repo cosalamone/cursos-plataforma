@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { FormAbmAlumnosComponent } from '../form-abm-alumnos/form-abm-alumnos.component';
-import { AlumnosService } from '../../services/alumnos.service';
+import { AlumnosService } from '../services/alumnos.service';
 import { Alumno } from 'src/interfaces';
 
 @Component({
@@ -22,6 +22,7 @@ export class ListaAlumnosComponent {
     'email',
     'opciones',
   ];
+
   dataSource!: MatTableDataSource<any, any>;
 
   applyFilter(event: Event) {
