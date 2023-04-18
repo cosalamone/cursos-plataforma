@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ListaAlumnosComponent } from './lista-alumnos/lista-alumnos.component';
-import { TablaCursosComponent } from './tabla-cursos/tabla-cursos.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ListaAlumnosComponent } from './components/dashboard/lista-alumnos/lista-alumnos.component';
+import { TablaCursosComponent } from './components/dashboard/tabla-cursos/tabla-cursos.component';
 
 const routes: Routes = [
   {
