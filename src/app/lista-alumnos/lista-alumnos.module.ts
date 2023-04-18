@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormAbmAlumnosModule } from '../form-abm-alumnos/form-abm-alumnos.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { SharedModule } from '../shared/shared.module';

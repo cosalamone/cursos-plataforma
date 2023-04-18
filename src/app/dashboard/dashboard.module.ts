@@ -9,7 +9,8 @@ import { MatListModule } from '@angular/material/list';
 import { ListaAlumnosModule } from '../lista-alumnos/lista-alumnos.module';
 import { FormAbmAlumnosModule } from '../form-abm-alumnos/form-abm-alumnos.module';
 import { TablaCursosModule } from '../tabla-cursos/tabla-cursos.module';
-import { LogInModule } from '../log-in/log-in.module';
+import { LogInModule } from '../auth/log-in/log-in.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -21,6 +22,7 @@ import { LogInModule } from '../log-in/log-in.module';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
