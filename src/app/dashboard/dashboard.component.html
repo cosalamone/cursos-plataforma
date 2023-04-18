@@ -4,6 +4,8 @@
   <mat-drawer #drawer class="example-sidenav" mode="side">
 
     <mat-list role="list">
+      <img width="50" height="50" src="../../assets/user-img.jpg">
+      <p> {{authUser?.email}} </p>
       <mat-list-item role="listitem">Alumnos</mat-list-item>
       <mat-list-item role="listitem">Cursos</mat-list-item>
       <mat-list-item role="listitem">Docentes</mat-list-item>
@@ -17,24 +19,35 @@
   <!-- TOOLBAR -->
   <div class="example-sidenav-content">
     <mat-toolbar color="primary">
-      <button type="button" (click)="drawer.toggle()" mat-icon-button class="example-icon"
-        aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>Plataforma Cursos </span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
+      <div class="div.flex.justify-content-bewteen">
+        <button type="button" (click)="drawer.toggle()" mat-icon-button class="example-icon"
+          aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Plataforma Cursos </span>
+
+
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+      </div>
+
+      <!-- cambiar para mostrar nombre del usuario  -->
+      <div>
+        <p>{{authUser?.email}} </p>
+      </div>
+
     </mat-toolbar>
 
 
     <!-- CUERPO DE LA PAGINA -->
     <main>
-      <app-tabla-cursos></app-tabla-cursos>
+      <app-log-in></app-log-in>
+      <!-- <app-tabla-cursos></app-tabla-cursos> -->
       <!-- <app-lista-alumnos></app-lista-alumnos> -->
       <!-- <app-form-abm-alumnos></app-form-abm-alumnos> -->
     </main>

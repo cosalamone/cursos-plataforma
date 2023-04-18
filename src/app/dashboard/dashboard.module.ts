@@ -9,6 +9,7 @@ import { MatListModule } from '@angular/material/list';
 import { ListaAlumnosModule } from '../lista-alumnos/lista-alumnos.module';
 import { FormAbmAlumnosModule } from '../form-abm-alumnos/form-abm-alumnos.module';
 import { TablaCursosModule } from '../tabla-cursos/tabla-cursos.module';
+import { LogInModule } from '../log-in/log-in.module';
 
 
 
@@ -27,7 +28,9 @@ import { TablaCursosModule } from '../tabla-cursos/tabla-cursos.module';
     MatListModule,
     ListaAlumnosModule,
     FormAbmAlumnosModule,
-    TablaCursosModule
+    TablaCursosModule,
+    LogInModule
+
   ],
   exports: [
     DashboardComponent
