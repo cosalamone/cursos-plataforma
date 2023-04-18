@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Usuario } from 'src/interfaces';
 import { Subject, Subscription, takeUntil } from 'rxjs';
+import links from './nav-items';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,9 @@ import { Subject, Subscription, takeUntil } from 'rxjs';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnDestroy {
+
+  links = links;
+
   showFiller = false;
 
   authUser: Usuario | null = null;

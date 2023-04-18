@@ -3,15 +3,14 @@
   <!-- SIDEBAR -->
   <mat-drawer #drawer class="example-sidenav" mode="side">
 
-    <mat-list role="list">
-      <img width="50" height="50" src="../../assets/user-img.jpg">
-      <p> {{authUser?.email}} </p>
-      <mat-list-item role="listitem">Alumnos</mat-list-item>
-      <mat-list-item role="listitem">Cursos</mat-list-item>
-      <mat-list-item role="listitem">Docentes</mat-list-item>
-    </mat-list>
+    <!-- datos de perfil de usuario logueado -->
+    <img width="50" height="50" src="../../assets/user-img.jpg">
+    <p> {{authUser?.email}} </p>
 
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <mat-nav-list>
+      <a  [routerLink]="link.url"
+      mat-list-item href="..." *ngFor="let link of links" >{{ link.title }}</a>
+    </mat-nav-list>
 
   </mat-drawer>
 

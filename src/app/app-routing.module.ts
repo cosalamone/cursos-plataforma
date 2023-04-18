@@ -7,7 +7,7 @@ import { TablaCursosComponent } from './components/dashboard/tabla-cursos/tabla-
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: 'home',
     component: DashboardComponent, // que componente se muestra
     children: [
       {
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: '**', // Cualquier otra ruta que no este definida
-    redirectTo: 'dashboard', // la redirige al dashboard
+    redirectTo: 'home', // la redirige al dashboard = home
   },
 ]
 
