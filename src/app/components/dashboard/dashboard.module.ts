@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { FormAbmAlumnosModule } from './form-abm-alumnos/form-abm-alumnos.module';
-import { LogInModule } from 'src/app/auth/log-in/log-in.module';
+import { LogInModule } from 'src/app/components/dashboard/auth/log-in/log-in.module';
 import { ListaAlumnosModule } from './lista-alumnos/lista-alumnos.module';
 import { TablaCursosModule } from './tabla-cursos/tabla-cursos.module';
 

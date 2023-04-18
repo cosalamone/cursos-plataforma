@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ListaAlumnosComponent } from './components/dashboard/lista-alumnos/lista-alumnos.component';
 import { TablaCursosComponent } from './components/dashboard/tabla-cursos/tabla-cursos.component';
+import { AuthComponent } from './components/dashboard/auth/auth.component';
+import { LogInComponent } from './components/dashboard/auth/log-in/log-in.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,19 @@ const routes: Routes = [
 
     ]
   },
+
+  {
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      {
+        path: 'login',
+        component: LogInComponent,
+      },
+
+    ]
+  },
+
   {
     path: '**', // Cualquier otra ruta que no este definida
     redirectTo: 'home', // la redirige al dashboard = home

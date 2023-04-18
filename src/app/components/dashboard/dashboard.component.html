@@ -8,8 +8,12 @@
     <p> {{authUser?.email}} </p>
 
     <mat-nav-list>
-      <a  [routerLink]="link.url"
-      mat-list-item href="..." *ngFor="let link of links" >{{ link.title }}</a>
+      <a [routerLink]="link.url" mat-list-item  *ngFor="let link of links">
+        {{ link.title }}
+      </a>
+      <a mat-list-item>
+        Cerrar sesión
+      </a>
     </mat-nav-list>
 
   </mat-drawer>
