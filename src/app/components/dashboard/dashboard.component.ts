@@ -25,9 +25,10 @@ export class DashboardComponent implements OnDestroy {
   constructor(private authService: AuthService,
     private router: Router
     ) {
+
     this.authService.obtenerUsuarioAutenticado()
       .pipe(
-        takeUntil(this.destrodyed$)
+        takeUntil(this.destrodyed$) //escucha hasta que se destruye
       )
       .subscribe((usuario) => this.authUser = usuario);
 
@@ -36,7 +37,9 @@ export class DashboardComponent implements OnDestroy {
   // para evitar usar espacio de la Mem RAM guardamos el auth en una variable
 
   ngOnDestroy(): void {
-    this.suscripcionAuthUser?.unsubscribe();
+    // this.suscripcionAuthUser?.unsubscribe();
+    this.destrodyed$.next();
+    this.destrodyed$.complete()
   }
 
   logOut(): void {
