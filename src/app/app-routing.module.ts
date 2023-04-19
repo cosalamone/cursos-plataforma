@@ -15,6 +15,16 @@ const routes: Routes = [
       {
         path: 'alumnos',
         component: ListaAlumnosComponent,
+        // children: [
+        //   {
+        //     path: '',
+        //     component: ListaAlumnosComponent,
+        //   },
+        //   {
+        //     path: 'id',
+        //     component: componentehijo, --> el detalle de los alumnos
+        //   },
+        // ]
       },
       {
         path: 'cursos',

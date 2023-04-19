@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Usuario } from 'src/interfaces';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import links from './nav-items';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +22,9 @@ export class DashboardComponent implements OnDestroy {
 
   destrodyed$ = new Subject<void>();
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+    private router: Router
+    ) {
     this.authService.obtenerUsuarioAutenticado()
       .pipe(
         takeUntil(this.destrodyed$)
@@ -35,4 +38,9 @@ export class DashboardComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.suscripcionAuthUser?.unsubscribe();
   }
+
+  logOut(): void {
+    this.router.navigate(['auth', 'login'])
+  }
+
 }

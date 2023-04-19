@@ -11,6 +11,7 @@ import { FormAbmAlumnosModule } from './form-abm-alumnos/form-abm-alumnos.module
 import { LogInModule } from 'src/app/components/dashboard/auth/log-in/log-in.module';
 import { ListaAlumnosModule } from './lista-alumnos/lista-alumnos.module';
 import { TablaCursosModule } from './tabla-cursos/tabla-cursos.module';
+import { AuthComponent } from './auth/auth.component';
 
 
 
@@ -18,7 +19,8 @@ import { TablaCursosModule } from './tabla-cursos/tabla-cursos.module';
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    AuthComponent
   ],
   imports: [
     CommonModule,
@@ -31,12 +33,13 @@ import { TablaCursosModule } from './tabla-cursos/tabla-cursos.module';
     ListaAlumnosModule,
     FormAbmAlumnosModule,
     TablaCursosModule,
-    LogInModule
+    LogInModule,
 
 
   ],
   exports: [
-    DashboardComponent
+    DashboardComponent,
+    AuthComponent
   ]
 })
 export class DashboardModule { }
