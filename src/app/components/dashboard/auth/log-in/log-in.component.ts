@@ -35,6 +35,6 @@ export class LogInComponent {
   }
 
   LogeandoUsuario() {
-    this.router.navigate(['home'])
+    this.router.navigate(['home', 'alumnos'])
   }
 }

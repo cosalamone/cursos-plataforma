@@ -30,14 +30,6 @@ const routes: Routes = [
         path: 'cursos',
         component: TablaCursosComponent,
       },
-
-    ]
-  },
-
-  {
-    path: 'auth',
-    component: AuthComponent,
-    children: [
       {
         path: 'login',
         component: LogInComponent,
@@ -45,6 +37,18 @@ const routes: Routes = [
 
     ]
   },
+
+  // {
+  //   path: 'auth',
+  //   component: AuthComponent,
+  //   children: [
+  //     {
+  //       path: 'login',
+  //       component: LogInComponent,
+  //     },
+
+  //   ]
+  // },
 
   {
     path: '**', // Cualquier otra ruta que no este definida

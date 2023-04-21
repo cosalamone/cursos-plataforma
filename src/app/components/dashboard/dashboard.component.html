@@ -11,9 +11,9 @@
       <a [routerLink]="link.url" mat-list-item  *ngFor="let link of links">
         {{ link.title }}
       </a>
-      <a (click)="logOut()" mat-list-item>
+      <!-- <a (click)="logOut()" mat-list-item>
         Cerrar sesión
-      </a>
+      </a> -->
     </mat-nav-list>
 
   </mat-drawer>
@@ -49,7 +49,7 @@
 
     <!-- CUERPO DE LA PAGINA - Utilizando router-->
     <main>
-      <app-log-in></app-log-in>
+      <!-- <app-log-in></app-log-in> -->
       <router-outlet></router-outlet>
     </main>
   </div>

@@ -15,6 +15,10 @@ const links: NavItem[] = [
   {
     url:'docentes',
     title:'Docentes',
+  },
+  {
+    url:'login',
+    title:'Cerrar sesión',
   }
 ]
 
