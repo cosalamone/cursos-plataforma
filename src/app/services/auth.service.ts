@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, ReplaySubject  } from 'rxjs';
 import { Usuario } from 'src/interfaces';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Usuario } from 'src/interfaces';
 })
 export class AuthService {
 
-  private  authUser$ = new Subject<Usuario>();
+  private  authUser$ = new ReplaySubject<Usuario>();
 
   constructor() { }
 
