@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Alumno } from 'src/interfaces/alumno';
 
 @Injectable({
   providedIn: 'root',
@@ -7,8 +9,8 @@ import { Injectable } from '@angular/core';
 export class AlumnosService {
   constructor(private http: HttpClient) {}
 
-  getAlumnos() {
-    return this.http.get('assets/alumnos.json');
+  getAlumnos(): Observable<Array<Alumno>> {
+    return this.http.get<Array<Alumno>>('assets/alumnos.json');
   }
 
   post() {

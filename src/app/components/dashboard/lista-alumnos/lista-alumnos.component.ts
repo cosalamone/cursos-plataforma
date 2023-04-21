@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormAbmAlumnosComponent } from '../form-abm-alumnos/form-abm-alumnos.component';
 import { AlumnosService } from '../../../services/alumnos.service';
 import { Alumno } from 'src/interfaces';
+import { map } from 'rxjs'
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -30,6 +31,25 @@ export class ListaAlumnosComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+
+  formatTelefono(telefono: number | string) {
+
+    // Convert number to string
+
+    const numberString = telefono.toString();
+
+    // Split string into three parts
+
+    const part1 = numberString.slice(0, 3);
+    const part2 = numberString.slice(3, 6);
+    const part3 = numberString.slice(6);
+
+    // Return formatted string
+
+    return `(${part1}) ${part2}-${part3}`;
+
+  }
+
   constructor(
     private matDialog: MatDialog,
     private alumnosService: AlumnosService
@@ -37,6 +57,18 @@ export class ListaAlumnosComponent {
     // FX PARA OBTENER ARRAY DE ALUMNOS DE ALUMNOS.JSON (A FUTURO UNA API) - Utiliza AlumnosService
     this.alumnosService
       .getAlumnos()
+      .pipe(
+        map((alumnos: Array<any>) => alumnos.map(alumno => ({
+
+          id: alumno.id,
+          nombre: alumno.nombre,
+          apellido: alumno.apellido,
+          dni: alumno.dni,
+          telefono: this.formatTelefono(alumno.telefono),
+          email: alumno.email
+
+        })))
+      )
       .subscribe(
         (data) => (this.dataSource = new MatTableDataSource(data as any))
       );
@@ -49,7 +81,7 @@ export class ListaAlumnosComponent {
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
         let alumno: Alumno = valor;
-        let newId = Math.max(...this.dataSource.data.map(x=>x.id)) + 1;
+        let newId = Math.max(...this.dataSource.data.map(x => x.id)) + 1;
 
         alumno.id = newId;
 
@@ -57,6 +89,7 @@ export class ListaAlumnosComponent {
       }
     });
   }
+
 
   editarAlumno(alumno: Alumno) {
     const dialog = this.matDialog.open(FormAbmAlumnosComponent, {

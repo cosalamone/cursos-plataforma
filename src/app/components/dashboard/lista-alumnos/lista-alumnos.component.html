@@ -1,17 +1,17 @@
 <!-- Boton agregar alumno -->
-<div class="mb-3">
+<div class="m-3">
   <button (click)="abrirFormABMAlumnos()" color="primary" mat-flat-button>
     <mat-icon>add</mat-icon>
     Agregar alumno
   </button>
 </div>
 
-<mat-form-field>
+<mat-form-field class="m-3">
   <mat-label>Buscar</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Buscar alumnos por nombre, apellido, DNI" #input>
 </mat-form-field>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="m-3">
 
   <!-- Columna ID -->
   <ng-container matColumnDef="id">
