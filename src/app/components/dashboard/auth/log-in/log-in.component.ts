@@ -32,9 +32,7 @@ export class LogInComponent {
       ...(this.authForm.value as any), //revisar datos de usuario vs los enviado en el form
       id: 12,
     })
-  }
-
-  LogeandoUsuario() {
     this.router.navigate(['home', 'alumnos'])
   }
+
 }
