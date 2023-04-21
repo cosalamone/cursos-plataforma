@@ -6,6 +6,7 @@ import { ListaAlumnosComponent } from './components/dashboard/lista-alumnos/list
 import { TablaCursosComponent } from './components/dashboard/tabla-cursos/tabla-cursos.component';
 import { AuthComponent } from './components/dashboard/auth/auth.component';
 import { LogInComponent } from './components/dashboard/auth/log-in/log-in.component';
+import { ListaDocentesComponent } from './components/dashboard/lista-docentes/lista-docentes.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path: 'cursos',
         component: TablaCursosComponent,
+      },
+      {
+        path: 'docentes',
+        component: ListaDocentesComponent,
       },
       {
         path: 'login',
