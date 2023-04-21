@@ -5,7 +5,7 @@
 
     <!-- datos de perfil de usuario logueado -->
     <img width="50" height="50" src="../../assets/user-img.jpg">
-    <p> {{authUser?.email}} </p>
+    <p> {{(authUserObs$ | async)?.email}} </p>
 
     <mat-nav-list>
       <a [routerLink]="link.url" mat-list-item  *ngFor="let link of links">
@@ -41,7 +41,7 @@
 
       <!-- cambiar para mostrar nombre del usuario  -->
       <div>
-        <p>{{authUser?.email}} </p>
+        <p>{{(authUserObs$ | async) ?.email}} </p>
       </div>
 
     </mat-toolbar>
@@ -49,7 +49,6 @@
 
     <!-- CUERPO DE LA PAGINA - Utilizando router-->
     <main>
-      <!-- <app-log-in></app-log-in> -->
       <router-outlet></router-outlet>
     </main>
   </div>
