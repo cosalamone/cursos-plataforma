@@ -12,6 +12,7 @@ import { LogInModule } from 'src/app/components/dashboard/auth/log-in/log-in.mod
 import { ListaAlumnosModule } from './lista-alumnos/lista-alumnos.module';
 import { TablaCursosModule } from './tabla-cursos/tabla-cursos.module';
 import { AuthComponent } from './auth/auth.component';
+import { ListaDocentesModule } from './lista-docentes/lista-docentes.module';
 
 
 
@@ -34,6 +35,8 @@ import { AuthComponent } from './auth/auth.component';
     FormAbmAlumnosModule,
     TablaCursosModule,
     LogInModule,
+    ListaDocentesModule,
+    ListaDocentesModule
 
 
   ],
