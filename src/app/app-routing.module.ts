@@ -22,7 +22,7 @@ const routes: Routes = [
             component: ListaAlumnosComponent,
           },
           {
-            path: ':id',
+            path: ':idAlumno',
             component: DetalleAlumnoComponent,
           },
         ]

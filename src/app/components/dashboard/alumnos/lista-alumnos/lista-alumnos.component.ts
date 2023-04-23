@@ -133,7 +133,9 @@ export class ListaAlumnosComponent {
   }
 
   detalleAlumno(alumnoId:number): void {
-    this.router.navigate(['home','alumnos',alumnoId]
+    this.router.navigate([alumnoId], {
+      relativeTo: this.activatedRoute
+    }
     );
   }
 

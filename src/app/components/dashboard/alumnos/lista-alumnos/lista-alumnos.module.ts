@@ -11,6 +11,7 @@ import { FormAbmAlumnosModule } from './form-abm-alumnos/form-abm-alumnos.module
 import { MatMenuModule } from '@angular/material/menu';
 import { SharedModule } from '../../../../shared/shared.module';
 import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -32,6 +33,7 @@ import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.componen
     FormAbmAlumnosModule,
     MatMenuModule,
     SharedModule,
+    MatExpansionModule,
 
   ],
   exports: [
