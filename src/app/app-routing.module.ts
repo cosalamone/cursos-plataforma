@@ -6,7 +6,8 @@ import { ListaAlumnosComponent } from './components/dashboard/alumnos/lista-alum
 import { TablaCursosComponent } from './components/dashboard/cursos/tabla-cursos/tabla-cursos.component';
 import { AuthComponent } from './components/dashboard/auth/auth.component';
 import { LogInComponent } from './components/dashboard/auth/log-in/log-in.component';
-import { ListaDocentesComponent } from './components/dashboard/lista-docentes/lista-docentes.component';
+import { ListaDocentesComponent } from './components/dashboard/docentes/lista-docentes/lista-docentes.component';
+import { DetalleAlumnoComponent } from './components/dashboard/alumnos/lista-alumnos/detalle-alumno/detalle-alumno.component';
 
 const routes: Routes = [
   {
@@ -15,17 +16,16 @@ const routes: Routes = [
     children: [
       {
         path: 'alumnos',
-        component: ListaAlumnosComponent,
-        // children: [
-        //   {
-        //     path: '',
-        //     component: ListaAlumnosComponent,
-        //   },
-        //   {
-        //     path: 'id',
-        //     component: componentehijo, --> el detalle de los alumnos
-        //   },
-        // ]
+        children: [
+          {
+            path: '',
+            component: ListaAlumnosComponent,
+          },
+          {
+            path: ':id',
+            component: DetalleAlumnoComponent,
+          },
+        ]
       },
       {
         path: 'cursos',

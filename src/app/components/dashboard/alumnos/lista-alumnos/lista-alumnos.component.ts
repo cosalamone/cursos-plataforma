@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { FormAbmAlumnosComponent } from '../form-abm-alumnos/form-abm-alumnos.component';
+import { FormAbmAlumnosComponent } from './form-abm-alumnos/form-abm-alumnos.component';
 import { AlumnosService } from '../../../../services/alumnos.service';
 import { Alumno } from 'src/interfaces';
 import { map } from 'rxjs'
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -25,6 +26,7 @@ export class ListaAlumnosComponent {
   ];
 
   dataSource!: MatTableDataSource<any, any>;
+  // router: any;
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -52,7 +54,9 @@ export class ListaAlumnosComponent {
 
   constructor(
     private matDialog: MatDialog,
-    private alumnosService: AlumnosService
+    private alumnosService: AlumnosService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     // FX PARA OBTENER ARRAY DE ALUMNOS DE ALUMNOS.JSON (A FUTURO UNA API) - Utiliza AlumnosService
     this.alumnosService
@@ -126,6 +130,11 @@ export class ListaAlumnosComponent {
     this.dataSource.data.splice(posicionAEliminar, 1);
     this.dataSource.data = [...this.dataSource.data];
     console.log(posicionAEliminar);
+  }
+
+  detalleAlumno(alumnoId:number): void {
+    this.router.navigate(['home','alumnos',alumnoId]
+    );
   }
 
 

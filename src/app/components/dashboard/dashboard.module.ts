@@ -7,12 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-import { FormAbmAlumnosModule } from './alumnos/form-abm-alumnos/form-abm-alumnos.module';
+import { FormAbmAlumnosModule } from './alumnos/lista-alumnos/form-abm-alumnos/form-abm-alumnos.module';
 import { LogInModule } from 'src/app/components/dashboard/auth/log-in/log-in.module';
 import { ListaAlumnosModule } from './alumnos/lista-alumnos/lista-alumnos.module';
 import { TablaCursosModule } from './cursos/tabla-cursos/tabla-cursos.module';
 import { AuthComponent } from './auth/auth.component';
-import { ListaDocentesModule } from './lista-docentes/lista-docentes.module';
+import { ListaDocentesModule } from './docentes/lista-docentes/lista-docentes.module';
 
 
 
