@@ -14,7 +14,9 @@ export class TablaCursosComponent {
     'id',
     'nombre',
     'duracion',
-    'docente'];
+    'docente',
+    'opciones'
+  ];
 
   dataSource!: MatTableDataSource<any, any>;
 
@@ -33,5 +35,15 @@ export class TablaCursosComponent {
       .subscribe(
         (data) => (this.dataSource = new MatTableDataSource(data as any))
       );
+  }
+
+  editarCurso() {
+
+  }
+  eliminarCurso() {
+
+  }
+  detalleCurso() {
+
   }
 }
