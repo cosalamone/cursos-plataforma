@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
-import { Curso } from 'src/interfaces';
+import { Alumno, Curso } from 'src/interfaces';
 import { FormAbmCursosComponent } from './form-abm-cursos/form-abm-cursos.component';
 
 
@@ -59,8 +59,24 @@ export class TablaCursosComponent {
     })
   }
 
-  editarCurso() {
+  editarCurso(curso: Alumno) {
+    const dialog = this.matDialog.open(FormAbmCursosComponent, {
+      data: {
+        curso,
+      }
+    });
 
+    dialog.afterClosed().subscribe((valor)=> {
+      if (valor ){
+        let curso: Curso = valor;
+        let idCursoModificar = curso.id;
+        let posicionAEditar = this.dataSource.data.findIndex(
+          (alumno)=> alumno.id === idCursoModificar
+        );
+        this.dataSource.data[posicionAEditar]= curso;
+        this.dataSource= new MatTableDataSource(this.dataSource.data)
+      }
+    });
   }
   eliminarCurso(curso: Curso): void {
     let idCursoAEliminar = curso.id;

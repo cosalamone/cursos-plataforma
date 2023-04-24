@@ -1,4 +1,4 @@
-import { Component , Inject} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Curso } from 'src/interfaces';
@@ -10,9 +10,9 @@ import { Curso } from 'src/interfaces';
 })
 export class FormAbmCursosComponent {
 
-  minLength: number= 3;
+  minLength: number = 3;
   minDuracion: number = 1;
-  maxDuracion: number= 12
+  maxDuracion: number = 12
 
   cursoControl = new FormControl('', [Validators.required, Validators.minLength(this.minLength)])
   duracionControl = new FormControl('', [Validators.required, Validators.min(this.minDuracion), Validators.max(this.maxDuracion)])
@@ -22,27 +22,27 @@ export class FormAbmCursosComponent {
 
   constructor(public formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<FormAbmCursosComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {curso: Curso}){
+    @Inject(MAT_DIALOG_DATA) public data: { curso: Curso }) {
 
-      this.registerForm= this.formBuilder.group({
-        nombre: this.cursoControl,
-        duracion: this.duracionControl,
-        docente: this.docenteControl,
-      })
-      if (data){
-        this.registerForm.patchValue(data['curso']);
-      }
+    this.registerForm = this.formBuilder.group({
+      nombre: this.cursoControl,
+      duracion: this.duracionControl,
+      docente: this.docenteControl,
+    })
+    if (data) {
+      this.registerForm.patchValue(data['curso']);
+    }
   }
 
-  guardar(): void{
-    if(this.registerForm.valid){
-      this.dialogRef.close({ ...this.registerForm.value, id: this.data?.curso?.id ?? null})
-    } else{
+  guardar(): void {
+    if (this.registerForm.valid) {
+      this.dialogRef.close({ ...this.registerForm.value, id: this.data?.curso?.id ?? null })
+    } else {
       this.registerForm.markAllAsTouched();
     }
   }
 
-  cerrarDialog(){
+  cerrarDialog() {
     this.dialogRef.close();
   }
 }
