@@ -64,6 +64,6 @@ export class FormAbmAlumnosComponent {
   }
 
   cerrarDialog(){
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 }

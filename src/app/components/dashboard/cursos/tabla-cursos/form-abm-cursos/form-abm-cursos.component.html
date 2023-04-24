@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>Datos del curso </h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="registerForm">
+
+    <div>
+      <mat-form-field [formGroup]="registerForm" appearance="fill">
+        <mat-label>Nombre</mat-label>
+
+        <input [formControl]="cursoControl" matInput>
+        <mat-error *ngIf="cursoControl.invalid">Minimo {{minLength}} caracteres</mat-error>
+        <mat-icon matSuffix></mat-icon>
+      </mat-form-field>
+    </div>
+
+
+    <div>
+      <mat-form-field [formGroup]="registerForm" appearance="fill">
+        <mat-label>Apellido</mat-label>
+
+        <input [formControl]="duracionControl" matInput>
+        <mat-error *ngIf="duracionControl.invalid">Minimo {{minLength}} caracteres</mat-error>
+
+        <mat-icon matSuffix></mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div>
+
+      <mat-form-field [formGroup]="registerForm" appearance="fill">
+        <mat-label>DNI</mat-label>
+        <input [formControl]="docenteControl" matInput >
+        <mat-error *ngIf="docenteControl.invalid">Mínimo {{minLength}} dígitos</mat-error>
+        <mat-icon matSuffix></mat-icon>
+
+
+      </mat-form-field>
+    </div>
+
+
+
+    <div mat-dialog-actions>
+      <button (click)="cerrarDialog()" mat-button >
+        Cancelar
+      </button>
+
+      <button (click)="guardar()" mat-raised-button color="primary">
+        Guardar
+      </button>
+
+    </div>
+
+
+  </form>
+
+</div>

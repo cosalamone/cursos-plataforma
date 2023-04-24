@@ -7,15 +7,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormAbmCursosModule } from './form-abm-cursos/form-abm-cursos.module';
+import { MatMenuModule } from '@angular/material/menu';
 import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
   declarations: [
     TablaCursosComponent,
-    DetalleCursoComponent
+    DetalleCursoComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +27,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatDialogModule,
     MatExpansionModule,
-    MatMenuModule
+    MatMenuModule,
+    FormAbmCursosModule
 
   ],
   exports: [
