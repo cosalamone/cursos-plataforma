@@ -16,10 +16,10 @@
 
     <div>
       <mat-form-field [formGroup]="registerForm" appearance="fill">
-        <mat-label>Apellido</mat-label>
+        <mat-label>Duracion del curso</mat-label>
 
         <input [formControl]="duracionControl" matInput>
-        <mat-error *ngIf="duracionControl.invalid">Minimo {{minLength}} caracteres</mat-error>
+        <mat-error *ngIf="duracionControl.invalid">Minimo {{minDuracion}} caracteres</mat-error>
 
         <mat-icon matSuffix></mat-icon>
       </mat-form-field>
@@ -28,9 +28,9 @@
     <div>
 
       <mat-form-field [formGroup]="registerForm" appearance="fill">
-        <mat-label>DNI</mat-label>
+        <mat-label>Docente a cargo</mat-label>
         <input [formControl]="docenteControl" matInput >
-        <mat-error *ngIf="docenteControl.invalid">Mínimo {{minLength}} dígitos</mat-error>
+        <mat-error *ngIf="docenteControl.invalid">Mínimo {{minLength}} caracteres</mat-error>
         <mat-icon matSuffix></mat-icon>
 
 

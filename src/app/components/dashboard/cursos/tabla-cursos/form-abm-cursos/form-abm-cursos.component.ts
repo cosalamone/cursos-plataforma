@@ -11,9 +11,11 @@ import { Curso } from 'src/interfaces';
 export class FormAbmCursosComponent {
 
   minLength: number= 3;
+  minDuracion: number = 1;
+  maxDuracion: number= 12
 
   cursoControl = new FormControl('', [Validators.required, Validators.minLength(this.minLength)])
-  duracionControl = new FormControl('', [Validators.required, Validators.min(1), Validators.max(this.minLength)])
+  duracionControl = new FormControl('', [Validators.required, Validators.min(this.minDuracion), Validators.max(this.maxDuracion)])
   docenteControl = new FormControl('', [Validators.required, Validators.minLength(this.minLength)])
 
   registerForm: FormGroup;
@@ -34,7 +36,7 @@ export class FormAbmCursosComponent {
 
   guardar(): void{
     if(this.registerForm.valid){
-      this.dialogRef.close({...this.registerForm.value, id: this.data?.curso?.id ?? null})
+      this.dialogRef.close({ ...this.registerForm.value, id: this.data?.curso?.id ?? null})
     } else{
       this.registerForm.markAllAsTouched();
     }

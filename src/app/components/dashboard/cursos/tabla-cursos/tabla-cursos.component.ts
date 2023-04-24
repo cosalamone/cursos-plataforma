@@ -45,13 +45,13 @@ export class TablaCursosComponent {
       );
   }
 
-  abrirABMCurso() {
+  abrirABMCurso(): void {
     const dialog = this.matDialog.open(FormAbmCursosComponent);
 
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
         let curso: Curso = valor;
-        let newId = Math.max(... this.dataSource.data.map(x => x.d)) + 1;
+        let newId = Math.max(...this.dataSource.data.map(x => x.id)) + 1;
 
         curso.id = newId;
         this.dataSource.data= [...this.dataSource.data, curso];
