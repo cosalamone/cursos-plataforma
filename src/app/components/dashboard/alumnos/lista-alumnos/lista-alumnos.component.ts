@@ -5,7 +5,7 @@ import { FormAbmAlumnosComponent } from './form-abm-alumnos/form-abm-alumnos.com
 import { AlumnosService } from '../../../../services/alumnos.service';
 import { Alumno } from 'src/interfaces';
 import { map } from 'rxjs'
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-alumnos',

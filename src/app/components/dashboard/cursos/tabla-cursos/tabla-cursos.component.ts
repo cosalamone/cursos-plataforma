@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
 
 
@@ -27,7 +28,10 @@ export class TablaCursosComponent {
 
 
   constructor(
-    private cursosService: CursosService
+    private cursosService: CursosService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+
   ) {
     // FX PARA OBTENER ARRAY DE CURSOS DE CURSOS.JSON (A FUTURO UNA API) - Utiliza CursosService
     this.cursosService
@@ -43,7 +47,10 @@ export class TablaCursosComponent {
   eliminarCurso() {
 
   }
-  detalleCurso() {
 
+  detalleCurso(cursoId:number):void {
+    this.router.navigate([cursoId], {
+      relativeTo: this.activatedRoute
+    })
   }
 }

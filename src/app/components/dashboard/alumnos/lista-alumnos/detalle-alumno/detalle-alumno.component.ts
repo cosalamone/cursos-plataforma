@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { Alumno } from 'src/interfaces';
-import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-detalle-alumno',

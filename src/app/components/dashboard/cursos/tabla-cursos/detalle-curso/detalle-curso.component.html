@@ -1,63 +1,52 @@
-<h2 style="text-align: center;" class="mt-3">Detalle de  </h2>
+<h2 style="text-align: center;" class="mt-3">Detalle de {{curso?.nombre}} </h2>
 <mat-accordion>
-  <!-- Nombre y apellido -->
+  <!-- Nombre  -->
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Nomple completo alumno
+        Curso
       </mat-panel-title>
       <mat-panel-description>
-
+        {{curso?.nombre}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>This is the primary content of the panel.</p>
   </mat-expansion-panel>
 
-  <!-- DNI -->
+  <!-- ID -->
   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        DNI
+        Comision
       </mat-panel-title>
       <mat-panel-description>
+        {{curso?.id}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>I'm visible because I am open</p>
   </mat-expansion-panel>
 
-  <!-- Telefono -->
+  <!-- DURACION -->
   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Teléfono
+        Duración
       </mat-panel-title>
       <mat-panel-description>
+        {{curso?.duracion}} meses
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>I'm visible because I am open</p>
   </mat-expansion-panel>
 
-  <!-- E-mail -->
+  <!-- ALUMNOS INSCRIPTOS -->
   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        E-mail
+        Alumnos inscriptos
       </mat-panel-title>
       <mat-panel-description>
-
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
-  </mat-expansion-panel>
-
-  <!-- Cursos a los que está inscripto -->
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Cursos
-      </mat-panel-title>
-      <mat-panel-description>
-        Cargar cursos
+        Cargar alumnos inscriptos
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>I'm visible because I am open</p>

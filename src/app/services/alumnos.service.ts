@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
@@ -19,7 +18,6 @@ export class AlumnosService {
       .pipe(
         map((alumnos: Array<Alumno>) => alumnos.find((alumno) => alumno.id === id))
       )
-      console.log('desde el servicio obtengo' + alumnoPorId)
       return alumnoPorId
   }
 

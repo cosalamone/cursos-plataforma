@@ -36,7 +36,6 @@ import { ListaDocentesModule } from './docentes/lista-docentes/lista-docentes.mo
     TablaCursosModule,
     LogInModule,
     ListaDocentesModule,
-    ListaDocentesModule
 
 
   ],

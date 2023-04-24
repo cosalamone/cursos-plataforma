@@ -8,6 +8,7 @@ import { AuthComponent } from './components/dashboard/auth/auth.component';
 import { LogInComponent } from './components/dashboard/auth/log-in/log-in.component';
 import { ListaDocentesComponent } from './components/dashboard/docentes/lista-docentes/lista-docentes.component';
 import { DetalleAlumnoComponent } from './components/dashboard/alumnos/lista-alumnos/detalle-alumno/detalle-alumno.component';
+import { DetalleCursoComponent } from './components/dashboard/cursos/tabla-cursos/detalle-curso/detalle-curso.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,16 @@ const routes: Routes = [
       },
       {
         path: 'cursos',
-        component: TablaCursosComponent,
+        children: [
+          {
+            path: '',
+            component: TablaCursosComponent,
+          },
+          {
+            path: ':idCurso',
+            component: DetalleCursoComponent,
+          }
+        ]
       },
       {
         path: 'docentes',
