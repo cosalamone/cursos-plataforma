@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { FormAbmAlumnosComponent } from './form-abm-alumnos/form-abm-alumnos.component';
@@ -6,6 +6,8 @@ import { AlumnosService } from '../../../../services/alumnos.service';
 import { Alumno } from 'src/interfaces';
 import { map } from 'rxjs'
 import { ActivatedRoute, Router } from '@angular/router';
+import { InscripcionesService } from 'src/app/services/inscripciones.service';
+import { TablaCursosPorIdAlumnoComponent } from './tabla-cursos-por-id-alumno/tabla-cursos-por-id-alumno.component';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -56,7 +58,8 @@ export class ListaAlumnosComponent {
     private matDialog: MatDialog,
     private alumnosService: AlumnosService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private inscripcionesService: InscripcionesService,
   ) {
     // FX PARA OBTENER ARRAY DE ALUMNOS DE ALUMNOS.JSON (A FUTURO UNA API) - Utiliza AlumnosService
     this.alumnosService
@@ -125,18 +128,28 @@ export class ListaAlumnosComponent {
   eliminarAlumno(alumno: Alumno): void {
     let idAlumnoAEliminar = alumno.id;
     let posicionAEliminar = this.dataSource.data.findIndex(
-      (alumno) => alumno.id === idAlumnoAEliminar
+      (alumno) => alumno.idAlumno === idAlumnoAEliminar
     );
     this.dataSource.data.splice(posicionAEliminar, 1);
     this.dataSource.data = [...this.dataSource.data];
     console.log(posicionAEliminar);
   }
 
-  detalleAlumno(alumnoId:number): void {
+  detalleAlumno(alumnoId: number): void {
     this.router.navigate([alumnoId], {
       relativeTo: this.activatedRoute
     }
     );
+  }
+
+
+
+  nombreCurso: string | undefined;
+  abrirDialogDetalleCursosPorAlumno(): void {
+    this.matDialog.open(TablaCursosPorIdAlumnoComponent, {
+      data: { nombreCurso: this.nombreCurso },
+    })
+
   }
 
 

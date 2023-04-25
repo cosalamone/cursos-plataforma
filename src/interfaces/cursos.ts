@@ -1,7 +1,7 @@
 export interface Curso {
   id: number;
   nombre: string;
-  duracion: number;
+  duracion?: number;
   docente: string;
 
 }

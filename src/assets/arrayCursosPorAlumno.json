@@ -1,0 +1,44 @@
+[
+  {"idAlumno":1,
+    "alumno": "Armando Perez",
+    "idCurso":2,
+    "nombreCurso": "angular",
+    "docenteACargo": "Pepito Ramos",
+    "fechaInicio": 120623
+  },
+  {"idAlumno":1,
+    "alumno": "Armando Perez",
+    "idCurso":2,
+    "nombreCurso": "Javascript",
+    "docenteACargo": "Marcos Martinez",
+    "fechaInicio": 221123
+  },
+  {"idAlumno":1,
+    "alumno": "Armando Perez",
+    "idCurso":3,
+    "nombreCurso": "Vue",
+    "docenteACargo": "Carla Figueroa",
+    "fechaInicio": 120623
+  },
+  {"idAlumno":2,
+    "alumno": "Marina Cerezo",
+    "idCurso":2,
+    "nombreCurso": "angular",
+    "docenteACargo": "Pepito Ramos",
+    "fechaInicio": 120623
+  },
+  {"idAlumno":3,
+    "alumno": "Maria Ayala",
+    "idCurso":2,
+    "nombreCurso": "Javascript",
+    "docenteACargo": "Marcos Martinez",
+    "fechaInicio": 221123
+  },
+  {"idAlumno":4,
+    "alumno": "Carlos String",
+    "idCurso":3,
+    "nombreCurso": "Vue",
+    "docenteACargo": "Carla Figueroa",
+    "fechaInicio": 120623
+  }
+]

@@ -53,6 +53,8 @@
         <mat-icon>more_horiz</mat-icon>
       </button>
 
+
+
       <mat-menu #menu="matMenu">
         <button (click)="editarAlumno(element)" mat-menu-item>
           <mat-icon>edit</mat-icon>
@@ -68,6 +70,11 @@
           <mat-icon>visibility</mat-icon>
           <span>Ver más</span>
         </button>
+
+        <button (click)="abrirDialogDetalleCursosPorAlumno()" mat-menu-item>
+        <mat-icon>book</mat-icon>
+        <span>Ver cursos</span>
+      </button>
 
       </mat-menu>
     </td>

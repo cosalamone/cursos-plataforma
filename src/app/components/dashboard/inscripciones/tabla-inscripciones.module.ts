@@ -20,7 +20,7 @@ import { MatTableModule } from '@angular/material/table';
   declarations: [
     DetalleInscipcionesComponent,
     TablaInscripcionesComponent,
-    FormAbmInscripcionesComponent
+    FormAbmInscripcionesComponent,
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { SharedModule } from '../../../../shared/shared.module';
 import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { TablaCursosPorIdAlumnoComponent } from './tabla-cursos-por-id-alumno/tabla-cursos-por-id-alumno.component';
 
 
 
@@ -21,6 +22,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
   declarations: [
     ListaAlumnosComponent,
     DetalleAlumnoComponent,
+    TablaCursosPorIdAlumnoComponent,
   ],
   imports: [
     CommonModule,
