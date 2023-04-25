@@ -14,6 +14,8 @@ import { TablaCursosModule } from './cursos/tabla-cursos/tabla-cursos.module';
 import { AuthComponent } from './auth/auth.component';
 import { ListaDocentesModule } from './docentes/lista-docentes/lista-docentes.module';
 import { TablaInscripcionesModule } from './inscripciones/tabla-inscripciones.module';
+import { FormAbmInscripcionesComponent } from './inscripciones/form-abm-inscripciones/form-abm-inscripciones.component';
+import { FormAbmInscripcionesModule } from './inscripciones/form-abm-inscripciones/form-abm-inscripciones.module';
 
 
 
@@ -38,6 +40,8 @@ import { TablaInscripcionesModule } from './inscripciones/tabla-inscripciones.mo
     LogInModule,
     ListaDocentesModule,
     TablaInscripcionesModule,
+    FormAbmInscripcionesModule
+
 
   ],
   exports: [

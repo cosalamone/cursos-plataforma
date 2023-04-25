@@ -44,7 +44,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'inscipciones',
+        path: 'inscripciones',
         children: [
           {
             path: '',

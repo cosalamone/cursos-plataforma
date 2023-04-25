@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InscripcionesService } from 'src/app/services/inscripciones.service';
 
 
@@ -16,7 +17,9 @@ export class TablaCursosPorIdAlumnoComponent {
 
   constructor(
     public dialogRef: MatDialogRef<TablaCursosPorIdAlumnoComponent>,
-    private inscripcionesService: InscripcionesService
+    private inscripcionesService: InscripcionesService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) {
     this.inscripcionesService.getInscripcionDeCursosPorAlumno()
 
@@ -25,4 +28,9 @@ export class TablaCursosPorIdAlumnoComponent {
       )
   }
 
+  detalleCursoPorIdAlumno(alumnoId: number): void {
+    this.router.navigate([alumnoId], {
+      relativeTo: this.activatedRoute
+    })
+  }
 }

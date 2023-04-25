@@ -8,6 +8,7 @@ import { Curso } from 'src/interfaces';
   templateUrl: './form-abm-cursos.component.html',
   styleUrls: ['./form-abm-cursos.component.scss']
 })
+
 export class FormAbmCursosComponent {
 
   minLength: number = 3;

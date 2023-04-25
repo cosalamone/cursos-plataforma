@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetalleInscipcionesComponent } from './detalle-inscripciones/detalle-inscripciones.component';
 import { TablaInscripcionesComponent } from './tabla-inscripciones.component';
-import { FormAbmInscripcionesComponent } from './form-abm-inscripciones/form-abm-inscripciones.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,9 +17,9 @@ import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
-    DetalleInscipcionesComponent,
     TablaInscripcionesComponent,
-    FormAbmInscripcionesComponent,
+    DetalleInscipcionesComponent,
+
   ],
   imports: [
     CommonModule,
@@ -34,6 +33,8 @@ import { MatTableModule } from '@angular/material/table';
     MatMenuModule,
     SharedModule,
     MatExpansionModule,
+    FormAbmAlumnosModule
+
   ],
   exports: [
     TablaInscripcionesComponent

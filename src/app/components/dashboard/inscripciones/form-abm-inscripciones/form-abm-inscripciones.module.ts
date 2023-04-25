@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormAbmAlumnosComponent } from './form-abm-alumnos.component';
+import { FormAbmInscripcionesComponent } from './form-abm-inscripciones.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    FormAbmAlumnosComponent
+    FormAbmInscripcionesComponent
+
   ],
   imports: [
     CommonModule,
@@ -28,7 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
   ],
   exports: [
-    FormAbmAlumnosComponent
+    FormAbmInscripcionesComponent
   ]
 })
-export class FormAbmAlumnosModule { }
+export class FormAbmInscripcionesModule { }
