@@ -126,7 +126,7 @@ export class ListaAlumnosComponent {
   eliminarAlumno(alumno: Alumno): void {
     let idAlumnoAEliminar = alumno.id;
     let posicionAEliminar = this.dataSource.data.findIndex(
-      (alumno) => alumno.idAlumno === idAlumnoAEliminar
+      (alumno) => alumno.id === idAlumnoAEliminar
     );
     this.dataSource.data.splice(posicionAEliminar, 1);
     this.dataSource.data = [...this.dataSource.data];
