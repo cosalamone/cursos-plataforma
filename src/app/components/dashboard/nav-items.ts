@@ -17,10 +17,6 @@ const links: NavItem[] = [
     title:'Docentes',
   },
   {
-    url: 'inscripciones',
-    title: 'Inscripciones'
-  },
-  {
     url:'login',
     title:'Cerrar sesión',
   }

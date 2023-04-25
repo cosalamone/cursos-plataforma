@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { AlumnosService } from 'src/app/services/alumnos.service';
-import { InscripcionesService } from 'src/app/services/inscripciones.service';
-import { Alumno, Inscripcion } from 'src/interfaces';
+import { Alumno,  } from 'src/interfaces';
 
 @Component({
   selector: 'app-detalle-alumno',
@@ -18,7 +17,7 @@ export class DetalleAlumnoComponent {
 
   constructor(private activatesRoute: ActivatedRoute,
     private alumnoService: AlumnosService,
-    private inscripcionesService: InscripcionesService) {
+    ) {
     console.log(this.activatesRoute.snapshot.params) //llega en forma de string
 
     this.alumnoService.getAlumnoPorId(parseInt(this.activatesRoute.snapshot.params['idAlumno']))

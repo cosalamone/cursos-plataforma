@@ -6,7 +6,6 @@ import { AlumnosService } from '../../../../services/alumnos.service';
 import { Alumno } from 'src/interfaces';
 import { map } from 'rxjs'
 import { ActivatedRoute, Router } from '@angular/router';
-import { InscripcionesService } from 'src/app/services/inscripciones.service';
 import { TablaCursosPorIdAlumnoComponent } from './tabla-cursos-por-id-alumno/tabla-cursos-por-id-alumno.component';
 
 @Component({
@@ -59,7 +58,6 @@ export class ListaAlumnosComponent {
     private alumnosService: AlumnosService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private inscripcionesService: InscripcionesService,
   ) {
     // FX PARA OBTENER ARRAY DE ALUMNOS DE ALUMNOS.JSON (A FUTURO UNA API) - Utiliza AlumnosService
     this.alumnosService
@@ -153,7 +151,8 @@ export class ListaAlumnosComponent {
     // podria pasarle por parametro el idAlumno, hacer el filter, y cargarlo
     // en mattable
 
-    this.inscripcionesService.getInscripcionDeCursosPorAlumno()
+    
+
 
     let alumnoBuscado = alumno
     let datosPorCargar: Alumno[] = this.dataSource.data.filter((alumno)=> alumno.id === alumnoBuscado.id)

@@ -9,8 +9,6 @@ import { LogInComponent } from './components/dashboard/auth/log-in/log-in.compon
 import { ListaDocentesComponent } from './components/dashboard/docentes/lista-docentes/lista-docentes.component';
 import { DetalleAlumnoComponent } from './components/dashboard/alumnos/lista-alumnos/detalle-alumno/detalle-alumno.component';
 import { DetalleCursoComponent } from './components/dashboard/cursos/tabla-cursos/detalle-curso/detalle-curso.component';
-import { DetalleInscipcionesComponent } from './components/dashboard/inscripciones/detalle-inscripciones/detalle-inscripciones.component';
-import { TablaInscripcionesComponent } from './components/dashboard/inscripciones/tabla-inscripciones.component';
 
 const routes: Routes = [
   {
@@ -41,19 +39,6 @@ const routes: Routes = [
             path: ':idCurso',
             component: DetalleCursoComponent,
           }
-        ]
-      },
-      {
-        path: 'inscripciones',
-        children: [
-          {
-            path: '',
-            component: TablaInscripcionesComponent,
-          },
-          {
-            path: ':idAlumno',
-            component: DetalleInscipcionesComponent,
-          },
         ]
       },
       {
