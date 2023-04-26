@@ -1,1 +1,54 @@
-<p>form-abm-docentes works!</p>
+<h2> Datos Docente</h2>
+
+<div mat-dialog-content>
+    <form [formGroup]="registerForm">
+  
+      <div>
+        <mat-form-field [formGroup]="registerForm" appearance="fill">
+          <mat-label>Nombre</mat-label>
+  
+          <input [formControl]="nombreControl" matInput>
+          <mat-error *ngIf="nombreControl.invalid"></mat-error>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </div>
+  
+  
+      <div>
+        <mat-form-field [formGroup]="registerForm" appearance="fill">
+          <mat-label>Apellido</mat-label>
+  
+          <input [formControl]="apellidoControl" matInput>
+          <mat-error *ngIf="apellidoControl.invalid"></mat-error>
+  
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field [formGroup]="registerForm" appearance="fill">
+            <mat-label>Cursos a cargo</mat-label>
+            <mat-select [(ngModel)]="selectedValue" name="curso" [formControl]="cursosControl">
+              <mat-option *ngFor="let curso of cursos" [value]="curso.value" >
+                {{curso.viewValue}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div mat-dialog-actions>
+        <button (click)="cerrarDialog()" mat-button >
+          Cancelar
+        </button>
+  
+        <button (click)="guardar()" mat-raised-button color="primary">
+          Guardar
+        </button>
+  
+      </div>
+  
+  
+    </form>
+  
+  </div>
+  

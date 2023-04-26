@@ -1,14 +1,28 @@
 [
   {
     "id": 1,
-    "nombre": "Profe",
-    "apellido": "Uno",
-    "curso": "Angular"
+    "nombre": "Claudio",
+    "apellido": "Ferro",
+    "curso": [
+       "Angular"
+    ]
   },
   {
-    "id": 1,
-    "nombre": "Profe",
-    "apellido": "2",
-    "curso": "Javascript"
+    "id": 2,
+    "nombre": "Mariano",
+    "apellido": "Pereyra",
+    "curso": 
+    [
+      "Javascript", "Angular", "Vue"
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Liliana",
+    "apellido": "Caseres",
+    "curso": 
+    [
+       "Vue"
+    ]
   }
 ]

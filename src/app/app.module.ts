@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     DashboardModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

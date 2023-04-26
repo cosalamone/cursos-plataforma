@@ -10,14 +10,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FormAbmDocentesModule } from './form-abm-docentes/form-abm-docentes.module';
-import { FormAbmDocentesComponent } from './form-abm-docentes/form-abm-docentes.component';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     ListaDocentesComponent,
-    FormAbmDocentesComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +30,8 @@ import { FormAbmDocentesComponent } from './form-abm-docentes/form-abm-docentes.
     FormAbmDocentesModule,
     MatMenuModule,
     MatExpansionModule,
+    MatSelectModule,
+    FormsModule
   ],
   exports: [
     ListaDocentesComponent,

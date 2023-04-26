@@ -13,6 +13,8 @@ import { ListaAlumnosModule } from './alumnos/lista-alumnos/lista-alumnos.module
 import { TablaCursosModule } from './cursos/tabla-cursos/tabla-cursos.module';
 import { AuthComponent } from './auth/auth.component';
 import { ListaDocentesModule } from './docentes/lista-docentes/lista-docentes.module';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -36,6 +38,9 @@ import { ListaDocentesModule } from './docentes/lista-docentes/lista-docentes.mo
     TablaCursosModule,
     LogInModule,
     ListaDocentesModule,
+    MatSelectModule,
+    FormsModule
+    
 
 
   ],
