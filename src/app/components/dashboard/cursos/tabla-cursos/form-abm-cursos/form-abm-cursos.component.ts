@@ -18,6 +18,10 @@ export class FormAbmCursosComponent {
   cursoControl = new FormControl('', [Validators.required, Validators.minLength(this.minLength)])
   duracionControl = new FormControl('', [Validators.required, Validators.min(this.minDuracion), Validators.max(this.maxDuracion)])
   docenteControl = new FormControl('', [Validators.required, Validators.minLength(this.minLength)])
+  cursosControl = new FormControl('', [Validators.required]);
+
+  selectedValue: string | undefined;
+  cursos = ['Javascript','Angular','Vue'];
 
   registerForm: FormGroup;
 

@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Datos del alumno </h2>
+<h3 mat-dialog-title>Datos del alumno </h3>
 
 <div mat-dialog-content>
   <form [formGroup]="registerForm">
@@ -63,6 +63,17 @@
     </div>
 
 
+    
+    <div>
+      <mat-form-field appearance="fill">
+          <mat-label>Inscripcion a cursos</mat-label>
+          <mat-select [(ngModel)]="selectedValue" name="curso" [formControl]="cursosControl" multiple>
+            <mat-option *ngFor="let curso of cursos" [value]="curso" >
+              {{curso}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+    </div>
 
     <div mat-dialog-actions>
       <button (click)="cerrarDialog()" mat-button >

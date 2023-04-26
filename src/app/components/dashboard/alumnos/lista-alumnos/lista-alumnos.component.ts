@@ -140,28 +140,4 @@ export class ListaAlumnosComponent {
   }
 
 
-
-  nombreCurso: string | undefined;
-
-  abrirDialogDetalleCursosPorAlumno(alumno: Alumno): void {
-    console.log(this.dataSource.data) // array de alumnos
-    // ver como obtengo el array de la tabla para ahi hacer el filter y poder renderizarlo
-    //  this.inscripcionesService.getInscripcionDeCursosPorAlumno
-    // podria pasarle por parametro el idAlumno, hacer el filter, y cargarlo
-    // en mattable
-
-    
-
-
-    let alumnoBuscado = alumno
-    let datosPorCargar: Alumno[] = this.dataSource.data.filter((alumno)=> alumno.id === alumnoBuscado.id)
-
-
-    const dialog = this.matDialog.open(TablaCursosPorIdAlumnoComponent, {
-      data: { datosPorCargar },
-    })
-
-  }
-
-
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlumnosService } from 'src/app/services/alumnos.service';
 import { DocentesService } from 'src/app/services/docentes.service';
 import { Docente } from 'src/interfaces/docente';
 
@@ -21,6 +20,8 @@ export class DetalleDocentesComponent {
 
     this.docentesService.getDocentesPorId(parseInt(this.activatesRoute.snapshot.params['idDocente']))
     .subscribe((docente)=> this.docente = docente)
+
+    console.log(this.docente?.apellido)
   }
 
 }

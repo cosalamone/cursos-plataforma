@@ -19,7 +19,10 @@ export class FormAbmAlumnosComponent {
   emailControl = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],);
   dniControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(this.dniMinLength)]);
   telefonoControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(this.telefonoMinLength)]);
+  cursosControl = new FormControl('', [Validators.required]);
 
+  selectedValue: string | undefined;
+  cursos = ['Javascript','Angular','Vue']
 
 
   registerForm: FormGroup;
@@ -35,6 +38,7 @@ export class FormAbmAlumnosComponent {
       email: this.emailControl,
       dni: this.dniControl,
       telefono: this.telefonoControl,
+      cursos: this.cursosControl,
 
     })
 
