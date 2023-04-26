@@ -27,7 +27,6 @@ export class ListaAlumnosComponent {
   ];
 
   dataSource!: MatTableDataSource<any, any>;
-  // router: any;
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
