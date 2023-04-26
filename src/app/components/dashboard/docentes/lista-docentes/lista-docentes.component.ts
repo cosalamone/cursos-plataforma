@@ -103,4 +103,10 @@ eliminarDocente(docente: Docente): void{
 }
 
 
+detalleDocente(docenteId: number): void {
+this.router.navigate([docenteId], {
+  relativeTo: this.activatedRoute
+})
+}
+
 }

@@ -9,6 +9,7 @@ import { LogInComponent } from './components/dashboard/auth/log-in/log-in.compon
 import { ListaDocentesComponent } from './components/dashboard/docentes/lista-docentes/lista-docentes.component';
 import { DetalleAlumnoComponent } from './components/dashboard/alumnos/lista-alumnos/detalle-alumno/detalle-alumno.component';
 import { DetalleCursoComponent } from './components/dashboard/cursos/tabla-cursos/detalle-curso/detalle-curso.component';
+import { DetalleDocentesComponent } from './components/dashboard/docentes/lista-docentes/detalle-docentes/detalle-docentes.component';
 
 const routes: Routes = [
   {
@@ -43,7 +44,16 @@ const routes: Routes = [
       },
       {
         path: 'docentes',
-        component: ListaDocentesComponent,
+        children: [
+          {
+            path: '',
+            component: ListaDocentesComponent
+          },
+          {
+            path: ':idDocente',
+            component: DetalleDocentesComponent
+          }
+        ]
       },
       {
         path: 'login',

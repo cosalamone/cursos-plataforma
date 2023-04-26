@@ -12,12 +12,14 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FormAbmDocentesModule } from './form-abm-docentes/form-abm-docentes.module';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { DetalleDocentesComponent } from './detalle-docentes/detalle-docentes.component';
 
 
 
 @NgModule({
   declarations: [
     ListaDocentesComponent,
+    DetalleDocentesComponent,
   ],
   imports: [
     CommonModule,

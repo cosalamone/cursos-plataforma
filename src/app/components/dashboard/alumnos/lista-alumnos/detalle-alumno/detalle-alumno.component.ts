@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, map } from 'rxjs';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { Alumno,  } from 'src/interfaces';
 
