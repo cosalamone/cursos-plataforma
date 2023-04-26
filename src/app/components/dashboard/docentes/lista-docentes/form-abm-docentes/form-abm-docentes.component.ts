@@ -14,15 +14,10 @@ export class FormAbmDocentesComponent {
   nombreControl = new FormControl('', [Validators.required]);
   apellidoControl = new FormControl('', [Validators.required]);
   cursosControl = new FormControl('', [Validators.required]);
-  
+
   selectedValue: string | undefined;
 
-  cursos = [
-    { value: 'javascript01', viewValue: 'Javascript' },
-    { value: 'angular02', viewValue: 'Angular' },
-    { value: 'vue03', viewValue: 'Vue' },
-
-  ]
+  cursos = ['Javascript','Angular','Vue']
 
 
   registerForm: FormGroup;
@@ -36,6 +31,7 @@ export class FormAbmDocentesComponent {
     this.registerForm = this.formBuilder.group({
       nombre: this.nombreControl,
       apellido: this.apellidoControl,
+      curso: this.cursosControl,
     })
 
     if (data) {

@@ -58,7 +58,9 @@ export class ListaDocentesComponent implements OnDestroy {
       if (valor){
         let docente: Docente = valor;
         let newId = Math.max(...this.dataSource.data.map(x => x.id)) + 1;
-
+        
+        
+        // docente.curso = valor seleccionado en <select>
         docente.id = newId;
 
         this.dataSource.data=[...this.dataSource.data, docente]
