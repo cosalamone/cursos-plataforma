@@ -21,8 +21,6 @@ export class ListaAlumnosComponent {
     'id',
     'nombreCompleto',
     'dni',
-    'telefono',
-    'email',
     'opciones',
   ];
 

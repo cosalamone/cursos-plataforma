@@ -6,12 +6,12 @@
   </button>
 </div>
 
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+<mat-form-field class="m-3">
+  <mat-label>Buscar</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Buscar docente, por nombre, cursos a cargo" #input>
 </mat-form-field>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="m-3">
 
 
   <!-- Columna ID/Comision -->
