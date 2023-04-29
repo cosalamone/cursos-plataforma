@@ -11,7 +11,7 @@ export class CursosService {
   constructor(private http: HttpClient) {}
 
   getCursos(){
-    
+
     return this.http.get('http://localhost:3000/cursos/')
   }
 
@@ -19,6 +19,10 @@ export class CursosService {
 
     return this.http.get<Curso>('http://localhost:3000/cursos/' + id)
   
+  }
+
+  postNewCurso(data: any){
+    return this.http.post<Curso>('http://localhost:3000/cursos/', data)
   }
 
 

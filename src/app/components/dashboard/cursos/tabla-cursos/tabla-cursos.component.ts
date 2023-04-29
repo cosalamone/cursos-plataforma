@@ -54,6 +54,9 @@ export class TablaCursosComponent {
         let newId = Math.max(...this.dataSource.data.map(x => x.id)) + 1;
 
         curso.id = newId;
+
+        this.cursosService.postNewCurso(curso)
+        .subscribe((curso)=> console.log(curso))
         this.dataSource.data= [...this.dataSource.data, curso];
       }
     })

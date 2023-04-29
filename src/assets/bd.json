@@ -118,6 +118,17 @@
         "Angular"
       ],
       "id": 15
+    },
+    {
+      "nombre": "qweqwe",
+      "apellido": "weqweq",
+      "email": "mail@mail.com",
+      "dni": "12313123",
+      "telefono": "2313123131",
+      "cursos": [
+        "Vue"
+      ],
+      "id": 16
     }
   ],
   "cursos": [
@@ -144,6 +155,33 @@
       "nombre": "Curso 4",
       "duracion": 10,
       "docente": "pepito4"
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 9,
+      "nombre": "Curso Nueve",
+      "duracion": 11,
+      "docente": "Lala"
+    },
+    {
+      "id": 16,
+      "nombre": "Curso Nueve",
+      "duracion": 11,
+      "docente": "Lala"
+    },
+    {
+      "nombre": "asdadsa",
+      "duracion": "asdasda",
+      "docente": "asdas",
+      "id": 17
+    },
+    {
+      "nombre": "trerte",
+      "duracion": "tertete",
+      "docente": "tertetre",
+      "id": 18
     }
   ],
   "docentes": [
