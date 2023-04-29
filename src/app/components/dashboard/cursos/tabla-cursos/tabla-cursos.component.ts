@@ -87,6 +87,10 @@ export class TablaCursosComponent {
       (curso) => curso.id === idCursoAEliminar
     );
     this.dataSource.data.splice(posicionAEliminar, 1);
+
+    this.cursosService.deleteCurso(idCursoAEliminar)
+    .subscribe((idCursoAEliminar)=>console.log(idCursoAEliminar))
+
     this.dataSource.data = [...this.dataSource.data];
     console.log(posicionAEliminar);
   }

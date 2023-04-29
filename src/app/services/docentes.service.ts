@@ -37,4 +37,9 @@ export class DocentesService {
   postNewDocente(data: any) {
     return this.http.post<Docente>('http://localhost:3000/docentes/', data)
   }
+
+  deleteDocente(id:number){
+    return this.http.delete<Docente>('http://localhost:3000/docentes/' + id)
+
+  }
 }

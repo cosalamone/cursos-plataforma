@@ -25,5 +25,10 @@ export class CursosService {
     return this.http.post<Curso>('http://localhost:3000/cursos/', data)
   }
 
+  deleteCurso(id:number){
+    return this.http.delete<Curso>('http://localhost:3000/cursos/' + id)
+
+  }
+
 
 }

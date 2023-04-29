@@ -100,6 +100,9 @@ eliminarDocente(docente: Docente): void{
 
 
  this.dataSource.data.splice(posicionAEliminar, 1);
+
+ this.docentesService.deleteDocente(idDocenteAEliminar)
+ .subscribe(idDocenteAEliminar=>console.log(idDocenteAEliminar))
  this.dataSource.data= [...this.dataSource.data];
 
 }
