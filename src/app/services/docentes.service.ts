@@ -38,6 +38,10 @@ export class DocentesService {
     return this.http.post<Docente>('http://localhost:3000/docentes/', data)
   }
 
+  putDocente(data: any, id:number){
+    return this.http.put<Docente>('http://localhost:3000/docentes/' + id , data)
+  }
+
   deleteDocente(id:number){
     return this.http.delete<Docente>('http://localhost:3000/docentes/' + id)
 

@@ -86,6 +86,10 @@ export class ListaDocentesComponent implements OnDestroy {
         );
 
         this.dataSource.data[posicionAEditar] = docente;
+
+        this.docentesService.putDocente(docente, idDocenteAModificar)
+        .subscribe(docente=>console.log(docente))
+
         this.dataSource = new MatTableDataSource(this.dataSource.data)
       }
     })

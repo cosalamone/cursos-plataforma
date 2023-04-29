@@ -153,12 +153,12 @@
       ]
     },
     {
-      "id": 3,
-      "nombre": "Liliana",
-      "apellido": "Caseres",
+      "nombre": "Pablo",
+      "apellido": "Pereyra",
       "curso": [
-        "Vue"
-      ]
+        "Angular"
+      ],
+      "id": 3
     },
     {
       "nombre": "mario",
