@@ -11,15 +11,14 @@ export class CursosService {
   constructor(private http: HttpClient) {}
 
   getCursos(){
-    return this.http.get('assets/cursos.json')
+    
+    return this.http.get('http://localhost:3000/cursos/')
   }
 
   getCursoPorId(id:number): Observable<Curso | undefined>{
-    let cursoPorId = this.http.get<Array<Curso>>('assets/cursos.json')
-    .pipe(
-      map((cursos: Array<Curso>) => cursos.find((curso) => curso.id === id))
-    )
-    return cursoPorId
+
+    return this.http.get<Curso>('http://localhost:3000/cursos/' + id)
+  
   }
 
 

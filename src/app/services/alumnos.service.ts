@@ -10,21 +10,33 @@ export class AlumnosService {
   constructor(private http: HttpClient) { }
 
   getAlumnos(): Observable<Array<Alumno>> {
-    return this.http.get<Array<Alumno>>('assets/alumnos.json');
+    return this.http.get<Array<Alumno>>('http://localhost:3000/alumnos');
   }
+
+  
 
   getAlumnoPorId(id: number): Observable<Alumno| undefined>  {
-    let alumnoPorId = this.http.get<Array<Alumno>>('assets/alumnos.json')
-      .pipe(
-        map((alumnos: Array<Alumno>) => alumnos.find((alumno) => alumno.id === id))
-      )
-      return alumnoPorId
+
+    return this.http.get<Alumno>('http://localhost:3000/alumnos/' + id)
+    
   }
 
 
-  post() {
-    // ...
+  postNewAlumno(data: any) {
+    return this.http.post<Alumno>('http://localhost:3000/alumnos/', data)
   }
 
 
+
+//   (method) HttpClient.post(url: string, body: any, options: {
+//     headers?: HttpHeaders | {
+//         [header: string]: string | string[];
+//     } | undefined;
+//     context?: HttpContext | undefined;
+//     observe?: "body" | undefined;
+//     params?: HttpParams | ... 1 more ... | undefined;
+//     reportProgress?: boolean | undefined;
+//     responseType: "arraybuffer";
+//     withCredentials?: boolean | undefined;
+// }):
 }

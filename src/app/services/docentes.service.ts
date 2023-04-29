@@ -12,7 +12,7 @@ export class DocentesService {
 
   getDocentes() {
     return new Promise((resolve, reject)=>{
-      fetch('assets/docentes.json')
+      fetch('http://localhost:3000/docentes/')
       .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
@@ -29,11 +29,8 @@ export class DocentesService {
   }
 
   getDocentesPorId(id:number): Observable<Docente | undefined>{
-    let docentePorId = this.http.get<Array<Docente>>('assets/docentes.json')
-    .pipe(
-      map((docentes: Array<Docente>)=> docentes.find((docente)=> docente.id === id))
-    )
-
-    return docentePorId
+    
+    return this.http.get<Docente>('http://localhost:3000/docentes/' +id)
+  
   }
 }

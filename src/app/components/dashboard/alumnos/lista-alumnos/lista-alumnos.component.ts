@@ -87,7 +87,12 @@ export class ListaAlumnosComponent {
 
         alumno.id = newId;
 
+
+
+        this.alumnosService.postNewAlumno(alumno)
+          .subscribe((alumno) => console.log(alumno))
         this.dataSource.data = [...this.dataSource.data, alumno];
+
       }
     });
   }
