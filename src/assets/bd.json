@@ -113,10 +113,10 @@
   ],
   "cursos": [
     {
-      "id": 1,
-      "nombre": "Curso 1",
+      "nombre": "React",
       "duracion": 6,
-      "docente": "pepito"
+      "docente": "Flavio",
+      "id": 1
     },
     {
       "id": 2,

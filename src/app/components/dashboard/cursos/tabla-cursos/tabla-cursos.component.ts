@@ -77,6 +77,9 @@ export class TablaCursosComponent {
           (alumno)=> alumno.id === idCursoModificar
         );
         this.dataSource.data[posicionAEditar]= curso;
+
+        this.cursosService.putCurso(curso, idCursoModificar)
+        .subscribe(curso=>console.log(curso))
         this.dataSource= new MatTableDataSource(this.dataSource.data)
       }
     });
