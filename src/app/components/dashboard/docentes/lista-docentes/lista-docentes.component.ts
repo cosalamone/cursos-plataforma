@@ -63,6 +63,8 @@ export class ListaDocentesComponent implements OnDestroy {
         // docente.curso = valor seleccionado en <select>
         docente.id = newId;
 
+        this.docentesService.postNewDocente(docente)
+        .subscribe((docente)=> console.log(docente))
         this.dataSource.data=[...this.dataSource.data, docente]
       }
     })

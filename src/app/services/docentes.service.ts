@@ -11,26 +11,30 @@ export class DocentesService {
   constructor(private http: HttpClient) { }
 
   getDocentes() {
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject) => {
       fetch('http://localhost:3000/docentes/')
-      .then((response) => response.json())
-                .then((data) => {
-                    console.log(data);
-                    let arrayDocentes = data;
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          let arrayDocentes = data;
 
-                    resolve(arrayDocentes)
+          resolve(arrayDocentes)
 
-                })
-                .catch((error) => {
-                    console.error(error);
-                    reject("error")
-                });
+        })
+        .catch((error) => {
+          console.error(error);
+          reject("error")
+        });
     })
   }
 
-  getDocentesPorId(id:number): Observable<Docente | undefined>{
-    
-    return this.http.get<Docente>('http://localhost:3000/docentes/' +id)
-  
+  getDocentesPorId(id: number): Observable<Docente | undefined> {
+
+    return this.http.get<Docente>('http://localhost:3000/docentes/' + id)
+
+  }
+
+  postNewDocente(data: any) {
+    return this.http.post<Docente>('http://localhost:3000/docentes/', data)
   }
 }
