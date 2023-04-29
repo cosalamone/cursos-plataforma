@@ -131,8 +131,11 @@ export class ListaAlumnosComponent {
       (alumno) => alumno.id === idAlumnoAEliminar
     );
     this.dataSource.data.splice(posicionAEliminar, 1);
+
+    this.alumnosService.deleteAlumno(idAlumnoAEliminar)
+    .subscribe((idAlumnoAEliminar)=> console.log(idAlumnoAEliminar))
+
     this.dataSource.data = [...this.dataSource.data];
-    console.log(posicionAEliminar);
   }
 
   detalleAlumno(alumnoId: number): void {

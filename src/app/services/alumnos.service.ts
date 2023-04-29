@@ -26,6 +26,14 @@ export class AlumnosService {
     return this.http.post<Alumno>('http://localhost:3000/alumnos/', data)
   }
 
+  putAlumno(){
+  }
+
+  deleteAlumno(id:number){
+    return this.http.delete<Alumno>('http://localhost:3000/alumnos/' + id)
+
+  }
+
 
 
 //   (method) HttpClient.post(url: string, body: any, options: {
