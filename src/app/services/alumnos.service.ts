@@ -26,7 +26,10 @@ export class AlumnosService {
     return this.http.post<Alumno>('http://localhost:3000/alumnos/', data)
   }
 
-  putAlumno(){
+
+
+  putAlumno(data: any, id:number){
+    return this.http.put<Alumno>('http://localhost:3000/alumnos/' + id , data)
   }
 
   deleteAlumno(id:number){
@@ -34,17 +37,4 @@ export class AlumnosService {
 
   }
 
-
-
-//   (method) HttpClient.post(url: string, body: any, options: {
-//     headers?: HttpHeaders | {
-//         [header: string]: string | string[];
-//     } | undefined;
-//     context?: HttpContext | undefined;
-//     observe?: "body" | undefined;
-//     params?: HttpParams | ... 1 more ... | undefined;
-//     reportProgress?: boolean | undefined;
-//     responseType: "arraybuffer";
-//     withCredentials?: boolean | undefined;
-// }):
 }

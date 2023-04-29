@@ -1,12 +1,15 @@
 {
   "alumnos": [
     {
-      "id": 1,
-      "nombre": "Armando",
+      "nombre": "Claudio",
       "apellido": "Perez",
+      "email": "mail@mail.com",
       "dni": 1123234,
-      "telefono": 1556546,
-      "email": "mail@mail.com"
+      "telefono": "1231231231",
+      "cursos": [
+        "Javascript"
+      ],
+      "id": 1
     },
     {
       "id": 2,

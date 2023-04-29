@@ -120,6 +120,9 @@ export class ListaAlumnosComponent {
 
         this.dataSource.data[posicionAEditar] = alumno;
 
+        this.alumnosService.putAlumno(alumno, idAlumnoAModificar)
+        .subscribe(alumno=>console.log(alumno))
+
         this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
     });
