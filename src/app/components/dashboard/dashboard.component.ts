@@ -16,7 +16,7 @@ export class DashboardComponent  {
 
   showFiller = false;
 
-  authUserObs$: Observable<Usuario>
+  authUserObs$: Observable<Usuario | null>
 
   suscripcionAuthUser: Subscription | null = null;
 

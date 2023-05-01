@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { Usuario } from 'src/interfaces';
 
 @Component({
   selector: 'app-log-in',
@@ -17,16 +18,20 @@ export class LogInComponent {
   contraseniaControl = new FormControl('', [Validators.required]);// agregar validaciones
 
   authForm = new FormGroup({
-    email: this.emailControl, 
-    contrasenia: this.contraseniaControl, 
+    email: this.emailControl,
+    contrasenia: this.contraseniaControl,
   })
 
-  logIn() {
-    console.log(this.authForm.value);
-    this.authService.logIn({
-      ...(this.authForm.value as any), //revisar datos de usuario vs los enviado en el form
-      id: 12,
-    })
+  onSubmit() {
+    if (this.authForm.invalid) {
+      this.authForm.markAllAsTouched();
+    } else {
+      console.log(this.authForm.value);
+      this.authService.logIn({
+        ...(this.authForm.value as Usuario) //revisar datos de usuario vs los enviado en el form
+      })
+    }
+
     this.router.navigate(['home', 'alumnos'])
   }
 
