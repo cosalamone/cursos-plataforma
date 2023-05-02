@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListaAlumnosModule } from './components/dashboard/alumnos/lista-alumnos/lista-alumnos.module';
 import { TablaCursosModule } from './components/dashboard/cursos/tabla-cursos/tabla-cursos.module';
+import { ListaDocentesModule } from './components/dashboard/docentes/lista-docentes/lista-docentes.module';
 
 const routes: Routes = [
 
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'cursos',
     loadChildren: () => import('./components/dashboard/cursos/tabla-cursos/tabla-cursos.module').then((m)=>m.TablaCursosModule)
+  },
+  {
+    path: 'docentes',
+    loadChildren: () => import('./components/dashboard/docentes/lista-docentes/lista-docentes.module').then((m)=>m.ListaDocentesModule)
   },
   {
     path: '**', // Cualquier otra ruta que no este definida
