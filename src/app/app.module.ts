@@ -5,25 +5,31 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardModule } from './components/dashboard/dashboard.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { AuthModule } from './components/auth/auth.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthComponent } from './components/auth/auth.component';
+import { AppMaterialModule } from './app-material.module';
+import { LogInComponent } from './components/auth/log-in/log-in.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthComponent,
+    LogInComponent,
+    DashboardComponent
 
   ],
   imports: [
     BrowserModule,
     RouterModule,
     BrowserAnimationsModule,
-    DashboardModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    AuthModule
+    ReactiveFormsModule,
+    AppMaterialModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
