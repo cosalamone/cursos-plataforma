@@ -1,12 +1,15 @@
 {
   "alumnos": [
     {
-      "id": 2,
-      "nombre": "Marina",
+      "nombre": "aaq",
       "apellido": "Cerezo",
+      "email": "mail@mail.com",
       "dni": 123644,
-      "telefono": 156786,
-      "email": "mail@mail.com"
+      "telefono": "12313131",
+      "cursos": [
+        "Javascript"
+      ],
+      "id": 2
     },
     {
       "id": 3,

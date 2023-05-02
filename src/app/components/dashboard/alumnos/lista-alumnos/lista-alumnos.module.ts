@@ -23,6 +23,9 @@ import { AlumnosComponent } from '../alumnos/alumnos.component';
     SharedModule,
     AlumnosRoutingModule,
     
+  ],
+  exports: [
+    ListaAlumnosComponent
   ]
 })
 export class ListaAlumnosModule { }
