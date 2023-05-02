@@ -3,14 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './components/auth/auth.component';
-import { AppMaterialModule } from './app-material.module';
 import { LogInComponent } from './components/auth/log-in/log-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,13 +19,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule,
     BrowserAnimationsModule,
-    HttpClientModule,
+    SharedModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppMaterialModule
 
   ],
   providers: [],

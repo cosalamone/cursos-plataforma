@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { FormAbmAlumnosComponent } from './form-abm-alumnos/form-abm-alumnos.component';
@@ -14,7 +14,7 @@ import { TablaCursosPorIdAlumnoComponent } from './tabla-cursos-por-id-alumno/ta
   styleUrls: ['./lista-alumnos.component.scss'],
 })
 
-export class ListaAlumnosComponent {
+export class ListaAlumnosComponent implements OnDestroy{
 
 
   displayedColumns: string[] = [
@@ -74,6 +74,10 @@ export class ListaAlumnosComponent {
       .subscribe(
         (data) => (this.dataSource = new MatTableDataSource(data as any))
       );
+  }
+
+  ngOnDestroy(): void {
+   console.log('me destruí ')
   }
 
   abrirFormABMAlumnos(): void {
@@ -147,6 +151,7 @@ export class ListaAlumnosComponent {
     }
     );
   }
+
 
 
 }

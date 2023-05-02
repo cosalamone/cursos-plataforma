@@ -1,17 +1,6 @@
 {
   "alumnos": [
     {
-      "nombre": "Claudio",
-      "apellido": "Perez",
-      "email": "mail@mail.com",
-      "dni": 1123234,
-      "telefono": "1231231231",
-      "cursos": [
-        "Javascript"
-      ],
-      "id": 1
-    },
-    {
       "id": 2,
       "nombre": "Marina",
       "apellido": "Cerezo",
@@ -60,14 +49,6 @@
       "email": "mail@mail.com"
     },
     {
-      "id": 8,
-      "nombre": "Omar",
-      "apellido": "Martinez",
-      "dni": 85421356,
-      "telefono": 15778546,
-      "email": "mail@mail.com"
-    },
-    {
       "id": 9,
       "nombre": "Florencia",
       "apellido": "Rodriguez",
@@ -76,39 +57,15 @@
       "email": "mail@mail.com"
     },
     {
-      "id": 10,
-      "nombre": "Luciano",
-      "apellido": "Vidal",
-      "dni": 7563453,
-      "telefono": 11577895,
-      "email": "mail@mail.com"
-    },
-    {
-      "id": 13,
-      "nombre": "asdasd",
-      "apellido": "asdad",
-      "dni": 123644,
-      "telefono": 156786,
-      "email": "mail@mail.com"
-    },
-    {
-      "id": 12,
-      "nombre": "Paula",
-      "apellido": "Martinez",
-      "dni": 123644,
-      "telefono": 156786,
-      "email": "mail@mail.com"
-    },
-    {
-      "nombre": "qweqwe",
-      "apellido": "weqweq",
+      "nombre": "asda",
+      "apellido": "asda",
       "email": "mail@mail.com",
-      "dni": "12313123",
-      "telefono": "2313123131",
+      "dni": "123123131",
+      "telefono": "123123131",
       "cursos": [
-        "Vue"
+        "Angular"
       ],
-      "id": 16
+      "id": 17
     }
   ],
   "cursos": [

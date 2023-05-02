@@ -1,39 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ListaAlumnosModule } from './components/dashboard/alumnos/lista-alumnos/lista-alumnos.module';
 
 
 const routes: Routes = [
+
   {
-    path: 'home',
-    component: DashboardComponent, // que componente se muestra
-
-    // children: [
-
-    //   {
-    //     path: 'login',
-    //     component: LogInComponent,
-    //   }
-
-    // ]
+    path: 'alumnos',
+    loadChildren: () => import('./components/dashboard/alumnos/lista-alumnos/lista-alumnos.module').then((m)=>m.ListaAlumnosModule)
+    
   },
-
-  // {
-  //   path: 'auth',
-  //   component: AuthComponent,
-  //   children: [
-  //     {
-  //       path: 'login',
-  //       component: LogInComponent,
-  //     },
-
-  //   ]
-  // },
-
   {
     path: '**', // Cualquier otra ruta que no este definida
-    redirectTo: 'home', // la redirige al dashboard = home
+    redirectTo: 'alumnos', // la redirige al dashboard = home
   },
+  
 ]
 
 @NgModule({

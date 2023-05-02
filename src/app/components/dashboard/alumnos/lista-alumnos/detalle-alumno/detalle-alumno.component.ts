@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from 'src/app/services/alumnos.service';
-import { Alumno,  } from 'src/interfaces';
+import { Alumno, } from 'src/interfaces';
 
 @Component({
   selector: 'app-detalle-alumno',
@@ -9,23 +9,27 @@ import { Alumno,  } from 'src/interfaces';
   styleUrls: ['./detalle-alumno.component.scss']
 })
 
-export class DetalleAlumnoComponent {
+export class DetalleAlumnoComponent implements OnInit {
   panelOpenState = false;
 
   alumno: Alumno | undefined;
 
   constructor(private activatesRoute: ActivatedRoute,
     private alumnoService: AlumnosService,
-    ) {
+  ) {
     console.log(this.activatesRoute.snapshot.params) //llega en forma de string
 
     this.alumnoService.getAlumnoPorId(parseInt(this.activatesRoute.snapshot.params['idAlumno']))
-    .subscribe((alumno)=> this.alumno = alumno)
+      .subscribe((alumno) => this.alumno = alumno)
   }
 
-  getCursosPorAlumno(){
+  ngOnInit(): void {
+    console.log("hola me cargue")
+  }
+
+  getCursosPorAlumno() {
+  }
 
 
-}
 
 }
