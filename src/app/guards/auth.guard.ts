@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router ){
+  constructor(private router: Router, private authService: AuthService ){
 
   }
 
@@ -20,6 +21,17 @@ export class AuthGuard implements CanActivate {
 
     const isLogged = false;
 
+    this.authService.obtenerUsuarioAutenticado()
+    .pipe(
+      map((usuarioAutenticado)=>{
+
+        if(!usuarioAutenticado){
+          return this.router.createUrlTree(['login'])
+        } else{
+          return true
+        }
+      })
+    )
     if (!isLogged) {
       // Si no está logueado, lo redirige al login
       return this.router.createUrlTree(['auth', 'login'])
