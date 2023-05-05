@@ -5,6 +5,7 @@ import { TablaCursosModule } from './components/dashboard/cursos/tabla-cursos/ta
 import { ListaDocentesModule } from './components/dashboard/docentes/lista-docentes/lista-docentes.module';
 import { LogInComponent } from './components/auth/log-in/log-in.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
 
@@ -21,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'docentes',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
     loadChildren: () => import('./components/dashboard/docentes/lista-docentes/lista-docentes.module').then((m)=>m.ListaDocentesModule)
   },
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
     redirectTo: 'alumnos', // la redirige al dashboard = home
   },
   
-]
+] 
 
 @NgModule({
   declarations: [],

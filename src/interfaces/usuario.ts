@@ -3,4 +3,5 @@ export interface Usuario {
   nombreApellido: string;
   email: string;
   contraseña: string;
+  role: string;
 }

@@ -26,11 +26,12 @@ export class AuthService {
 
   logIn(usuarioLogueado: Usuario): void {
 
-    const usuario1 = {
+    const usuario1:Usuario = {
       id: 1,
       nombreApellido: 'Marcela Rodriguez',
       email: usuarioLogueado.email,
       contraseña: 'soymarcela',
+      role: 'user',
     }
     localStorage.setItem('authUser', JSON.stringify(usuario1))
     this.authUser$.next(usuario1);
