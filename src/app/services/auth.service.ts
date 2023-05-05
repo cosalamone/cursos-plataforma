@@ -38,6 +38,13 @@ export class AuthService {
 
   }
 
+
+  logOut():void {
+    localStorage.removeItem('authUser')
+    this.authUser$.next(null);
+    this.router.navigate(['login']);
+
+  }
 }
 
 
