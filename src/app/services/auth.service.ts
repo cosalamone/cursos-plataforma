@@ -24,20 +24,19 @@ export class AuthService {
 
   }
 
-  logIn(usuario: Usuario): void {
+  logIn(usuarioLogueado: Usuario): void {
 
     const usuario1 = {
       id: 1,
       nombreApellido: 'Marcela Rodriguez',
-      email: 'marce@mail.com',
+      email: usuarioLogueado.email,
       contraseña: 'soymarcela',
     }
-    localStorage.setItem('authUser', JSON.stringify(usuario))
-
-    this.router.navigate(['dashboard'])
+    localStorage.setItem('authUser', JSON.stringify(usuario1))
+    this.authUser$.next(usuario1);
+    this.router.navigate([''])
 
   }
-  // this.authUser$.next(usuario); 
 
 }
 

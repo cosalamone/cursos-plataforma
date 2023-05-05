@@ -18,10 +18,7 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-
-    const isLogged = false;
-
-    this.authService.obtenerUsuarioAutenticado()
+    return this.authService.obtenerUsuarioAutenticado()
     .pipe(
       map((usuarioAutenticado)=>{
 
@@ -32,12 +29,6 @@ export class AuthGuard implements CanActivate {
         }
       })
     )
-    if (!isLogged) {
-      // Si no está logueado, lo redirige al login
-      return this.router.createUrlTree(['auth', 'login'])
-    }
-
-    return true;
   }
 
 }
