@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, map } from 'rxjs';
+import { enviroment } from 'src/enviroments/enviroments';
 import { Usuario } from 'src/interfaces';
 
 
@@ -16,7 +18,8 @@ export class AuthService {
   // private authUser$ = new ReplaySubject<Usuario>();
   private authUser$ = new BehaviorSubject<Usuario | null>(null);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private http: HttpClient) { }
 
   obtenerUsuarioAutenticado(): Observable<Usuario | null> {
 
@@ -25,25 +28,44 @@ export class AuthService {
   }
 
   logIn(usuarioLogueado: Usuario): void {
+    this.http.get<Usuario[]>(`${enviroment.baseURL}/usuarios?email=${usuarioLogueado.email}&password=${usuarioLogueado.password}`)
+      .subscribe(
+        {
+          next: (usuarios) => {
+            const usuarioAutenticado = usuarios[0];
+            if (usuarioAutenticado) {
+              localStorage.setItem('token', usuarioAutenticado.token)
+              this.authUser$.next(usuarioAutenticado);
+              this.router.navigate([''])
 
-    const usuario1:Usuario = {
-      id: 1,
-      nombreApellido: 'Marcela Rodriguez',
-      email: usuarioLogueado.email,
-      contraseña: 'soymarcela',
-      role: 'user',
-    }
-    localStorage.setItem('authUser', JSON.stringify(usuario1))
-    this.authUser$.next(usuario1);
-    this.router.navigate([''])
-
+            }
+          }
+        }
+      )
   }
 
 
-  logOut():void {
-    localStorage.removeItem('authUser')
+  logOut(): void {
+    localStorage.removeItem('token')
     this.authUser$.next(null);
     this.router.navigate(['login']);
+
+  }
+
+  verificarToken(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<Usuario[]>(`${enviroment.baseURL}/usuarios?token=${token}`)
+      .pipe(
+        map((usuarios) => {
+          const usuarioAutenticado = usuarios[0];
+          if (usuarioAutenticado) {
+            localStorage.setItem('token', usuarioAutenticado.token)
+            this.authUser$.next(usuarioAutenticado);
+          }
+          return !!usuarioAutenticado; // lo transforma en un boolean
+        })
+      )
 
   }
 }

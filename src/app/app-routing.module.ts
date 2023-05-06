@@ -6,6 +6,7 @@ import { ListaDocentesModule } from './components/dashboard/docentes/lista-docen
 import { LogInComponent } from './components/auth/log-in/log-in.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [LoginGuard],
     component: LogInComponent
   },
   {

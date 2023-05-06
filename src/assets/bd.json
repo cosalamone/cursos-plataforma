@@ -128,5 +128,39 @@
       ],
       "id": 4
     }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nombreApellido": "Maria Pereyra",
+      "email": "maru@mail.com",
+      "password": "maru",
+      "token": "asdfghy987y6t5reswaq",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "nombreApellido": "Carlos Ramirez",
+      "email": "pablo@mail.com",
+      "password": "pablo",
+      "token": "mnjubhygvfcdxsz2345yj",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "nombreApellido": "Carla Ayala",
+      "email": "carla@mail.com",
+      "password": "carla",
+      "token": "mjnh7g4de3f765vgnmds",
+      "role": "admin"
+    },
+    {
+      "id": 4,
+      "nombreApellido": "Fransisco Baez",
+      "email": "fran@mail.com",
+      "password": "fran",
+      "token": "87hg65f4dxecvbjtvvb",
+      "role": "admin"
+    }
   ]
 }

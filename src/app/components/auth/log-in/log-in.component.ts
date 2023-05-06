@@ -15,11 +15,11 @@ export class LogInComponent {
 
   }
   emailControl = new FormControl('', [Validators.required]);// agregar validaciones
-  contraseniaControl = new FormControl('', [Validators.required]);// agregar validaciones
+  passwordControl = new FormControl('', [Validators.required]);// agregar validaciones
 
   authForm = new FormGroup({
     email: this.emailControl,
-    contrasenia: this.contraseniaControl,
+    password: this.passwordControl,
   })
 
   onSubmit() {
