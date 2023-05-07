@@ -12,6 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -32,6 +33,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatToolbarModule,
     MatListModule,
     MatSelectModule,
+    BrowserAnimationsModule
   ],
   exports: [
     MatTableModule,
@@ -46,7 +48,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
-    MatSelectModule,
-  ]
+    BrowserAnimationsModule  ]
 })
 export class AppMaterialModule { }
