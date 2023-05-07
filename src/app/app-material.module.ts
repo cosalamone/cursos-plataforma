@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatOptionModule } from '@angular/material/core';
 
 
 
@@ -33,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatToolbarModule,
     MatListModule,
     MatSelectModule,
+    MatOptionModule, 
     BrowserAnimationsModule
   ],
   exports: [
@@ -48,6 +50,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+    MatSelectModule,
+    MatOptionModule, 
     BrowserAnimationsModule  ]
 })
 export class AppMaterialModule { }
