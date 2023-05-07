@@ -27,5 +27,12 @@ describe('Pruebas de LogInComponent', () => {
         component.authForm.setValue({ email: null, password: null })
 
         expect(component.emailControl.invalid).toBeTrue();
-    })
+    });
+
+    it('Si el campo password está vacio el FormControl de password debe ser invalido', () => {
+        component.authForm.setValue({ email: null, password: null })
+
+        expect(component.passwordControl.invalid).toBeTrue();
+    });
+    
 });
