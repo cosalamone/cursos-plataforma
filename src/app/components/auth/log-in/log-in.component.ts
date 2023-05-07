@@ -32,7 +32,7 @@ export class LogInComponent {
       })
     }
 
-    this.router.navigate(['alumnos'])
+    this.router.navigate([''])
   }
 
 }

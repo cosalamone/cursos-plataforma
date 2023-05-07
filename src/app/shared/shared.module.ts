@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from '../app-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -19,10 +20,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     AppMaterialModule,
     HttpClientModule,
-    RouterModule
-
-     
-
+    RouterModule,
+    
   ],
   exports:[
     DirectivesModule,
@@ -32,8 +31,7 @@ import { RouterModule } from '@angular/router';
     CommonModule, 
     AppMaterialModule,
     HttpClientModule,
-
-
+    RouterModule,
   ]
 })
 export class SharedModule { }

@@ -73,12 +73,6 @@
   ],
   "cursos": [
     {
-      "nombre": "React",
-      "duracion": 6,
-      "docente": "Flavio",
-      "id": 1
-    },
-    {
       "id": 2,
       "nombre": "Curso 2",
       "duracion": 9,
