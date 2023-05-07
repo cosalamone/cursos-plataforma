@@ -5,6 +5,7 @@ import { SharedModule } from "src/app/shared/shared.module";
 import { AuthService } from "src/app/services/auth.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterTestingModule } from "@angular/router/testing";
+import { AuthServiceMock } from "../mocks/auth-service.mock";
 
 
 describe('Pruebas de LogInComponent', () => {
@@ -21,14 +22,13 @@ describe('Pruebas de LogInComponent', () => {
                 SharedModule,
                 BrowserAnimationsModule,
                 RouterTestingModule
-
             ],
-            // providers:[
-            //     {
-            //         provide: AuthService,
-            //         useClass: AuthServiceMock,
-            //     }
-            // ]
+            providers:[ // reemplazar un servicio real por un Mock para los test
+                {
+                    provide: AuthService,
+                    useClass: AuthServiceMock,
+                }
+            ]
         }).compileComponents();
 
         const fixture = TestBed.createComponent(LogInComponent); // instancia el componente
@@ -36,17 +36,19 @@ describe('Pruebas de LogInComponent', () => {
         fixture.detectChanges(); // debe llamarse antes de que se ejecute cada prueba
     });
 
+
     it('Si el campo email está vacio el FormControl del email debe ser invalido', () => {
         component.authForm.setValue({ email: null, password: null })
 
         expect(component.emailControl.invalid).toBeTrue();
     });
 
+
     it('Si el campo password está vacio el FormControl de password debe ser invalido', () => {
         component.authForm.setValue({ email: null, password: null })
 
         expect(component.passwordControl.invalid).toBeTrue();
-    });
+    }); 
 
 
     it('Si el AuthForm es invalido, debe marcar todos los controles como touched', () => {
@@ -59,15 +61,13 @@ describe('Pruebas de LogInComponent', () => {
 
     })
 
+    
     it('Si el AuthForm es valido, debe llamar al método login del AuthService', ()=>{
         component.authForm.setValue({ email: 'test@mail.com', password: 'test' })
-
         const spyOnAuthServiceLogin = spyOn(TestBed.inject(AuthService), 'logIn');
-
         component.onSubmit();
 
         expect(component.authForm.valid).toBeTrue();
-
         expect(spyOnAuthServiceLogin).toHaveBeenCalled();
     })
 
