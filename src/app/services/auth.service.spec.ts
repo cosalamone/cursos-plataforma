@@ -63,4 +63,43 @@ describe('Pruebas sobre AuthService', () => {
 
        
     })
+
+    it('Logout debe emitir un authUser null, remover el token del LocalStorage y redireccionar al usuario',()=>{
+
+        const logInFake: Usuario = {
+            id: 2,
+            nombreApellido: 'Testing AuthService',
+            email: 'test@mail.com',
+            password: 'test',
+            token: 'sxcfvgy4e3w',
+            role: 'admin'
+        }
+        const MOCK_REQUEST_RESULT: Usuario[] = [
+            {
+                id: logInFake.id,
+                nombreApellido: logInFake.nombreApellido,
+                email: logInFake.email,
+                password: logInFake.password,
+                token: logInFake.token,
+                role: logInFake.role
+            }
+        ]
+
+        spyOn(TestBed.inject(Router), 'navigate')
+
+        service.logIn(logInFake);
+
+        httpController.expectOne({
+            url: `${enviroment.baseURL}/usuarios?email=${logInFake.email}&password=${logInFake.password}`,
+            method: 'GET',
+        }).flush(MOCK_REQUEST_RESULT) // que retorna: array/number/boolean --> en este caso un array de usuarios
+
+
+        service.logOut();
+
+        const tokenLs = localStorage.getItem('token');
+
+        expect(tokenLs).toBeNull();
+
+    })
 })
