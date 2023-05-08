@@ -5,7 +5,9 @@
 
     <!-- datos de perfil de usuario logueado -->
     <img width="50" height="50" src="../../assets/user-img.jpg">
-    <p> {{(authUserObs$ | async)?.email}} </p>
+    <p> {{(authUserObs$ | async)?.nombreApellido}} </p>
+
+    <p>{{(authUserObs$ | async) ?.role}}</p>
 
     <mat-nav-list>
       <a [routerLink]="['/'+link.url]" mat-list-item  *ngFor="let link of links">
@@ -17,6 +19,7 @@
     </mat-nav-list>
 
   </mat-drawer>
+  <!-- FIN SIDEBAR -->
 
 
   <!-- TOOLBAR -->
@@ -27,7 +30,7 @@
           aria-label="Example icon-button with menu icon">
           <mat-icon>menu</mat-icon>
         </button>
-        <span>Plataforma Cursos </span>
+        <span class="plataforma">Plataforma Cursos </span>
 
 
         <span class="example-spacer"></span>
@@ -40,11 +43,12 @@
       </div>
 
       <!-- cambiar para mostrar nombre del usuario  -->
-      <div>
+      <div class="mail">
         <p>{{(authUserObs$ | async) ?.email}} </p>
       </div>
 
     </mat-toolbar>
+  <!-- FIN TOOLBAR -->
 
 
     <!-- CUERPO DE LA PAGINA - Utilizando router-->

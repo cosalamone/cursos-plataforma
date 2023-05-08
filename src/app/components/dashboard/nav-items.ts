@@ -1,4 +1,4 @@
- interface NavItem {
+ export interface NavItem {
   url: string;
   title:string;
 }
@@ -16,10 +16,10 @@ const links: NavItem[] = [
     url:'docentes',
     title:'Docentes',
   },
-  // {
-  //   url:'login',
-  //   title:'Cerrar sesión',
-  // }
+  {
+    url:'usuarios',
+    title:'Usuarios',
+  }
 ]
 
 export default links;
