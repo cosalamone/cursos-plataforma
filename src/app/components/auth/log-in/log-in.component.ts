@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Usuario } from 'src/interfaces';
 
@@ -9,11 +9,17 @@ import { Usuario } from 'src/interfaces';
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss']
 })
-export class LogInComponent {
+export class LogInComponent implements OnInit {
+
+  returnUrl!: string;
+
   constructor(private authService: AuthService,
-    private router: Router) {
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
 
   }
+  
   emailControl = new FormControl('', [Validators.required]);// agregar validaciones
   passwordControl = new FormControl('', [Validators.required]);// agregar validaciones
 
@@ -21,6 +27,12 @@ export class LogInComponent {
     email: this.emailControl,
     password: this.passwordControl,
   })
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.returnUrl = params['returnUrl'] || '/';
+    });
+  }
 
   onSubmit() {
     if (this.authForm.invalid) {
@@ -32,7 +44,9 @@ export class LogInComponent {
       })
     }
 
-    this.router.navigate([''])
+    setTimeout(() => {
+      this.router.navigateByUrl(this.returnUrl)
+    }, 100)
   }
 
 }

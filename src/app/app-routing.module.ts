@@ -13,27 +13,31 @@ const routes: Routes = [
   {
     path: 'alumnos',
     canActivate: [AuthGuard],
+    pathMatch: 'full',
     loadChildren: () => import('./components/dashboard/alumnos/lista-alumnos/lista-alumnos.module').then((m)=>m.ListaAlumnosModule)
     
   },
   {
     path: 'cursos',
+    pathMatch: 'full',
     canActivate: [AuthGuard],
     loadChildren: () => import('./components/dashboard/cursos/tabla-cursos/tabla-cursos.module').then((m)=>m.TablaCursosModule)
   },
   {
     path: 'docentes',
-    canActivate: [AuthGuard, AdminGuard],
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./components/dashboard/docentes/lista-docentes/lista-docentes.module').then((m)=>m.ListaDocentesModule)
   },
   {
     path: 'login',
+    pathMatch: 'full',
     canActivate: [LoginGuard],
     component: LogInComponent
   },
   {
     path: '**', // Cualquier otra ruta que no este definida
-    redirectTo: 'alumnos', // la redirige al dashboard = home
+    redirectTo: 'docentes', // la redirige al dashboard = home
   },
   
 ] 
