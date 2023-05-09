@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Usuario } from 'src/interfaces';
 import { Observable, Subject, Subscription } from 'rxjs';
@@ -10,28 +10,28 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent  {
+
+export class DashboardComponent {
 
   links = links;
 
   showFiller = false;
 
+  authUser!: Usuario | null;
   
-  authUserObs$: Observable<Usuario | null>
+  authUserObs$: Observable<Usuario | null>;
 
   suscripcionAuthUser: Subscription | null = null;
 
   destrodyed$ = new Subject<void>();
+
+  authUserSubs!: Subscription;
 
   constructor(private authService: AuthService,
     private router: Router
   ) {
     this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
   }
-
-  // para evitar usar espacio de la Mem RAM guardamos el auth en una variable
-
-
 
   logOut(): void {
     this.authService.logOut();

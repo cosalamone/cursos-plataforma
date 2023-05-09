@@ -7,16 +7,17 @@
     <img width="50" height="50" src="../../assets/user-img.jpg">
     <p> {{(authUserObs$ | async)?.nombreApellido}} </p>
 
-    <p>{{(authUserObs$ | async) ?.role}}</p>
-
-    <mat-nav-list>
-      <a [routerLink]="['/'+link.url]" mat-list-item  *ngFor="let link of links">
-        {{ link.title }}
-      </a>
+    <mat-nav-list *ngIf="authUserObs$ | async as authUser">
+      <ng-container *ngFor="let link of links">
+        <a *ngIf="authUser.role === 'admin' || !link.requiresAdmin" [routerLink]="['/'+link.url]" mat-list-item>
+          {{link.title}}
+        </a>
+      </ng-container>
       <a (click)="logOut()" mat-list-item>
         Cerrar sesión
       </a>
     </mat-nav-list>
+
 
   </mat-drawer>
   <!-- FIN SIDEBAR -->
@@ -48,7 +49,7 @@
       </div>
 
     </mat-toolbar>
-  <!-- FIN TOOLBAR -->
+    <!-- FIN TOOLBAR -->
 
 
     <!-- CUERPO DE LA PAGINA - Utilizando router-->
