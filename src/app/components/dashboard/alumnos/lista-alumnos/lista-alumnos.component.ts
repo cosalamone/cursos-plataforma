@@ -3,10 +3,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { FormAbmAlumnosComponent } from './form-abm-alumnos/form-abm-alumnos.component';
 import { AlumnosService } from '../../../../services/alumnos.service';
-import { Alumno } from 'src/interfaces';
-import { map } from 'rxjs'
+import { Alumno, Usuario } from 'src/interfaces';
+import { Observable, map } from 'rxjs'
 import { ActivatedRoute, Router } from '@angular/router';
 import { TablaCursosPorIdAlumnoComponent } from './tabla-cursos-por-id-alumno/tabla-cursos-por-id-alumno.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -16,6 +17,7 @@ import { TablaCursosPorIdAlumnoComponent } from './tabla-cursos-por-id-alumno/ta
 
 export class ListaAlumnosComponent implements OnDestroy{
 
+  authUserObs$: Observable<Usuario | null>;
 
   displayedColumns: string[] = [
     'id',
@@ -25,6 +27,8 @@ export class ListaAlumnosComponent implements OnDestroy{
   ];
 
   dataSource!: MatTableDataSource<any, any>;
+
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -55,7 +59,11 @@ export class ListaAlumnosComponent implements OnDestroy{
     private alumnosService: AlumnosService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private authService: AuthService,
   ) {
+
+    this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
+
     // FX PARA OBTENER ARRAY DE ALUMNOS DE ALUMNOS.JSON (A FUTURO UNA API) - Utiliza AlumnosService
     this.alumnosService
       .getAlumnos()

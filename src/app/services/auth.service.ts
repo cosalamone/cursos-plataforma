@@ -61,6 +61,7 @@ export class AuthService {
           const usuarioAutenticado = usuarios[0];
           if (usuarioAutenticado) {
             localStorage.setItem('token', usuarioAutenticado.token)
+            localStorage.setItem('perfil', usuarioAutenticado.role)
             this.authUser$.next(usuarioAutenticado);
           }
           return !!usuarioAutenticado; // lo transforma en un boolean

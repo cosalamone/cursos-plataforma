@@ -16,12 +16,12 @@
   <!-- Columna ID -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef appFontSize> ID </th>
-    <td mat-cell *matCellDef="let alumno"> {{alumno.id}}  </td>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.id}} </td>
   </ng-container>
 
   <!-- Columna nombre completo-->
   <ng-container matColumnDef="nombreCompleto">
-    <th mat-header-cell *matHeaderCellDef appFontSize> Nombre y Apellido  </th>
+    <th mat-header-cell *matHeaderCellDef appFontSize> Nombre y Apellido </th>
     <td mat-cell *matCellDef="let alumno"> {{alumno | nombreCompleto }}</td>
   </ng-container>
 
@@ -33,37 +33,42 @@
 
   <!-- Opciones Column -->
   <ng-container matColumnDef="opciones">
-    <th mat-header-cell *matHeaderCellDef appFontSize > Opciones </th>
+    <th mat-header-cell *matHeaderCellDef appFontSize> Opciones </th>
     <td mat-cell *matCellDef="let element">
 
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_horiz</mat-icon>
-      </button>
 
 
-
-      <mat-menu #menu="matMenu">
-        <button (click)="editarAlumno(element)" mat-menu-item>
-          <mat-icon>edit</mat-icon>
-          <span>Modificar</span>
+      <ng-container *ngIf="authUserObs$ | async as authUser">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_horiz</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
 
-        <button (click)="eliminarAlumno(element)" mat-menu-item>
-          <mat-icon>delete</mat-icon>
-          <span>Eliminar</span>
-        </button>
+          <!-- Sólo la ven los admin -->
+          <button (click)="editarAlumno(element)" mat-menu-item *ngIf="authUser.role === 'admin'">
+            <mat-icon>edit</mat-icon>
+            <span>Modificar</span>
+          </button>
 
-        <button (click)="detalleAlumno(element.id)" mat-menu-item>
-          <mat-icon>visibility</mat-icon>
-          <span>Ver más</span>
-        </button>
+          <!-- Sólo la ven los admin -->
+          <button (click)="eliminarAlumno(element)" mat-menu-item *ngIf="authUser.role === 'admin'">
+            <mat-icon>delete</mat-icon>
+            <span>Eliminar</span>
+          </button>
 
-        <!-- <button (click)="abrirDialogDetalleCursosPorAlumno(element)" mat-menu-item>
-        <mat-icon>book</mat-icon>
-        <span>Ver cursos</span> -->
-      <!-- </button> -->
+          <!-- Es la única que ven los user -->
+          <!-- También la ven los admin -->
 
-      </mat-menu>
+          <button (click)="detalleAlumno(element.id)" mat-menu-item>
+            <mat-icon>visibility</mat-icon>
+            <span>Ver más</span>
+          </button>
+
+        </mat-menu>
+      </ng-container>
+
+
+
     </td>
   </ng-container>
 
