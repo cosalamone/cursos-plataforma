@@ -3,8 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
-import { Alumno, Curso } from 'src/interfaces';
+import { Alumno, Curso, Usuario } from 'src/interfaces';
 import { FormAbmCursosComponent } from './form-abm-cursos/form-abm-cursos.component';
+import { AuthService } from 'src/app/services/auth.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -13,6 +15,9 @@ import { FormAbmCursosComponent } from './form-abm-cursos/form-abm-cursos.compon
   styleUrls: ['./tabla-cursos.component.scss']
 })
 export class TablaCursosComponent {
+
+  authUserObs$: Observable<Usuario | null>;
+
 
   displayedColumns: string[] = [
     'id',
@@ -35,8 +40,14 @@ export class TablaCursosComponent {
     private cursosService: CursosService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private authService: AuthService,
+
 
   ) {
+
+    this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
+
+
     // FX PARA OBTENER ARRAY DE CURSOS DE CURSOS.JSON (A FUTURO UNA API) - Utiliza CursosService
     this.cursosService
       .getCursos()
