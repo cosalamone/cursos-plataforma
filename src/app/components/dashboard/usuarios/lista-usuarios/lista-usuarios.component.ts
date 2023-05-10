@@ -12,7 +12,7 @@ import { Usuario } from 'src/interfaces';
   templateUrl: './lista-usuarios.component.html',
   styleUrls: ['./lista-usuarios.component.scss']
 })
-export class ListaUsuariosComponent  {
+export class ListaUsuariosComponent implements OnDestroy {
 
   authUserObs$: Observable<Usuario | null>;
 
@@ -50,7 +50,9 @@ export class ListaUsuariosComponent  {
       )
   }
 
-
+  ngOnDestroy(): void {
+    console.log('me destruí ')
+   }
 
   abrirFormABMUsuarios(){}
 

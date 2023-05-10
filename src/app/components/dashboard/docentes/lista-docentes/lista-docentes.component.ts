@@ -44,11 +44,10 @@ export class ListaDocentesComponent implements OnDestroy {
       )
       .subscribe((data) => (this.dataSource = new MatTableDataSource(data as any)))
   }
+  
   ngOnDestroy(): void {
-    console.log('componente destruido')
-    this.destroyed$.next();
-    this.destroyed$.complete();
-  }
+    console.log('me destruí ')
+   }
 
 
   abrirFormABMDocentes(){

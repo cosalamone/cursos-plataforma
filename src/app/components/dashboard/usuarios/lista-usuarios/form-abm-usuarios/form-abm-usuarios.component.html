@@ -1,0 +1,76 @@
+<h3 mat-dialog-title>Datos del nuevo usuario </h3>
+
+<div mat-dialog-content>
+    <form [formGroup]="registerForm">
+  
+      <div>
+        <mat-form-field [formGroup]="registerForm" appearance="fill">
+          <mat-label>Nombre y apellido</mat-label>
+  
+          <input [formControl]="nombreApellidoControl" matInput>
+          <mat-error *ngIf="nombreApellidoControl.invalid">Minimo 3 caracteres</mat-error>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </div>
+  
+  
+      <div>
+        <mat-form-field [formGroup]="registerForm" appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input [formControl]="emailControl" matInput>
+          <mat-error *ngIf="emailControl.invalid"></mat-error>
+          <mat-icon matSuffix>mail</mat-icon>
+  
+  
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field [formGroup]="registerForm" appearance="fill">
+          <mat-label>Contraseña</mat-label>
+  
+          <input [formControl]="passwordControl" matInput>
+          <mat-error *ngIf="passwordControl.invalid">Minimo 3 caracteres</mat-error>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <mat-form-field [formGroup]="registerForm" appearance="fill">
+          <mat-label>Contraseña</mat-label>
+  
+          <input [formControl]="tokenControl" matInput>
+          <mat-error *ngIf="tokenControl.invalid">Minimo 3 caracteres</mat-error>
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </div>
+  
+  
+      
+      <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Inscripcion a cursos</mat-label>
+            <mat-select [(ngModel)]="selectedValue" name="role" [formControl]="roleControl" multiple>
+              <mat-option *ngFor="let role of rolesDisponibles" [value]="role" >
+                {{role}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div mat-dialog-actions>
+        <button (click)="cerrarDialog()" mat-button >
+          Cancelar
+        </button>
+  
+        <button (click)="guardar()" mat-raised-button color="primary">
+          Guardar
+        </button>
+  
+      </div>
+  
+  
+    </form>
+  
+  </div>
+  
