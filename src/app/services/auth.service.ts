@@ -6,10 +6,6 @@ import { enviroment } from 'src/enviroments/enviroments';
 import { Usuario } from 'src/interfaces';
 
 
-// interface LoginFormValue {
-//   email: string;
-//   password: string;
-// }
 @Injectable({
   providedIn: 'root'
 })

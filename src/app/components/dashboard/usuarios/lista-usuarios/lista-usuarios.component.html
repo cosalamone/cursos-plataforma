@@ -1,0 +1,86 @@
+<!-- Boton agregar nuevo usuario -->
+<div class="m-3">
+  <button (click)="abrirFormABMUsuarios()" color="primary" mat-flat-button>
+    <mat-icon>add</mat-icon>
+    Agregar nuevo usuario
+  </button>
+</div>
+
+<mat-form-field class="m-3">
+  <mat-label>Buscar</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Buscar usuarios por nombre, apellido, tipo de perfil"
+    #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="m-3">
+
+  <!-- Columna ID -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef appFontSize> ID </th>
+    <td mat-cell *matCellDef="let usuario"> {{usuario.id}} </td>
+  </ng-container>
+
+  <!-- Columna nombre completo-->
+  <ng-container matColumnDef="nombreApellido">
+    <th mat-header-cell *matHeaderCellDef appFontSize> Nombre y Apellido </th>
+    <td mat-cell *matCellDef="let usuario"> {{usuario.nombreApellido }}</td>
+  </ng-container>
+
+   <!-- Columna Rol-->
+   <ng-container matColumnDef="rol">
+    <th mat-header-cell *matHeaderCellDef appFontSize> Rol del perfil </th>
+    <td mat-cell *matCellDef="let usuario"> {{usuario.role }}</td>
+  </ng-container>
+
+  <!-- Opciones Column -->
+  <ng-container matColumnDef="opciones">
+    <th mat-header-cell *matHeaderCellDef appFontSize> Opciones </th>
+    <td mat-cell *matCellDef="let element">
+
+
+
+      <ng-container *ngIf="authUserObs$ | async as authUser">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+
+          <!-- Sólo la ven los admin -->
+          <button (click)="editarUsuario()" mat-menu-item *ngIf="authUser.role === 'admin'">
+            <mat-icon>edit</mat-icon>
+            <span>Modificar</span>
+          </button>
+
+          <!-- Sólo la ven los admin -->
+          <button (click)="eliminarUsuario()" mat-menu-item *ngIf="authUser.role === 'admin'">
+            <mat-icon>delete</mat-icon>
+            <span>Eliminar</span>
+          </button>
+
+          <!-- Es la única que ven los user -->
+          <!-- También la ven los admin -->
+
+          <button (click)="detalleUsuario()" mat-menu-item>
+            <mat-icon>visibility</mat-icon>
+            <span>Ver más</span>
+          </button>
+
+        </mat-menu>
+      </ng-container>
+
+
+
+    </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!-- Error informando que no se encuentra la data. -->
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No se encontró: "{{input.value}}"</td>
+  </tr>
+
+</table>
