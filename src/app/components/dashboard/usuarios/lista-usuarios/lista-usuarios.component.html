@@ -35,7 +35,7 @@
   <!-- Opciones Column -->
   <ng-container matColumnDef="opciones">
     <th mat-header-cell *matHeaderCellDef appFontSize> Opciones </th>
-    <td mat-cell *matCellDef="let element">
+    <td mat-cell *matCellDef="let usuario">
 
 
 
@@ -46,13 +46,13 @@
         <mat-menu #menu="matMenu">
 
           <!-- Sólo la ven los admin -->
-          <button (click)="editarUsuario()" mat-menu-item *ngIf="authUser.role === 'admin'">
+          <button (click)="editarUsuario(usuario)" mat-menu-item *ngIf="authUser.role === 'admin'">
             <mat-icon>edit</mat-icon>
             <span>Modificar</span>
           </button>
 
           <!-- Sólo la ven los admin -->
-          <button (click)="eliminarUsuario()" mat-menu-item *ngIf="authUser.role === 'admin'">
+          <button (click)="eliminarUsuario(usuario)" mat-menu-item *ngIf="authUser.role === 'admin'">
             <mat-icon>delete</mat-icon>
             <span>Eliminar</span>
           </button>
@@ -60,7 +60,7 @@
           <!-- Es la única que ven los user -->
           <!-- También la ven los admin -->
 
-          <button (click)="detalleUsuario()" mat-menu-item>
+          <button (click)="detalleUsuario(usuario.id)" mat-menu-item>
             <mat-icon>visibility</mat-icon>
             <span>Ver más</span>
           </button>

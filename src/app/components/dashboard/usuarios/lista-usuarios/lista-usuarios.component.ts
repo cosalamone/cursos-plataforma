@@ -6,6 +6,7 @@ import { Observable, Subject, pipe } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Usuario } from 'src/interfaces';
+import { FormAbmUsuariosComponent } from './form-abm-usuarios/form-abm-usuarios.component';
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -54,11 +55,65 @@ export class ListaUsuariosComponent implements OnDestroy {
     console.log('me destruí ')
    }
 
-  abrirFormABMUsuarios(){}
+  abrirFormABMUsuarios(){
+    const dialog = this.matDialog.open(FormAbmUsuariosComponent);
+    dialog.afterClosed().subscribe((valor)=>{
+      if(valor){
+        let usuario: Usuario = valor;
+        let newId =Math.max(...this.dataSource.data.map(x => x.id)) + 1;
+        usuario.id = newId;
 
-  editarUsuario(){}
+        this.usuariosService.postUsuario(usuario)
+        .subscribe((usuario)=> console.log(usuario))
 
-  eliminarUsuario(){}
+        this.dataSource.data = [...this.dataSource.data, usuario];
+      }
+    })
+  }
 
-  detalleUsuario(){}
+  editarUsuario(usuario: Usuario){
+    const dialog= this.matDialog.open(FormAbmUsuariosComponent, {
+      data: {
+        usuario,
+      }
+    });
+
+    // find alumno and replace - guardar todo en datasource para que se imprima nueva tabla
+    dialog.afterClosed().subscribe((valor)=> {
+      if (valor) {
+        let usuario: Usuario = valor;
+
+        let idUsuarioAModificar = usuario.id;
+        let posicionAEditar = this.dataSource.data.findIndex(
+          (usuario)=> usuario.id === idUsuarioAModificar
+        );
+
+        this.dataSource.data[posicionAEditar] = usuario;
+
+        this.usuariosService.putUsuario(usuario, idUsuarioAModificar)
+        .subscribe(usuario=> console.log(usuario))
+
+        this.dataSource = new MatTableDataSource(this.dataSource.data);
+      }
+    })
+  }
+
+  eliminarUsuario(usuario: Usuario): void{
+    let idUsuarioAEliminar = usuario.id;
+    let posicionAEliminar = this.dataSource.data.findIndex(
+      (usuario)=> usuario.id === idUsuarioAEliminar
+    );
+    this.dataSource.data.splice(posicionAEliminar,1);
+
+    this.usuariosService.deleteUsuario(idUsuarioAEliminar)
+    .subscribe((idUsuarioAEliminar)=> console.log(idUsuarioAEliminar))
+
+    this.dataSource.data = [...this.dataSource.data];
+  }
+
+  detalleUsuario(usuarioId: number): void{
+    this.router.navigate([usuarioId], {
+      relativeTo: this.activatedRoute
+    })
+  }
 }

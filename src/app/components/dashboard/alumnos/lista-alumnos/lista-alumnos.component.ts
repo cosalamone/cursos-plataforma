@@ -117,7 +117,7 @@ export class ListaAlumnosComponent implements OnDestroy{
       },
     });
 
-    // find alumno and replace - guardar todo en datasource para que se implima nueva tabla
+    // find alumno and replace - guardar todo en datasource para que se imprima nueva tabla
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
         let alumno: Alumno = valor;

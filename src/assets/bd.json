@@ -155,6 +155,16 @@
       "password": "fran",
       "token": "87hg65f4dxecvbjtvvb",
       "role": "admin"
+    },
+    {
+      "nombreApellido": "asda",
+      "email": "asda@mail.com",
+      "password": "asda",
+      "token": "sxdcfvgbhjre3",
+      "role": [
+        "user"
+      ],
+      "id": 5
     }
   ]
 }
