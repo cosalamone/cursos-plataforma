@@ -46,9 +46,29 @@
         Alumnos inscriptos
       </mat-panel-title>
       <mat-panel-description>
-        Cargar alumnos inscriptos
+        Ver listado de alumnos inscriptos
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
+
+    <ng-container>
+      <mat-selection-list #inscripciones *ngFor=" let alumno of alumnosInscriptos">
+
+        <mat-list-item class="item">
+          {{alumno.id}}
+        </mat-list-item>
+
+        <mat-list-item class="item">
+          {{alumno.nombre}}
+        </mat-list-item>
+        
+        <a>
+          <mat-icon matListItemIcon class="icon" (click)="eliminarAlumnoDeCurso()">delete</mat-icon>
+        </a>
+        
+      </mat-selection-list>
+
+
+
+    </ng-container>
   </mat-expansion-panel>
 </mat-accordion>
