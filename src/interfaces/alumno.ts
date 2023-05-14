@@ -5,4 +5,5 @@ export interface Alumno {
   dni: number;
   telefono: number;
   email: string;
+  cursos?: string[];
 }

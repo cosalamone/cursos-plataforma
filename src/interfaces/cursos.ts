@@ -3,5 +3,6 @@ export interface Curso {
   nombre: string;
   duracion?: number;
   docente: string;
+  alumnosInscriptos?: string[];
 
 }

@@ -17,7 +17,11 @@
       "apellido": "Ayala",
       "dni": 12765634,
       "telefono": 15678534,
-      "email": "mail@mail.com"
+      "email": "mail@mail.com",
+      "cursos": [
+        "Javascript",
+        "Angular"
+      ]
     },
     {
       "id": 4,
@@ -25,7 +29,11 @@
       "apellido": "String",
       "dni": 12890834,
       "telefono": 157897,
-      "email": "mail@mail.com"
+      "email": "mail@mail.com",
+      "cursos": [
+        "vue",
+        "Angular"
+      ]
     },
     {
       "id": 5,
@@ -33,7 +41,12 @@
       "apellido": "Otero",
       "dni": 85235783,
       "telefono": 15789645,
-      "email": "mail@mail.com"
+      "email": "mail@mail.com",
+      "cursos": [
+        "vue",
+        "Javascript",
+        "Angular"
+      ]
     },
     {
       "id": 6,
@@ -41,7 +54,11 @@
       "apellido": "Basile",
       "dni": 16786234,
       "telefono": 157896453,
-      "email": "mail@mail.com"
+      "email": "mail@mail.com",
+      "cursos": [
+        "vue",
+        "Javascript"
+      ]
     },
     {
       "id": 7,
@@ -49,7 +66,10 @@
       "apellido": "Paredes",
       "dni": 74542416,
       "telefono": 15789456,
-      "email": "mail@mail.com"
+      "email": "mail@mail.com",
+      "cursos": [
+        "Angular"
+      ]
     },
     {
       "id": 9,
@@ -57,7 +77,10 @@
       "apellido": "Rodriguez",
       "dni": 97423421,
       "telefono": 15556987,
-      "email": "mail@mail.com"
+      "email": "mail@mail.com",
+      "cursos": [
+        "Javascript"
+      ]
     },
     {
       "nombre": "asda",
@@ -165,6 +188,48 @@
         "user"
       ],
       "id": 5
+    }
+  ],
+  "inscripciones": [
+    {
+      "idCurso": 1,
+      "idAlumno": 1
+    },
+    {
+      "idCurso": 1,
+      "idAlumno": 3
+    },
+    {
+      "idCurso": 1,
+      "idAlumno": 4
+    },
+    {
+      "idCurso": 1,
+      "idAlumno": 6
+    },
+    {
+      "idCurso": 2,
+      "idAlumno": 1
+    },
+    {
+      "idCurso": 2,
+      "idAlumno": 2
+    },
+    {
+      "idCurso": 2,
+      "idAlumno": 5
+    },
+    {
+      "idCurso": 3,
+      "idAlumno": 1
+    },
+    {
+      "idCurso": 3,
+      "idAlumno": 3
+    },
+    {
+      "idCurso": 3,
+      "idAlumno": 4
     }
   ]
 }
