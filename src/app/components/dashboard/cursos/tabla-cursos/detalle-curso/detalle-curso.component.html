@@ -51,21 +51,54 @@
     </mat-expansion-panel-header>
 
     <ng-container>
-      <mat-selection-list #inscripciones *ngFor=" let alumno of alumnosInscriptos">
+      <!-- <mat-selection-list *ngFor=" let alumno of alumnosInscriptos">
+        <mat-list-item class="item" >
+          
+        </mat-list-item>
 
         <mat-list-item class="item">
           {{alumno.id}}
         </mat-list-item>
 
         <mat-list-item class="item">
-          {{alumno.nombre}}
+          {{alumno.nombre}} {{alumno.apellido}}
         </mat-list-item>
         
         <a>
-          <mat-icon matListItemIcon class="icon" (click)="eliminarAlumnoDeCurso()">delete</mat-icon>
+          <mat-icon matListItemIcon class="icon" (click)="eliminarAlumnoDeCurso(1)">delete</mat-icon>
         </a>
         
-      </mat-selection-list>
+      </mat-selection-list> -->
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+
+        <!-- idInscripcion Column -->
+        <ng-container matColumnDef="idAlumno">
+          <th mat-header-cell *matHeaderCellDef> Id del Alumno </th>
+          <td mat-cell *matCellDef="let alumno"> {{alumno.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nombre y apellido del alumno </th>
+          <td mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="opciones">
+          <th mat-header-cell *matHeaderCellDef appFontSize> Eliminar Alumno </th>
+          <td mat-cell *matCellDef="let alumno">
+
+            <button (click)="eliminarAlumnoDeCurso(alumno.id)" mat-menu-item>
+              <mat-icon>delete</mat-icon>
+            </button>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
 
 
 
