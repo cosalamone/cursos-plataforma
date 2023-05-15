@@ -112,12 +112,6 @@
       "nombre": "Curso 4",
       "duracion": 10,
       "docente": "pepito4"
-    },
-    {
-      "id": 9,
-      "nombre": "Curso Nueve",
-      "duracion": 11,
-      "docente": "Lala"
     }
   ],
   "docentes": [
@@ -192,52 +186,47 @@
   ],
   "inscripciones": [
     {
-      "idInscripcion": 1,
+      "id": 1,
       "idCurso": 1,
       "idAlumno": 1
     },
     {
-      "idInscripcion": 2,
+      "id": 2,
       "idCurso": 1,
       "idAlumno": 3
     },
     {
-      "idInscripcion": 3,
+      "id": 3,
       "idCurso": 1,
       "idAlumno": 4
     },
     {
-      "idInscripcion": 4,
-      "idCurso": 1,
-      "idAlumno": 6
-    },
-    {
-      "idInscripcion": 5,
+      "id": 5,
       "idCurso": 2,
       "idAlumno": 1
     },
     {
-      "idInscripcion": 6,
-      "idCurso": 2,
-      "idAlumno": 2
+      "id": 6,
+      "idCurso": 1,
+      "idAlumno": 1
     },
     {
-      "idInscripcion": 7,
+      "id": 7,
       "idCurso": 2,
       "idAlumno": 5
     },
     {
-      "idInscripcion": 8,
+      "id": 8,
       "idCurso": 3,
       "idAlumno": 1
     },
     {
-      "idInscripcion": 9,
+      "id": 9,
       "idCurso": 3,
       "idAlumno": 3
     },
     {
-      "idInscripcion": 10,
+      "id": 10,
       "idCurso": 3,
       "idAlumno": 4
     }

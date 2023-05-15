@@ -44,7 +44,7 @@ export class DetalleCursoComponent {
           .getAlumnos()
           .subscribe(
             (dataAlumnos) => {
-              console.log(dataAlumnos)
+              // console.log(dataAlumnos)
               this.alumnosInscriptos = dataAlumnos.filter(x => this.inscripciones?.some(insc => insc.idAlumno === x.id))
 
               this.dataSource= new MatTableDataSource(this.alumnosInscriptos as any) // faltaria poder ver o cargar el numero de inscripcion, para poder acceder y hacer el eliminar 
@@ -52,7 +52,7 @@ export class DetalleCursoComponent {
             }
           );
 
-        console.log(this.inscripciones)
+        // console.log(this.inscripciones)
 
       })
 
@@ -69,7 +69,7 @@ export class DetalleCursoComponent {
     );
     this.inscripciones?.splice(posicionAEliminar, 1);
 
-    this.inscripcionesService.deleteAlumnoDeCurso(InscripcionAEliminar?.idInscripcion, InscripcionAEliminar)
+    this.inscripcionesService.deleteAlumnoDeCurso(InscripcionAEliminar?.id)
     .subscribe((idInscripcionAEliminar)=> console.log(idInscripcionAEliminar))
 
       this.dataSource.data= [...this.dataSource.data];
