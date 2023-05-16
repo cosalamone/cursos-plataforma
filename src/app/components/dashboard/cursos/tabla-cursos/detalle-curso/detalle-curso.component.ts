@@ -70,17 +70,19 @@ export class DetalleCursoComponent {
     )
     console.log('inscripcionAEliminar = ' + InscripcionAEliminar + 'deberia ser un obj con todos los datos de indcripcion')
 
-    let posicionAEliminar = this.dataSource.data.findIndex(
-      (inscripcion) => inscripcion.idAlumno === idAlumnoAEliminar
+    let posicionAEliminar = this.dataSource.data.findIndex( // tiene que buscar en el array de alumnosInscriptios la posicionAEliminar del idAlumno OK 
+      (alumnoInscripto) => alumnoInscripto.id === idAlumnoAEliminar
     );
     console.log('posicionAEliminar = ' + posicionAEliminar + 'deberia ser un number que inndica la posicion que será tulizada en el splice para borrar')
 
-    this.inscripciones?.splice(posicionAEliminar, 1);
+    this.inscripciones?.splice(posicionAEliminar, 1); // falta asignar este nuevo array al DataSource pero me tira error por typescript
 
-    this.inscripcionesService.deleteAlumnoDeCurso(InscripcionAEliminar?.id)
+    let idInscripcionAEliminar = InscripcionAEliminar?.id
+    
+    this.inscripcionesService.deleteAlumnoDeCurso(idInscripcionAEliminar)
       .subscribe((idInscripcionAEliminar) => console.log(idInscripcionAEliminar))
 
-    this.dataSource.data = [...this.dataSource.data];
+    this.dataSource.data = [...this.dataSource.data]; // no se imprime la taba sin el elemento eliminado 
 
   }
 }
