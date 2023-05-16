@@ -83,7 +83,7 @@
           <th mat-header-cell *matHeaderCellDef> Eliminar Alumno </th>
           <td mat-cell *matCellDef="let curso">
 
-            <button mat-menu-item (click)="eliminarCursoDeAlumno()">
+            <button mat-menu-item (click)="eliminarCursoDeAlumno(curso.id)">
               <mat-icon>delete</mat-icon>
             </button>
         </ng-container>

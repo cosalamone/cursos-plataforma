@@ -171,11 +171,6 @@
   ],
   "inscripciones": [
     {
-      "id": 1,
-      "idCurso": 1,
-      "idAlumno": 1
-    },
-    {
       "id": 2,
       "idCurso": 1,
       "idAlumno": 3

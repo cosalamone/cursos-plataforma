@@ -55,12 +55,29 @@ export class DetalleAlumnoComponent {
               this.dataSource = new MatTableDataSource(this.cursosInscriptos as any)
 
             }
-          );     
-          })
+          );
+      })
   }
 
 
-  eliminarCursoDeAlumno() {
+  eliminarCursoDeAlumno(idCurso: number): void {
+    let idCursoAEliminar = idCurso;
+    let InscripcionAEliminar = this.inscripciones?.find(
+      (inscripcion) => inscripcion.idCurso === idCursoAEliminar
+    )
+
+    let posicionAEliminar = this.dataSource.data.findIndex(
+      (cursoInscripto)=> cursoInscripto.id === idCursoAEliminar
+    );
+
+    this.dataSource.data?.splice(posicionAEliminar, 1)
+
+    let idInscripcionAEliminar = InscripcionAEliminar?.id
+
+    this.inscripcionesService.deleteCursoDeAlumno(idInscripcionAEliminar)
+    .subscribe((idInscripcionAEliminar)=> console.log(idInscripcionAEliminar))
+
+    this.dataSource.data = [...this.dataSource.data]; 
 
   }
 

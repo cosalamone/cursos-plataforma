@@ -23,6 +23,9 @@ export class InscripcionesService {
   deleteAlumnoDeCurso(idInscripcion: number | undefined){
     return this.http.delete('http://localhost:3000/inscripciones/' + idInscripcion )
   }
+  deleteCursoDeAlumno(idInscripcion: number | undefined){
+    return this.http.delete('http://localhost:3000/inscripciones/' + idInscripcion )
+  }
 }
 
 
