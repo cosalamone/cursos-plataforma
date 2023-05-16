@@ -203,17 +203,12 @@
     {
       "id": 5,
       "idCurso": 2,
-      "idAlumno": 1
+      "idAlumno": 5
     },
     {
       "id": 6,
-      "idCurso": 1,
-      "idAlumno": 1
-    },
-    {
-      "id": 7,
       "idCurso": 2,
-      "idAlumno": 5
+      "idAlumno": 6
     },
     {
       "id": 8,
