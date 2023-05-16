@@ -45,16 +45,16 @@ export class DetalleCursoComponent {
       .subscribe((objeCurso) => {
 
         this.inscripciones = objeCurso;
-        console.log(this.inscripciones) // muestra 2 inscripciones en el idcurso2 OK
+        console.log(this.inscripciones) 
         this.alumnosService
           .getAlumnos()
           .subscribe(
             (dataAlumnos) => {
-              console.log(dataAlumnos) // tengo 8 alumnos en el array, de los cuales sólo 2 están en el idCurso2 OK
+              console.log(dataAlumnos) 
               this.alumnosInscriptos = dataAlumnos.filter(x => this.inscripciones?.some(insc => insc.idAlumno === x.id))
               console.log(this.alumnosInscriptos) // dio [] con 2 almnos OK 
 
-              this.dataSource = new MatTableDataSource(this.alumnosInscriptos as any) // carga tabla OK 
+              this.dataSource = new MatTableDataSource(this.alumnosInscriptos as any) 
 
             }
           );
@@ -70,19 +70,19 @@ export class DetalleCursoComponent {
     )
     console.log('inscripcionAEliminar = ' + InscripcionAEliminar + 'deberia ser un obj con todos los datos de indcripcion')
 
-    let posicionAEliminar = this.dataSource.data.findIndex( // tiene que buscar en el array de alumnosInscriptios la posicionAEliminar del idAlumno OK 
+    let posicionAEliminar = this.dataSource.data.findIndex( 
       (alumnoInscripto) => alumnoInscripto.id === idAlumnoAEliminar
     );
     console.log('posicionAEliminar = ' + posicionAEliminar + 'deberia ser un number que inndica la posicion que será tulizada en el splice para borrar')
 
-    this.inscripciones?.splice(posicionAEliminar, 1); // falta asignar este nuevo array al DataSource pero me tira error por typescript
+    this.dataSource.data?.splice(posicionAEliminar, 1); 
 
     let idInscripcionAEliminar = InscripcionAEliminar?.id
     
     this.inscripcionesService.deleteAlumnoDeCurso(idInscripcionAEliminar)
       .subscribe((idInscripcionAEliminar) => console.log(idInscripcionAEliminar))
 
-    this.dataSource.data = [...this.dataSource.data]; // no se imprime la taba sin el elemento eliminado 
+    this.dataSource.data = [...this.dataSource.data]; 
 
   }
 }

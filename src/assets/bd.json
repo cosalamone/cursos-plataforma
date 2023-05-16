@@ -172,6 +172,16 @@
       "password": "fran",
       "token": "87hg65f4dxecvbjtvvb",
       "role": "admin"
+    },
+    {
+      "nombreApellido": "asda",
+      "email": "asda@mail.com",
+      "password": "asda",
+      "token": "sxdcfvgbhjre3",
+      "role": [
+        "user"
+      ],
+      "id": 5
     }
   ],
   "inscripciones": [
@@ -196,9 +206,9 @@
       "idAlumno": 5
     },
     {
-      "id": 8,
+      "id": 6,
       "idCurso": 2,
-      "idAlumno": 4
+      "idAlumno": 6
     },
     {
       "id": 9,
