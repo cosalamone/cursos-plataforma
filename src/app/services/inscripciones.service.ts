@@ -16,6 +16,10 @@ export class InscripcionesService {
     return this.http.get<Array<Inscripcion>>('http://localhost:3000/inscripciones?idCurso=' + idCurso)
   }
 
+  getCursosDeIdAlumno(idAlumno: number | undefined): Observable<Array<Inscripcion>>{
+    return this.http.get<Array<Inscripcion>>('http://localhost:3000/inscripciones?idAlumno=' + idAlumno)
+  }
+
   deleteAlumnoDeCurso(idInscripcion: number | undefined){
     return this.http.delete('http://localhost:3000/inscripciones/' + idInscripcion )
   }

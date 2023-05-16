@@ -10,9 +10,9 @@ export class CursosService {
 
   constructor(private http: HttpClient) {}
 
-  getCursos(){
+  getCursos(): Observable<Array<Curso>>{
 
-    return this.http.get('http://localhost:3000/cursos/')
+    return this.http.get<Array<Curso>>('http://localhost:3000/cursos/')
   }
 
   getCursoPorId(id:number): Observable<Curso | undefined>{

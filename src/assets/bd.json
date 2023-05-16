@@ -1,15 +1,20 @@
 {
   "alumnos": [
     {
+      "id": 1,
+      "nombre": "Paula",
+      "apellido": "Rivera",
+      "dni": 523442,
+      "telefono": 15678534,
+      "email": "mail@mail.com"
+    },
+    {
+      "id": 2,
       "nombre": "aaq",
       "apellido": "Cerezo",
       "email": "mail@mail.com",
       "dni": 123644,
-      "telefono": "12313131",
-      "cursos": [
-        "Javascript"
-      ],
-      "id": 2
+      "telefono": "12313131"
     },
     {
       "id": 3,
@@ -17,11 +22,7 @@
       "apellido": "Ayala",
       "dni": 12765634,
       "telefono": 15678534,
-      "email": "mail@mail.com",
-      "cursos": [
-        "Javascript",
-        "Angular"
-      ]
+      "email": "mail@mail.com"
     },
     {
       "id": 4,
@@ -29,11 +30,7 @@
       "apellido": "String",
       "dni": 12890834,
       "telefono": 157897,
-      "email": "mail@mail.com",
-      "cursos": [
-        "vue",
-        "Angular"
-      ]
+      "email": "mail@mail.com"
     },
     {
       "id": 5,
@@ -41,12 +38,7 @@
       "apellido": "Otero",
       "dni": 85235783,
       "telefono": 15789645,
-      "email": "mail@mail.com",
-      "cursos": [
-        "vue",
-        "Javascript",
-        "Angular"
-      ]
+      "email": "mail@mail.com"
     },
     {
       "id": 6,
@@ -54,11 +46,7 @@
       "apellido": "Basile",
       "dni": 16786234,
       "telefono": 157896453,
-      "email": "mail@mail.com",
-      "cursos": [
-        "vue",
-        "Javascript"
-      ]
+      "email": "mail@mail.com"
     },
     {
       "id": 7,
@@ -66,10 +54,7 @@
       "apellido": "Paredes",
       "dni": 74542416,
       "telefono": 15789456,
-      "email": "mail@mail.com",
-      "cursos": [
-        "Angular"
-      ]
+      "email": "mail@mail.com"
     },
     {
       "id": 9,
@@ -77,24 +62,24 @@
       "apellido": "Rodriguez",
       "dni": 97423421,
       "telefono": 15556987,
-      "email": "mail@mail.com",
-      "cursos": [
-        "Javascript"
-      ]
+      "email": "mail@mail.com"
     },
     {
+      "id": 17,
       "nombre": "asda",
       "apellido": "asda",
       "email": "mail@mail.com",
       "dni": "123123131",
-      "telefono": "123123131",
-      "cursos": [
-        "Angular"
-      ],
-      "id": 17
+      "telefono": "123123131"
     }
   ],
   "cursos": [
+    {
+      "id": 1,
+      "nombre": "Curso 1",
+      "duracion": 9,
+      "docente": "pepito1"
+    },
     {
       "id": 2,
       "nombre": "Curso 2",

@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
@@ -28,20 +27,20 @@ export class DetalleCursoComponent {
 
   dataSource!: MatTableDataSource<any, any>
 
-  constructor(private activatesRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
     private cursosService: CursosService,
     private inscripcionesService: InscripcionesService,
     private alumnosService: AlumnosService,) {
 
-    console.log(this.activatesRoute.snapshot.params)
+    console.log(this.activatedRoute.snapshot.params)
 
     // para ver el detalle del curso
-    this.cursosService.getCursoPorId(parseInt(this.activatesRoute.snapshot.params['idCurso']))
+    this.cursosService.getCursoPorId(parseInt(this.activatedRoute.snapshot.params['idCurso']))
       .subscribe((curso) => this.curso = curso);
 
 
     // para ver el detalle de los alumnos inscriptos en ese curso --> con una tabla, donde pueda eliminarse la inscripcion de un alumno 
-    this.inscripcionesService.getAlumnosDeIdCurso(parseInt(this.activatesRoute.snapshot.params['idCurso']))
+    this.inscripcionesService.getAlumnosDeIdCurso(parseInt(this.activatedRoute.snapshot.params['idCurso']))
       .subscribe((objeCurso) => {
 
         this.inscripciones = objeCurso;
@@ -52,7 +51,7 @@ export class DetalleCursoComponent {
             (dataAlumnos) => {
               console.log(dataAlumnos) 
               this.alumnosInscriptos = dataAlumnos.filter(x => this.inscripciones?.some(insc => insc.idAlumno === x.id))
-              console.log(this.alumnosInscriptos) // dio [] con 2 almnos OK 
+              console.log(this.alumnosInscriptos) 
 
               this.dataSource = new MatTableDataSource(this.alumnosInscriptos as any) 
 

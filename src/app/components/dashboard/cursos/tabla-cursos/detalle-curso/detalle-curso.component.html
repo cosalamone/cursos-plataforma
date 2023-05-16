@@ -51,30 +51,9 @@
     </mat-expansion-panel-header>
 
     <ng-container>
-      <!-- <mat-selection-list *ngFor=" let alumno of alumnosInscriptos">
-        <mat-list-item class="item" >
-          
-        </mat-list-item>
-
-        <mat-list-item class="item">
-          {{alumno.id}}
-        </mat-list-item>
-
-        <mat-list-item class="item">
-          {{alumno.nombre}} {{alumno.apellido}}
-        </mat-list-item>
-        
-        <a>
-          <mat-icon matListItemIcon class="icon" (click)="eliminarAlumnoDeCurso(1)">delete</mat-icon>
-        </a>
-        
-      </mat-selection-list> -->
-
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-
-
-        <!-- idInscripcion Column -->
+        <!-- idAlumno Column -->
         <ng-container matColumnDef="idAlumno">
           <th mat-header-cell *matHeaderCellDef> Id del Alumno </th>
           <td mat-cell *matCellDef="let alumno"> {{alumno.id}} </td>
@@ -90,7 +69,7 @@
           <th mat-header-cell *matHeaderCellDef> Eliminar Alumno </th>
           <td mat-cell *matCellDef="let alumno">
 
-            <button mat-menu-item (click)="eliminarAlumnoDeCurso(alumno.id)" >
+            <button mat-menu-item (click)="eliminarAlumnoDeCurso(alumno.id)">
               <mat-icon>delete</mat-icon>
             </button>
 
@@ -99,9 +78,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-
-
-
     </ng-container>
+    
   </mat-expansion-panel>
 </mat-accordion>
