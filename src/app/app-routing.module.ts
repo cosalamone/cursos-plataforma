@@ -8,6 +8,8 @@ import { LogInComponent } from './components/auth/log-in/log-in.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { LoginGuard } from './guards/login.guard';
+import { InscripcionesComponent } from './components/dashboard/inscripciones/inscripciones/inscripciones.component';
+import { InscripcionesModule } from './components/dashboard/inscripciones/lista-inscripciones/inscripciones.module';
 
 const routes: Routes = [
 
@@ -29,6 +31,12 @@ const routes: Routes = [
     // pathMatch: 'full',
     canActivate: [AuthGuard],
     loadChildren: () => import('./components/dashboard/docentes/lista-docentes/lista-docentes.module').then((m)=>m.ListaDocentesModule)
+  },
+  {
+    path:'inscripciones',
+    canActivate: [AuthGuard],
+    loadChildren: ()=> import('./components/dashboard/inscripciones/lista-inscripciones/inscripciones.module').then((m)=>m.InscripcionesModule)
+
   },
   {
     path: 'usuarios',

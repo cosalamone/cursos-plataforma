@@ -21,6 +21,11 @@ const links: NavItem[] = [
     requiresAdmin: true,
   },
   {
+    url: 'inscripciones',
+    title: 'Inscripciones',
+    requiresAdmin: true,
+  },
+  {
     url:'usuarios',
     title:'Usuarios',
     requiresAdmin: true,

@@ -1,0 +1,6 @@
+<p *ngIf="(state$ |async)?.loading; else ifNotLoading">Cargando data ...</p>
+<ng-template #ifNotLoading>
+  <pre>
+     {{(state$ |async)?.inscripciones |json}}
+  </pre> 
+</ng-template>
