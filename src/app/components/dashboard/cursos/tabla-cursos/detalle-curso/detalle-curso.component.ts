@@ -25,6 +25,7 @@ export class DetalleCursoComponent {
     'opciones'
   ];
 
+  tieneAlumnosInscriptos!: boolean;
   dataSource!: MatTableDataSource<any, any>
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -44,20 +45,28 @@ export class DetalleCursoComponent {
       .subscribe((objeCurso) => {
 
         this.inscripciones = objeCurso;
-        console.log(this.inscripciones) 
+        console.log(this.inscripciones)
         this.alumnosService
           .getAlumnos()
           .subscribe(
             (dataAlumnos) => {
-              console.log(dataAlumnos) 
+              console.log(dataAlumnos)
               this.alumnosInscriptos = dataAlumnos.filter(x => this.inscripciones?.some(insc => insc.idAlumno === x.id))
-              console.log(this.alumnosInscriptos) 
+              console.log(this.alumnosInscriptos)
 
-              this.dataSource = new MatTableDataSource(this.alumnosInscriptos as any) 
+              this.dataSource = new MatTableDataSource(this.alumnosInscriptos as any)
+
+
+              if (this.alumnosInscriptos !== undefined && this.alumnosInscriptos.length > 0) {
+                this.tieneAlumnosInscriptos = true;
+              } else {
+                this.tieneAlumnosInscriptos = false;
+              }
 
             }
           );
       })
+
 
   }
 
@@ -69,19 +78,19 @@ export class DetalleCursoComponent {
     )
     console.log('inscripcionAEliminar = ' + InscripcionAEliminar + 'deberia ser un obj con todos los datos de indcripcion')
 
-    let posicionAEliminar = this.dataSource.data.findIndex( 
+    let posicionAEliminar = this.dataSource.data.findIndex(
       (alumnoInscripto) => alumnoInscripto.id === idAlumnoAEliminar
     );
     console.log('posicionAEliminar = ' + posicionAEliminar + 'deberia ser un number que inndica la posicion que será tulizada en el splice para borrar')
 
-    this.dataSource.data?.splice(posicionAEliminar, 1); 
+    this.dataSource.data?.splice(posicionAEliminar, 1);
 
     let idInscripcionAEliminar = InscripcionAEliminar?.id
-    
-    this.inscripcionesService.deleteAlumnoDeCurso(idInscripcionAEliminar)
+
+    this.inscripcionesService.eliminarInscripcionPorId(idInscripcionAEliminar)
       .subscribe((idInscripcionAEliminar) => console.log(idInscripcionAEliminar))
 
-    this.dataSource.data = [...this.dataSource.data]; 
+    this.dataSource.data = [...this.dataSource.data];
 
   }
 }

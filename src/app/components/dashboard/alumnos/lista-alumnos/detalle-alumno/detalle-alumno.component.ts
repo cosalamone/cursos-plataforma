@@ -24,6 +24,7 @@ export class DetalleAlumnoComponent {
     'opciones'
   ];
 
+  estaInscriptoEnCursos!: boolean;
   dataSource!: MatTableDataSource<any, any>
 
 
@@ -53,10 +54,21 @@ export class DetalleAlumnoComponent {
               console.log(this.cursosInscriptos)
 
               this.dataSource = new MatTableDataSource(this.cursosInscriptos as any)
-
+              if (this.cursosInscriptos !== undefined && this.cursosInscriptos?.length > 0) {
+                this.estaInscriptoEnCursos = true;
+              } else {
+                this.estaInscriptoEnCursos = false;
+              }
             }
           );
+
+
       })
+
+
+
+
+
   }
 
 
@@ -67,17 +79,17 @@ export class DetalleAlumnoComponent {
     )
 
     let posicionAEliminar = this.dataSource.data.findIndex(
-      (cursoInscripto)=> cursoInscripto.id === idCursoAEliminar
+      (cursoInscripto) => cursoInscripto.id === idCursoAEliminar
     );
 
     this.dataSource.data?.splice(posicionAEliminar, 1)
 
     let idInscripcionAEliminar = InscripcionAEliminar?.id
 
-    this.inscripcionesService.deleteCursoDeAlumno(idInscripcionAEliminar)
-    .subscribe((idInscripcionAEliminar)=> console.log(idInscripcionAEliminar))
+    this.inscripcionesService.eliminarInscripcionPorId(idInscripcionAEliminar)
+      .subscribe((idInscripcionAEliminar) => console.log(idInscripcionAEliminar))
 
-    this.dataSource.data = [...this.dataSource.data]; 
+    this.dataSource.data = [...this.dataSource.data];
 
   }
 

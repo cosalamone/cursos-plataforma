@@ -60,11 +60,16 @@
         Cursos
       </mat-panel-title>
       <mat-panel-description>
-        {{alumno?.cursos}}
+        <p>
+          Listado de cursos
+        </p>
+
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <ng-container>
+
+    <!--Cae el estaInscriptoEnCrusos en undefined = cae el boolean en false y salta que no esta inscripto -->
+    <ng-container *ngIf="estaInscriptoEnCursos; else  noEstaInscripto">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- idCurso Column -->
@@ -93,6 +98,11 @@
       </table>
 
     </ng-container>
-
+    <ng-template #noEstaInscripto>
+      <mat-icon class="material-symbols-outlined" class="m-3">
+        warning
+      </mat-icon>
+      <p>Este alumno no está inscripto en ningun curso</p>
+    </ng-template>
   </mat-expansion-panel>
 </mat-accordion>

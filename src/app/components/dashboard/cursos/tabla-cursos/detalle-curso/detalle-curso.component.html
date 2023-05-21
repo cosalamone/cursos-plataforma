@@ -46,11 +46,22 @@
         Alumnos inscriptos
       </mat-panel-title>
       <mat-panel-description>
-        Ver listado de alumnos inscriptos
+
+        <p *ngIf="tieneAlumnosInscriptos; else  noTieneAlumnos">
+          Ver listado de alumnos inscriptos
+        </p>
+        <ng-template #noTieneAlumnos>
+          <mat-icon class="material-symbols-outlined" class="m-3">
+            warning
+          </mat-icon>
+          <p>Este curso no tiene inscripto ningún alumno</p>
+        </ng-template>
+
+
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <ng-container>
+    <ng-container *ngIf="tieneAlumnosInscriptos; else  noTieneAlumnos">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- idAlumno Column -->
@@ -79,6 +90,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </ng-container>
-    
+
   </mat-expansion-panel>
 </mat-accordion>
