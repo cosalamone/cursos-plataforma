@@ -51,14 +51,11 @@ export class ListaInscripcionesComponent implements OnInit {
     this.inscripcionesService.getInscripciones()
     .subscribe((objeInscripciones) => {
       this.inscripciones = objeInscripciones;
-      console.log(this.inscripciones)
       this.cursosService
         .getCursos()
         .subscribe(
           (dataCursos) => {
-            console.log(dataCursos)
             this.cursosInscriptos = dataCursos.filter(x => this.inscripciones?.some(insc => insc.idCurso === x.id))
-            console.log(this.cursosInscriptos)
 
             this.dataSource = new MatTableDataSource(this.cursosInscriptos as any)
 

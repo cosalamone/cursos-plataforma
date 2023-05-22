@@ -13,7 +13,7 @@ export class FormAbmInscripcionesComponent {
 
   registerForm: FormGroup;
   selectedValue: string | undefined;
-  alumnos = this.alumnosService.getAlumnos().subscribe((alumnos)=> console.log(alumnos));
+  alumnos = this.alumnosService.getAlumnos().subscribe();
 
   nombreControl = new FormControl('', [Validators.required])
   cursosControl = new FormControl('', [Validators.required]);

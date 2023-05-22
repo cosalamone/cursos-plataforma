@@ -33,7 +33,6 @@ export class DetalleCursoComponent {
     private inscripcionesService: InscripcionesService,
     private alumnosService: AlumnosService,) {
 
-    console.log(this.activatedRoute.snapshot.params)
 
     // para ver el detalle del curso
     this.cursosService.getCursoPorId(parseInt(this.activatedRoute.snapshot.params['idCurso']))
@@ -45,14 +44,14 @@ export class DetalleCursoComponent {
       .subscribe((objeCurso) => {
 
         this.inscripciones = objeCurso;
-        console.log(this.inscripciones)
+ 
         this.alumnosService
           .getAlumnos()
           .subscribe(
             (dataAlumnos) => {
-              console.log(dataAlumnos)
+        
               this.alumnosInscriptos = dataAlumnos.filter(x => this.inscripciones?.some(insc => insc.idAlumno === x.id))
-              console.log(this.alumnosInscriptos)
+       
 
               this.dataSource = new MatTableDataSource(this.alumnosInscriptos as any)
 
@@ -76,19 +75,18 @@ export class DetalleCursoComponent {
     let InscripcionAEliminar = this.inscripciones?.find(
       (inscripcion) => inscripcion.idAlumno === idAlumnoAEliminar
     )
-    console.log('inscripcionAEliminar = ' + InscripcionAEliminar + 'deberia ser un obj con todos los datos de indcripcion')
+
 
     let posicionAEliminar = this.dataSource.data.findIndex(
       (alumnoInscripto) => alumnoInscripto.id === idAlumnoAEliminar
     );
-    console.log('posicionAEliminar = ' + posicionAEliminar + 'deberia ser un number que inndica la posicion que será tulizada en el splice para borrar')
 
     this.dataSource.data?.splice(posicionAEliminar, 1);
 
     let idInscripcionAEliminar = InscripcionAEliminar?.id
 
     this.inscripcionesService.eliminarInscripcionPorId(idInscripcionAEliminar)
-      .subscribe((idInscripcionAEliminar) => console.log(idInscripcionAEliminar))
+      .subscribe()
 
     this.dataSource.data = [...this.dataSource.data];
 

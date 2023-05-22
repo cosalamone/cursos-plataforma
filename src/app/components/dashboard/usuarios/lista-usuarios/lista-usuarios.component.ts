@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,7 +13,7 @@ import { FormAbmUsuariosComponent } from './form-abm-usuarios/form-abm-usuarios.
   templateUrl: './lista-usuarios.component.html',
   styleUrls: ['./lista-usuarios.component.scss']
 })
-export class ListaUsuariosComponent implements OnDestroy {
+export class ListaUsuariosComponent  {
 
   authUserObs$: Observable<Usuario | null>;
 
@@ -51,9 +51,7 @@ export class ListaUsuariosComponent implements OnDestroy {
       )
   }
 
-  ngOnDestroy(): void {
-    console.log('me destruí ')
-   }
+
 
   abrirFormABMUsuarios(){
     const dialog = this.matDialog.open(FormAbmUsuariosComponent);
@@ -64,7 +62,7 @@ export class ListaUsuariosComponent implements OnDestroy {
         usuario.id = newId;
 
         this.usuariosService.postUsuario(usuario)
-        .subscribe((usuario)=> console.log(usuario))
+        .subscribe()
 
         this.dataSource.data = [...this.dataSource.data, usuario];
       }
@@ -91,7 +89,7 @@ export class ListaUsuariosComponent implements OnDestroy {
         this.dataSource.data[posicionAEditar] = usuario;
 
         this.usuariosService.putUsuario(usuario, idUsuarioAModificar)
-        .subscribe(usuario=> console.log(usuario))
+        .subscribe()
 
         this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
@@ -106,7 +104,7 @@ export class ListaUsuariosComponent implements OnDestroy {
     this.dataSource.data.splice(posicionAEliminar,1);
 
     this.usuariosService.deleteUsuario(idUsuarioAEliminar)
-    .subscribe((idUsuarioAEliminar)=> console.log(idUsuarioAEliminar))
+    .subscribe()
 
     this.dataSource.data = [...this.dataSource.data];
   }

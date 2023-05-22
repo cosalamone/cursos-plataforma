@@ -38,7 +38,6 @@ export class LogInComponent implements OnInit {
     if (this.authForm.invalid) {
       this.authForm.markAllAsTouched();
     } else {
-      console.log(this.authForm.value);
       this.authService.logIn({
         ...(this.authForm.value as Usuario) //revisar datos de usuario vs los enviado en el form
       })

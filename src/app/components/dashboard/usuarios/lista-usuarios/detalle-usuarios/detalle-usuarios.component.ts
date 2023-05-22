@@ -15,7 +15,6 @@ export class DetalleUsuariosComponent {
 
   constructor(private activatedRoute: ActivatedRoute,
     private usuariosService: UsuariosService) {
-    console.log(this.activatedRoute.snapshot.params)
 
     this.usuariosService.getUsuarioPorId(parseInt(this.activatedRoute.snapshot.params['idUsuario']))
       .subscribe((usuario) => this.usuario = usuario)

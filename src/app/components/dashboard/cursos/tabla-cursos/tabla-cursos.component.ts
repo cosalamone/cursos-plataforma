@@ -67,7 +67,7 @@ export class TablaCursosComponent {
         curso.id = newId;
 
         this.cursosService.postNewCurso(curso)
-        .subscribe((curso)=> console.log(curso))
+        .subscribe()
         this.dataSource.data= [...this.dataSource.data, curso];
       }
     })
@@ -90,7 +90,7 @@ export class TablaCursosComponent {
         this.dataSource.data[posicionAEditar]= curso;
 
         this.cursosService.putCurso(curso, idCursoModificar)
-        .subscribe(curso=>console.log(curso))
+        .subscribe()
         this.dataSource= new MatTableDataSource(this.dataSource.data)
       }
     });
@@ -103,10 +103,10 @@ export class TablaCursosComponent {
     this.dataSource.data.splice(posicionAEliminar, 1);
 
     this.cursosService.deleteCurso(idCursoAEliminar)
-    .subscribe((idCursoAEliminar)=>console.log(idCursoAEliminar))
+    .subscribe()
 
     this.dataSource.data = [...this.dataSource.data];
-    console.log(posicionAEliminar);
+   
   }
 
   detalleCurso(cursoId: number): void {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { FormAbmAlumnosComponent } from './form-abm-alumnos/form-abm-alumnos.component';
@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./lista-alumnos.component.scss'],
 })
 
-export class ListaAlumnosComponent implements OnDestroy{
+export class ListaAlumnosComponent  {
 
   authUserObs$: Observable<Usuario | null>;
 
@@ -83,9 +83,7 @@ export class ListaAlumnosComponent implements OnDestroy{
       );
   }
 
-  ngOnDestroy(): void {
-   console.log('me destruí ')
-  }
+
 
   abrirFormABMAlumnos(): void {
     const dialog = this.matDialog.open(FormAbmAlumnosComponent);
@@ -101,7 +99,7 @@ export class ListaAlumnosComponent implements OnDestroy{
 
 
         this.alumnosService.postNewAlumno(alumno)
-          .subscribe((alumno) => console.log(alumno))
+          .subscribe()
         this.dataSource.data = [...this.dataSource.data, alumno];
 
       }
@@ -121,7 +119,6 @@ export class ListaAlumnosComponent implements OnDestroy{
       if (valor) {
         let alumno: Alumno = valor;
 
-        console.log('array original' + this.dataSource.data);
 
         let idAlumnoAModificar = alumno.id;
 
@@ -132,7 +129,7 @@ export class ListaAlumnosComponent implements OnDestroy{
         this.dataSource.data[posicionAEditar] = alumno;
 
         this.alumnosService.putAlumno(alumno, idAlumnoAModificar)
-        .subscribe(alumno=>console.log(alumno))
+        .subscribe()
 
         this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
@@ -147,7 +144,7 @@ export class ListaAlumnosComponent implements OnDestroy{
     this.dataSource.data.splice(posicionAEliminar, 1);
 
     this.alumnosService.deleteAlumno(idAlumnoAEliminar)
-    .subscribe((idAlumnoAEliminar)=> console.log(idAlumnoAEliminar))
+    .subscribe()
 
     this.dataSource.data = [...this.dataSource.data];
   }

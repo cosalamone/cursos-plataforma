@@ -47,7 +47,6 @@ export class DetalleAlumnoComponent {
           .getCursos()
           .subscribe(
             (dataCursos) => {
-              console.log(dataCursos)
               this.cursosInscriptos = dataCursos.filter(x => this.inscripciones?.some(insc => insc.idCurso === x.id))
 
               this.dataSource = new MatTableDataSource(this.cursosInscriptos as any)
@@ -84,7 +83,7 @@ export class DetalleAlumnoComponent {
     let idInscripcionAEliminar = InscripcionAEliminar?.id
 
     this.inscripcionesService.eliminarInscripcionPorId(idInscripcionAEliminar)
-      .subscribe((idInscripcionAEliminar) => console.log(idInscripcionAEliminar))
+      .subscribe()
 
     this.dataSource.data = [...this.dataSource.data];
 

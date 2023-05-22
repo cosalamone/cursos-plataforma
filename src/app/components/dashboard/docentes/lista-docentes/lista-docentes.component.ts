@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject, from, takeUntil } from 'rxjs';
 import { DocentesService } from 'src/app/services/docentes.service';
@@ -12,7 +12,7 @@ import { Docente } from 'src/interfaces/docente';
   templateUrl: './lista-docentes.component.html',
   styleUrls: ['./lista-docentes.component.scss']
 })
-export class ListaDocentesComponent implements OnDestroy {
+export class ListaDocentesComponent {
 
   displayedColumns: string[] = [
     'id',
@@ -43,10 +43,6 @@ export class ListaDocentesComponent implements OnDestroy {
       )
       .subscribe((data) => (this.dataSource = new MatTableDataSource(data as any)))
   }
-  
-  ngOnDestroy(): void {
-    console.log('me destruí ')
-   }
 
 
   abrirFormABMDocentes(){
@@ -62,7 +58,7 @@ export class ListaDocentesComponent implements OnDestroy {
         docente.id = newId;
 
         this.docentesService.postNewDocente(docente)
-        .subscribe((docente)=> console.log(docente))
+        .subscribe()
         this.dataSource.data=[...this.dataSource.data, docente]
       }
     })
@@ -86,7 +82,7 @@ export class ListaDocentesComponent implements OnDestroy {
         this.dataSource.data[posicionAEditar] = docente;
 
         this.docentesService.putDocente(docente, idDocenteAModificar)
-        .subscribe(docente=>console.log(docente))
+        .subscribe()
 
         this.dataSource = new MatTableDataSource(this.dataSource.data)
       }
@@ -104,7 +100,7 @@ eliminarDocente(docente: Docente): void{
  this.dataSource.data.splice(posicionAEliminar, 1);
 
  this.docentesService.deleteDocente(idDocenteAEliminar)
- .subscribe(idDocenteAEliminar=>console.log(idDocenteAEliminar))
+ .subscribe()
  this.dataSource.data= [...this.dataSource.data];
 
 }

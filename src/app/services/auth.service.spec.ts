@@ -48,7 +48,6 @@ describe('Pruebas sobre AuthService', () => {
                 skip(1),// para que ignore la primer emision que siempre es null
             )
             .subscribe((usuario) => {
-                console.log(usuario);
                 expect(usuario).toBeTruthy(); // valida que el valor recibido en expec no sea null, ni undefined ni false
             })
 
