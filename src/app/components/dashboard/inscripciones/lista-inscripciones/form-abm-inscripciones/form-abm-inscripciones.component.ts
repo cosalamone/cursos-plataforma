@@ -17,6 +17,7 @@ export class FormAbmInscripcionesComponent {
 
   nombreControl = new FormControl('', [Validators.required])
   cursosControl = new FormControl('', [Validators.required]);
+  
   constructor(public formBuilder: FormBuilder,
     private alumnosService: AlumnosService,
    @Inject(MAT_DIALOG_DATA) public data: {alumno: Alumno}){

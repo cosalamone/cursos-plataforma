@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
 import { Curso } from 'src/interfaces';
 import { Alumno } from 'src/interfaces/alumno';
@@ -25,13 +26,14 @@ export class FormAbmAlumnosComponent {
   cursosControl = new FormControl('', [Validators.required]);
 
   selectedValue: string | undefined;
-  cursos: Curso[] = [];
+  cursos!: Curso[];
 
 
   registerForm: FormGroup;
 
   constructor(public formBuilder: FormBuilder,
     private cursosService: CursosService,
+    private activatedRoute: ActivatedRoute,
     private dialogRef: MatDialogRef<FormAbmAlumnosComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { alumno: Alumno }) {
 
@@ -49,6 +51,8 @@ export class FormAbmAlumnosComponent {
     if (data) {
       this.registerForm.patchValue(data['alumno']);
     }
+
+    this.obtenerCursos()
 
   }
 
@@ -76,6 +80,9 @@ export class FormAbmAlumnosComponent {
   }
 
   obtenerCursos(){
-
+    this.cursosService.getCursos()
+    .subscribe((cursos)=> {
+      this.cursos = cursos 
+      console.log(this.cursos)})
   }
 }
