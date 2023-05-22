@@ -84,25 +84,11 @@
       "id": 18
     },
     {
-      "nombre": "nuevo",
-      "apellido": "alumno",
-      "email": "alumno@mail.com",
-      "dni": "333333333",
-      "telefono": "1568945646",
-      "cursos": [
-        {
-          "id": 3,
-          "nombre": "Curso 3",
-          "duracion": 8,
-          "docente": "pepito3"
-        },
-        {
-          "id": 4,
-          "nombre": "Curso 4",
-          "duracion": 10,
-          "docente": "pepito4"
-        }
-      ],
+      "nombre": "neuvo",
+      "apellido": "nuevo",
+      "email": "nuevo@mail.com",
+      "dni": "12312313",
+      "telefono": "12312313",
       "id": 19
     }
   ],
