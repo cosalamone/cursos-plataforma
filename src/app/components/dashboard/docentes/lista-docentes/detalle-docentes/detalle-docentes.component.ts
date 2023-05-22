@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { CursosService } from 'src/app/services/cursos.service';
 import { DocentesService } from 'src/app/services/docentes.service';
+import { InscripcionesService } from 'src/app/services/inscripciones.service';
+import { Curso, Inscripcion } from 'src/interfaces';
 import { Docente } from 'src/interfaces/docente';
 
 @Component({
@@ -10,18 +14,47 @@ import { Docente } from 'src/interfaces/docente';
 })
 export class DetalleDocentesComponent {
   panelOpenState = false;
+  inscripciones: Inscripcion[] | undefined;
+  cursosInscriptos: Curso[] | undefined;
 
   docente: Docente | undefined;
-  
+
+  displayedColumns: string[] = [
+    'idCurso',
+    'name',
+  ];
+
+  dataSource!: MatTableDataSource<any, any>
+
+
   constructor(private activatesRoute: ActivatedRoute,
     private docentesService: DocentesService,
-    ) {
+    private inscripcionesService: InscripcionesService,
+    private cursosService: CursosService,
+
+
+  ) {
     console.log(this.activatesRoute.snapshot.params) //llega en forma de string
 
+    // para ver el detalle del docente
     this.docentesService.getDocentesPorId(parseInt(this.activatesRoute.snapshot.params['idDocente']))
-    .subscribe((docente)=> this.docente = docente)
+      .subscribe((docente) => this.docente = docente)
 
-    console.log(this.docente?.apellido)
+    // para ver el detalle de los cursos que tiene a cargo el Docente --> con una tabla --> no tendrá la opcion de eliminarse
+    this.inscripcionesService.getCursosDeIdDocente(parseInt(this.activatesRoute.snapshot.params['idDocente']))
+      .subscribe((objeDocente) => {
+        this.inscripciones = objeDocente
+        this.cursosService
+          .getCursos()
+          .subscribe(
+            (dataCursos) => {
+              this.cursosInscriptos = dataCursos.filter(x => this.inscripciones?.some(insc => insc.idCurso === x.id))
+              console.log(this.cursosInscriptos)
+              this.dataSource = new MatTableDataSource(this.cursosInscriptos as any)
+            }
+
+          )
+      })
   }
 
 }

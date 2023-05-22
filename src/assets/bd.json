@@ -71,6 +71,17 @@
       "email": "mail@mail.com",
       "dni": "123123131",
       "telefono": "123123131"
+    },
+    {
+      "nombre": "Pedro",
+      "apellido": "Alfonso",
+      "email": "pedro@mail.com",
+      "dni": "586574582",
+      "telefono": "15558985555",
+      "cursos": [
+        "Angular"
+      ],
+      "id": 18
     }
   ],
   "cursos": [
@@ -103,25 +114,21 @@
     {
       "id": 1,
       "nombre": "Claudio",
-      "apellido": "Ferro",
-      "curso": [
-        "Angular"
-      ]
+      "apellido": "Ferro"
+    },
+    {
+      "id": 2,
+      "nombre": "Marcelo",
+      "apellido": "Rios"
     },
     {
       "nombre": "Pablo",
       "apellido": "Pereyra",
-      "curso": [
-        "Angular"
-      ],
       "id": 3
     },
     {
       "nombre": "mario",
       "apellido": "bros",
-      "curso": [
-        "Angular"
-      ],
       "id": 4
     }
   ],
@@ -163,9 +170,7 @@
       "email": "asda@mail.com",
       "password": "asda",
       "token": "sxdcfvgbhjre3",
-      "role": [
-        "user"
-      ],
+      "role": "user",
       "id": 5
     }
   ],
@@ -173,31 +178,37 @@
     {
       "id": 2,
       "idCurso": 1,
-      "idAlumno": 3
+      "idDocente": 1,
+      "idAlumno": 1
     },
     {
       "id": 3,
       "idCurso": 1,
+      "idDocente": 4,
       "idAlumno": 4
     },
     {
       "id": 5,
       "idCurso": 2,
-      "idAlumno": 5
+      "idDocente": 2,
+      "idAlumno": 1
     },
     {
       "id": 6,
       "idCurso": 2,
+      "idDocente": 3,
       "idAlumno": 6
     },
     {
       "id": 9,
       "idCurso": 3,
+      "idDocente": 4,
       "idAlumno": 3
     },
     {
       "id": 10,
       "idCurso": 3,
+      "idDocente": 2,
       "idAlumno": 4
     }
   ]
