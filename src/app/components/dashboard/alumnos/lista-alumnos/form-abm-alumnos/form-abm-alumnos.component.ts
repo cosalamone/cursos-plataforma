@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CursosService } from 'src/app/services/cursos.service';
+import { Curso } from 'src/interfaces';
 import { Alumno } from 'src/interfaces/alumno';
 
 @Component({
@@ -8,6 +10,7 @@ import { Alumno } from 'src/interfaces/alumno';
   templateUrl: './form-abm-alumnos.component.html',
   styleUrls: ['./form-abm-alumnos.component.scss']
 })
+
 export class FormAbmAlumnosComponent {
 
   nombreApellidoMinLength: number = 3;
@@ -22,12 +25,13 @@ export class FormAbmAlumnosComponent {
   cursosControl = new FormControl('', [Validators.required]);
 
   selectedValue: string | undefined;
-  cursos = ['Javascript','Angular','Vue']
+  cursos: Curso[] = [];
 
 
   registerForm: FormGroup;
 
   constructor(public formBuilder: FormBuilder,
+    private cursosService: CursosService,
     private dialogRef: MatDialogRef<FormAbmAlumnosComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { alumno: Alumno }) {
 
@@ -69,5 +73,9 @@ export class FormAbmAlumnosComponent {
 
   cerrarDialog(){
     this.dialogRef.close();
+  }
+
+  obtenerCursos(){
+
   }
 }

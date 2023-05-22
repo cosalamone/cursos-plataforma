@@ -11,11 +11,10 @@
         {{alumno?.nombre}} {{alumno?.apellido}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>This is the primary content of the panel.</p>
   </mat-expansion-panel>
 
   <!-- DNI -->
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
         DNI
@@ -24,11 +23,11 @@
         {{alumno?.dni}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
+   
   </mat-expansion-panel>
 
   <!-- Telefono -->
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
         Teléfono
@@ -37,11 +36,10 @@
         {{alumno?.telefono}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
   </mat-expansion-panel>
 
   <!-- E-mail -->
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
         E-mail
@@ -50,7 +48,6 @@
         {{alumno?.email}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
   </mat-expansion-panel>
 
   <!-- Cursos a los que está inscripto -->
@@ -68,7 +65,6 @@
     </mat-expansion-panel-header>
 
 
-    <!--Cae el estaInscriptoEnCrusos en undefined = cae el boolean en false y salta que no esta inscripto -->
     <ng-container *ngIf="estaInscriptoEnCursos; else  noEstaInscripto">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 

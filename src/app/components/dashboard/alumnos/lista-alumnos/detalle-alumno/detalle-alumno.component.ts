@@ -33,7 +33,6 @@ export class DetalleAlumnoComponent {
     private inscripcionesService: InscripcionesService,
     private cursosService: CursosService,
   ) {
-    console.log(this.activatedRoute.snapshot.params) //llega en forma de string
 
     // para ver el detalle del alumno
     this.alumnosService.getAlumnoPorId(parseInt(this.activatedRoute.snapshot.params['idAlumno']))
@@ -42,16 +41,14 @@ export class DetalleAlumnoComponent {
 
     // para ver el detalle de los cursos en los que está inscripto este alumno --> con una tabla, donde pueda eliminarse la inscripcion del curso 
     this.inscripcionesService.getCursosDeIdAlumno(parseInt(this.activatedRoute.snapshot.params['idAlumno']))
-      .subscribe((objeAlumno) => {
-        this.inscripciones = objeAlumno;
-        console.log(this.inscripciones)
+      .subscribe((data) => {
+        this.inscripciones = data;
         this.cursosService
           .getCursos()
           .subscribe(
             (dataCursos) => {
               console.log(dataCursos)
               this.cursosInscriptos = dataCursos.filter(x => this.inscripciones?.some(insc => insc.idCurso === x.id))
-              console.log(this.cursosInscriptos)
 
               this.dataSource = new MatTableDataSource(this.cursosInscriptos as any)
               if (this.cursosInscriptos !== undefined && this.cursosInscriptos?.length > 0) {

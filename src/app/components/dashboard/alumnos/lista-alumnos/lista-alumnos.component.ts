@@ -6,7 +6,6 @@ import { AlumnosService } from '../../../../services/alumnos.service';
 import { Alumno, Usuario } from 'src/interfaces';
 import { Observable, map } from 'rxjs'
 import { ActivatedRoute, Router } from '@angular/router';
-import { TablaCursosPorIdAlumnoComponent } from './tabla-cursos-por-id-alumno/tabla-cursos-por-id-alumno.component';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({

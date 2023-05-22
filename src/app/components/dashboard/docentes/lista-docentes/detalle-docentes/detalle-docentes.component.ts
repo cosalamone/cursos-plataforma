@@ -34,7 +34,6 @@ export class DetalleDocentesComponent {
 
 
   ) {
-    console.log(this.activatesRoute.snapshot.params) //llega en forma de string
 
     // para ver el detalle del docente
     this.docentesService.getDocentesPorId(parseInt(this.activatesRoute.snapshot.params['idDocente']))
@@ -42,14 +41,13 @@ export class DetalleDocentesComponent {
 
     // para ver el detalle de los cursos que tiene a cargo el Docente --> con una tabla --> no tendrá la opcion de eliminarse
     this.inscripcionesService.getCursosDeIdDocente(parseInt(this.activatesRoute.snapshot.params['idDocente']))
-      .subscribe((objeDocente) => {
-        this.inscripciones = objeDocente
+      .subscribe((data) => {
+        this.inscripciones = data
         this.cursosService
           .getCursos()
           .subscribe(
             (dataCursos) => {
               this.cursosInscriptos = dataCursos.filter(x => this.inscripciones?.some(insc => insc.idCurso === x.id))
-              console.log(this.cursosInscriptos)
               this.dataSource = new MatTableDataSource(this.cursosInscriptos as any)
             }
 
