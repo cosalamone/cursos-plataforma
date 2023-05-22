@@ -7,13 +7,15 @@ import { InscripcionesEffects } from '../store/inscripciones.effects';
 import { StoreModule } from '@ngrx/store';
 import { inscripcionesFeature } from '../store/inscripciones.reducer';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormAbmInscripcionesComponent } from './form-abm-inscripciones/form-abm-inscripciones.component';
 
 
 
 @NgModule({
   declarations: [    
     ListaInscripcionesComponent,
-    InscripcionesComponent
+    InscripcionesComponent,
+    FormAbmInscripcionesComponent
   ],
   imports: [
     SharedModule,

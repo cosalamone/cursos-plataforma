@@ -1,3 +1,12 @@
+<!-- Boton agregar inscripcion -->
+<div class="m-3">
+    <button (click)="abrirFormABMInscripcion()" color="primary" mat-flat-button>
+      <mat-icon>add</mat-icon>
+      Crear nueva inscripción
+    </button>
+  </div>
+  
+
 <p *ngIf="(state$ |async)?.loading; else ifNotLoading">Cargando data ...</p>
 <ng-template #ifNotLoading>
 

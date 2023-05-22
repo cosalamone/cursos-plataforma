@@ -6,15 +6,20 @@ import { State } from '../store/inscripciones.reducer';
 import { selectInscripcionesState } from '../store/inscripciones.selectors';
 import { Alumno, Curso, Inscripcion } from 'src/interfaces';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InscripcionesService } from 'src/app/services/inscripciones.service';
 import { CursosService } from 'src/app/services/cursos.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AlumnosService } from 'src/app/services/alumnos.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { FormAbmInscripcionesComponent } from './form-abm-inscripciones/form-abm-inscripciones.component';
 
 @Component({
   selector: 'app-lista-inscripciones',
   templateUrl: './lista-inscripciones.component.html',
   styleUrls: ['./lista-inscripciones.component.scss']
 })
+
 export class ListaInscripcionesComponent implements OnInit {
   panelOpenState = false;
   inscripciones: Inscripcion[] | undefined;
@@ -34,9 +39,12 @@ export class ListaInscripcionesComponent implements OnInit {
   state$: Observable<State>
 
   constructor(private store: Store,
-    private activatedRoute: ActivatedRoute,
     private inscripcionesService: InscripcionesService,
-    private cursosService: CursosService,) {
+    private cursosService: CursosService,
+    private matDialog: MatDialog,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,) {
 
     this.state$ = this.store.select(selectInscripcionesState)
 
@@ -62,6 +70,23 @@ export class ListaInscripcionesComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(InscripcionesActions.loadInscripciones());
+  }
+
+  abrirFormABMInscripcion(): void{
+    const dialog = this.matDialog.open(FormAbmInscripcionesComponent)
+    dialog.afterClosed().subscribe((valor)=>{
+      if(valor){
+        let inscripcion: Inscripcion = valor;
+        let newId =  Math.max(...this.dataSource.data.map(x => x.id)) + 1;
+
+        inscripcion.id = newId;
+
+        // this.inscripcionesService.postNewInscripcion(inscripcion)
+        // .subscribe((inscripcion)=> console.log(inscripcion))
+
+        this.dataSource.data = [...this.dataSource.data, inscripcion];
+      }
+    })
   }
 
 

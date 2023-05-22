@@ -26,7 +26,7 @@ export class InscripcionesEffects {
     return this.actions$.pipe(
       ofType(InscripcionesActions.deleteInscripcion),
       concatMap((action) =>
-        this.inscripcionesService.deleteCursoDeAlumno(action.id).pipe(
+        this.inscripcionesService.eliminarInscripcionPorId(action.id).pipe(
           map(data => InscripcionesActions.deleteInscripcionSuccess({ data: action.id })),
           catchError(error => of(InscripcionesActions.deleteInscripcionFailure({ error })))
         )
