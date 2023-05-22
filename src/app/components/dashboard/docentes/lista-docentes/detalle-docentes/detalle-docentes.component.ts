@@ -16,7 +16,7 @@ export class DetalleDocentesComponent {
   panelOpenState = false;
   inscripciones: Inscripcion[] | undefined;
   cursosInscriptos: Curso[] | undefined;
-
+  tieneCursosACargo!: boolean;
   docente: Docente | undefined;
 
   displayedColumns: string[] = [
@@ -49,6 +49,12 @@ export class DetalleDocentesComponent {
             (dataCursos) => {
               this.cursosInscriptos = dataCursos.filter(x => this.inscripciones?.some(insc => insc.idCurso === x.id))
               this.dataSource = new MatTableDataSource(this.cursosInscriptos as any)
+              if (this.cursosInscriptos !== undefined && this.cursosInscriptos.length > 0) {
+                this.tieneCursosACargo = true;
+              } else {
+                this.tieneCursosACargo = false;
+              }
+
             }
 
           )

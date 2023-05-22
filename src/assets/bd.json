@@ -130,6 +130,11 @@
       "nombre": "mario",
       "apellido": "bros",
       "id": 4
+    },
+    {
+      "nombre": "nuevo",
+      "apellido": "docente",
+      "id": 5
     }
   ],
   "usuarios": [

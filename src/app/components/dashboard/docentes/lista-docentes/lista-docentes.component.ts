@@ -18,7 +18,6 @@ export class ListaDocentesComponent implements OnDestroy {
     'id',
     'nombre',
     'apellido',
-    'curso',
     'opciones'
   ];
 

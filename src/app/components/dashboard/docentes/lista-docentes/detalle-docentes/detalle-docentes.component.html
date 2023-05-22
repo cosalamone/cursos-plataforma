@@ -22,11 +22,11 @@
         Cursos
       </mat-panel-title>
       <mat-panel-description>
-        mostrar lista de cursos
+        Ver detalle de cursos a cargo 
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <ng-container>
+    <ng-container *ngIf="tieneCursosACargo; else sinCursosACargo">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- idCurso Column -->
@@ -46,5 +46,12 @@
 
       </table>
     </ng-container>
+
+    <ng-template #sinCursosACargo>
+      <mat-icon class="material-symbols-outlined" class="m-3">
+        warning
+      </mat-icon>
+      <p>Este docente no tiene cursos a cargo</p>
+    </ng-template>
   </mat-expansion-panel>
 </mat-accordion>
