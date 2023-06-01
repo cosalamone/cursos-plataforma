@@ -65,87 +65,12 @@
       "email": "mail@mail.com"
     },
     {
-      "id": 17,
-      "nombre": "asda",
-      "apellido": "asda",
+      "nombre": "aaaaa",
+      "apellido": "aaaaa",
       "email": "mail@mail.com",
-      "dni": "123123131",
-      "telefono": "123123131"
-    },
-    {
-      "nombre": "Pedro",
-      "apellido": "Alfonso",
-      "email": "pedro@mail.com",
-      "dni": "586574582",
-      "telefono": "15558985555",
-      "cursos": [
-        "Angular"
-      ],
-      "id": 18
-    },
-    {
-      "nombre": "qqqq",
-      "apellido": "qqqqq",
-      "email": "mail@mail.com",
-      "dni": "333333333",
-      "telefono": "333333333333",
-      "id": 28
-    },
-    {
-      "nombre": "eeee",
-      "apellido": "eeee",
-      "email": "mail@mai.com",
-      "dni": "2222222222",
-      "telefono": "22222222222",
-      "id": 29
-    },
-    {
-      "nombre": "1111",
-      "apellido": "11111",
-      "email": "mail@mail.com",
-      "dni": "1111111111",
-      "telefono": "1111111111",
-      "id": 30
-    },
-    {
-      "nombre": "1111111111",
-      "apellido": "1111111111",
-      "email": "mail@mail.com",
-      "dni": "1111111111",
-      "telefono": "1111111111",
-      "id": 31
-    },
-    {
-      "nombre": "alumnoalumno",
-      "apellido": "alumnoalumno",
-      "email": "mail@mai.com",
-      "dni": "1111111",
-      "telefono": "11111111",
-      "id": 32
-    },
-    {
-      "nombre": "sdsd",
-      "apellido": "fsdf",
-      "email": "mail@mail.com",
-      "dni": "231231313",
-      "telefono": "1231312313",
-      "id": 33
-    },
-    {
-      "nombre": "asdasdas",
-      "apellido": "asdadad",
-      "email": "mail@mai.com",
-      "dni": "333333333",
-      "telefono": "333333333",
-      "id": 34
-    },
-    {
-      "nombre": "pppp",
-      "apellido": "pppp",
-      "email": "asd@ppp.com",
-      "dni": "8888888888",
-      "telefono": "999999999",
-      "id": 35
+      "dni": "111111111",
+      "telefono": "11111111111",
+      "id": 10
     }
   ],
   "cursos": [
@@ -153,25 +78,25 @@
       "id": 1,
       "nombre": "Curso 1",
       "duracion": 9,
-      "docente": "pepito1"
+      "docente": 4
     },
     {
       "id": 2,
       "nombre": "Curso 2",
       "duracion": 9,
-      "docente": "pepito2"
+      "docente": 2
     },
     {
       "id": 3,
       "nombre": "Curso 3",
       "duracion": 8,
-      "docente": "pepito3"
+      "docente": 2
     },
     {
       "id": 4,
       "nombre": "Curso 4",
       "duracion": 10,
-      "docente": "pepito4"
+      "docente": 1
     }
   ],
   "docentes": [
@@ -282,45 +207,27 @@
     },
     {
       "id": 11,
-      "idCurso": 4,
-      "idDocente": 32,
-      "idAlumno": 33
+      "idCurso": 1,
+      "idDocente": 4,
+      "idAlumno": 10
     },
     {
       "id": 12,
-      "idCurso": 3,
-      "idDocente": 32,
-      "idAlumno": 34
+      "idCurso": 2,
+      "idDocente": 2,
+      "idAlumno": 10
     },
     {
       "id": 13,
-      "idCurso": 4,
-      "idDocente": 32,
-      "idAlumno": 34
+      "idCurso": 3,
+      "idDocente": 2,
+      "idAlumno": 10
     },
     {
       "id": 14,
-      "idCurso": 1,
-      "idDocente": 32,
-      "idAlumno": 35
-    },
-    {
-      "id": 15,
-      "idCurso": 2,
-      "idDocente": 32,
-      "idAlumno": 35
-    },
-    {
-      "id": 16,
-      "idCurso": 3,
-      "idDocente": 32,
-      "idAlumno": 35
-    },
-    {
-      "id": 17,
       "idCurso": 4,
-      "idDocente": 32,
-      "idAlumno": 35
+      "idDocente": 1,
+      "idAlumno": 10
     }
   ]
 }

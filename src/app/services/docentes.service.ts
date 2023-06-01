@@ -15,7 +15,7 @@ export class DocentesService {
       fetch('http://localhost:3000/docentes/')
         .then((response) => response.json())
         .then((data) => {
-          let arrayDocentes = data;
+          let arrayDocentes: Docente[] = data;
 
           resolve(arrayDocentes)
 

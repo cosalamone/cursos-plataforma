@@ -1,35 +1,63 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AlumnosService } from 'src/app/services/alumnos.service';
-import { Alumno } from 'src/interfaces';
+import { CursosService } from 'src/app/services/cursos.service';
+import { Alumno, Curso } from 'src/interfaces';
 
 @Component({
   selector: 'app-form-abm-inscripciones',
   templateUrl: './form-abm-inscripciones.component.html',
   styleUrls: ['./form-abm-inscripciones.component.scss']
 })
-export class FormAbmInscripcionesComponent {
+export class FormAbmInscripcionesComponent implements OnInit {
 
-  registerForm: FormGroup;
+  inscripcionForm: FormGroup;
   selectedValue: string | undefined;
-  alumnos = this.alumnosService.getAlumnos().subscribe();
+  alumnos: Alumno[] = [];
+  cursos: Curso[] = []; 
 
-  nombreControl = new FormControl('', [Validators.required])
-  cursosControl = new FormControl('', [Validators.required]);
-  
+
+
+  idAlumnoControl = new FormControl('', [Validators.required]);
+  idCursoControl = new FormControl('', [Validators.required]);
+
+
   constructor(public formBuilder: FormBuilder,
     private alumnosService: AlumnosService,
-   @Inject(MAT_DIALOG_DATA) public data: {alumno: Alumno}){
+    private cursosService: CursosService,
+    @Inject(MAT_DIALOG_DATA) public data: { alumno: Alumno }) {
 
-    this.registerForm = this.formBuilder.group({
-      nombreControl: this.nombreControl,
-      cursosControl: this.cursosControl
+    this.inscripcionForm = this.formBuilder.group({
+      idAlumno: this.idAlumnoControl,
+      idCurso: this.idCursoControl,
     })
-    
+
+    this.inscripcionForm.valueChanges.subscribe(console.log)
+
+
     if (data) {
-      this.registerForm.patchValue(data['alumno']);
+      this.inscripcionForm.patchValue(data['alumno']);
     }
+  }
+
+
+  ngOnInit(): void {
+    this.alumnosService.getAlumnos().subscribe(
+      {
+        next: (listaAlumnos) => {
+          this.alumnos = listaAlumnos
+        }
+      }
+    )
+
+    this.cursosService.getCursos().subscribe(
+      {
+        next: (listaCursos) => {
+          this.cursos = listaCursos
+        }
+      }
+    )
   }
 
 }

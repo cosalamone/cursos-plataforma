@@ -2,16 +2,33 @@
 
 <div mat-dialog-content>
 
-<form >
+  <form [formGroup]="inscripcionForm">
     <div>
-        <mat-form-field>
-            <mat-label>Alumno</mat-label>
-            <!-- <mat-select [formControl]="registerForm" multiple>
-              <mat-option *ngFor="let alumno of alumnos" [value]="alumno">{{alumno}}</mat-option>
-            </mat-select> -->
-          </mat-form-field>
+      <mat-form-field>
+        <mat-label>Alumno</mat-label>
+        <mat-select [formControl]="idAlumnoControl">
+          <mat-option [value]="alumno.id" *ngFor="let alumno of alumnos">{{alumno.nombre}} {{alumno.apellido}}</mat-option>
+        </mat-select>
+
+       
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Curso</mat-label>
+        <mat-select [formControl]="idCursoControl">
+          <mat-option [value]="curso.id" *ngFor="let curso of cursos">{{curso.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
-</form>
+  </form>
+
+</div>
+
+
+<div mat-dialog-actions>
+
+  <button mat-button type="button">Cancelar</button>
+  <button mat-button type="button">Guardar</button>
 
 </div>

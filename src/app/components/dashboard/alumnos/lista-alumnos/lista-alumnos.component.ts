@@ -3,11 +3,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { FormAbmAlumnosComponent } from './form-abm-alumnos/form-abm-alumnos.component';
 import { AlumnosService } from '../../../../services/alumnos.service';
-import { Alumno, Curso, Inscripcion, Usuario } from 'src/interfaces';
+import { Alumno, Curso, Docente, Inscripcion, Usuario } from 'src/interfaces';
 import { Observable, map } from 'rxjs'
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { InscripcionesService } from 'src/app/services/inscripciones.service';
+import { DocentesService } from 'src/app/services/docentes.service';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -60,7 +61,8 @@ export class ListaAlumnosComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private inscripcionesService: InscripcionesService
+    private inscripcionesService: InscripcionesService,
+    private docentesService: DocentesService
   ) {
 
     this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
@@ -95,17 +97,17 @@ export class ListaAlumnosComponent {
       if (valor) {
 
 
-        let cursosPorInscribirse: Curso[] = valor.cursos; // me importa sólo el Id de cada curso
-        let idDocentePorInscribirse; // PENDIENTE de conseguir
+        let cursosPorInscribirse: Curso[] = valor.cursos; 
 
         valor.cursos = undefined; // borro datos de los cursos registrandolos como undefined asi no se guardan en BD
 
-        let alumno: Alumno = valor  // eliminar valor.cursos para hacer el post 
-        console.log(alumno)
+        let alumno: Alumno = valor  
         let newId = Math.max(...this.dataSource.data.map(x => x.id)) + 1;
         
         alumno.id = newId;
         this.dataSource.data = [...this.dataSource.data, alumno];
+
+
         this.alumnosService.postNewAlumno(alumno)
         .subscribe((alumno) => {
             if (alumno){
@@ -114,13 +116,16 @@ export class ListaAlumnosComponent {
                   let inscripciones = datos
 
                   let maxIdInscripcion: number = Math.max(...inscripciones.map(x => x.id));
-
+                  
+                
                   for (let unCurso of cursosPorInscribirse) {
+
+
 
                     let objetoInscripcion: Inscripcion = {
                       id: ++maxIdInscripcion,
                       idCurso: unCurso.id,
-                      idDocente: 32, //Ir a buscar el id del urso a otro servicio
+                      idDocente: unCurso.docente, 
                       idAlumno: alumno.id
                     }
                     console.log(objetoInscripcion)
