@@ -9,7 +9,7 @@ export class NombreCompletoPipe implements PipeTransform {
   transform(value: Alumno, ...args: unknown[]): unknown {
 
     const apellido = value.apellido.toUpperCase();
-    const newDato = `${value.nombre}${apellido}`
+    const newDato = `${value.nombre} ${apellido}`
 
     return newDato;
   }

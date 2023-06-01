@@ -21,10 +21,6 @@ export class DashboardComponent {
   
   authUserObs$: Observable<Usuario | null>;
 
-  suscripcionAuthUser: Subscription | null = null;
-
-  destrodyed$ = new Subject<void>();
-
   authUserSubs!: Subscription;
 
   constructor(private authService: AuthService,

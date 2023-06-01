@@ -28,7 +28,9 @@ export class InscripcionesService {
     return this.http.get<Array<Inscripcion>>('http://localhost:3000/inscripciones?idAlumno=' + idDocente)
   }
 
-  postNewInscripcion(inscripcion: Inscripcion){}
+  postNewInscripcion(inscripcion: any){
+    return this.http.post<Inscripcion>('http://localhost:3000/inscripciones', inscripcion)
+  }
 
   // consultar si se considera que está mal estas 2 fx delete -- unificar 
   eliminarInscripcionPorId(idInscripcion: number | undefined){

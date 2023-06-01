@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { FormAbmAlumnosComponent } from './form-abm-alumnos/form-abm-alumnos.component';
 import { AlumnosService } from '../../../../services/alumnos.service';
-import { Alumno, Inscripcion, Usuario } from 'src/interfaces';
+import { Alumno, Curso, Inscripcion, Usuario } from 'src/interfaces';
 import { Observable, map } from 'rxjs'
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,7 +15,7 @@ import { InscripcionesService } from 'src/app/services/inscripciones.service';
   styleUrls: ['./lista-alumnos.component.scss'],
 })
 
-export class ListaAlumnosComponent  {
+export class ListaAlumnosComponent {
 
   authUserObs$: Observable<Usuario | null>;
 
@@ -92,23 +92,48 @@ export class ListaAlumnosComponent  {
 
     // Creando un nuevo array en el dataSource
     dialog.afterClosed().subscribe((valor) => {
-      if (valor) { // según valor.cursos generar la cantidad de inscripciones que haya, según length array
-        let newInscripcion: Inscripcion = valor.cursos // guardo en newInscripcion datos de las nuevas inscripciones
-        valor.cursos = undefined; // las borro registrandolas como undefined asi no se guardan en BD
-        console.log(newInscripcion) // tengo que ver como separo las 2 inscripciones asi hago los post correspondientes
+      if (valor) {
 
-        this.inscripcionesService.postNewInscripcion(newInscripcion) // jamas se ejecutó
+
+        let cursosPorInscribirse: Curso[] = valor.cursos; // me importa sólo el Id de cada curso
+        let idDocentePorInscribirse; // PENDIENTE de conseguir
+
+        valor.cursos = undefined; // borro datos de los cursos registrandolos como undefined asi no se guardan en BD
+
         let alumno: Alumno = valor  // eliminar valor.cursos para hacer el post 
         console.log(alumno)
         let newId = Math.max(...this.dataSource.data.map(x => x.id)) + 1;
-
+        
         alumno.id = newId;
-
-
-        // VER como guardar sólo lo datos del alumno en alumno, y los datos del curso en curso / inscripciones
-        this.alumnosService.postNewAlumno(alumno)
-          .subscribe()
         this.dataSource.data = [...this.dataSource.data, alumno];
+        this.alumnosService.postNewAlumno(alumno)
+        .subscribe((alumno) => {
+            if (alumno){
+              this.inscripcionesService.getInscripciones().subscribe((datos) => { 
+                if (datos) {
+                  let inscripciones = datos
+
+                  let maxIdInscripcion: number = Math.max(...inscripciones.map(x => x.id));
+
+                  for (let unCurso of cursosPorInscribirse) {
+
+                    let objetoInscripcion: Inscripcion = {
+                      id: ++maxIdInscripcion,
+                      idCurso: unCurso.id,
+                      idDocente: 32, //Ir a buscar el id del urso a otro servicio
+                      idAlumno: alumno.id
+                    }
+                    console.log(objetoInscripcion)
+                    this.inscripcionesService.postNewInscripcion(objetoInscripcion).subscribe() 
+
+                  }
+
+                }
+              })
+            }
+
+          })
+
 
       }
     });
@@ -137,7 +162,7 @@ export class ListaAlumnosComponent  {
         this.dataSource.data[posicionAEditar] = alumno;
 
         this.alumnosService.putAlumno(alumno, idAlumnoAModificar)
-        .subscribe()
+          .subscribe()
 
         this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
@@ -152,7 +177,7 @@ export class ListaAlumnosComponent  {
     this.dataSource.data.splice(posicionAEliminar, 1);
 
     this.alumnosService.deleteAlumno(idAlumnoAEliminar)
-    .subscribe()
+      .subscribe()
 
     this.dataSource.data = [...this.dataSource.data];
   }
