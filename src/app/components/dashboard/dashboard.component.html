@@ -9,10 +9,11 @@
 
     <mat-nav-list *ngIf="authUserObs$ | async as authUser">
       <ng-container *ngFor="let link of links">
-        <a *ngIf="authUser.role === 'admin' || !link.requiresAdmin" [routerLink]="['/'+link.url]" mat-list-item>
+        <a (click)="saveSeccionActual(link.title)" *ngIf="authUser.role === 'admin' || !link.requiresAdmin" [routerLink]="['/'+link.url]" mat-list-item>
           {{link.title}}
         </a>
       </ng-container>
+      
       <a (click)="logOut()" mat-list-item>
         Cerrar sesión
       </a>
@@ -32,6 +33,7 @@
           <mat-icon>menu</mat-icon>
         </button>
         <span class="plataforma">Plataforma Cursos </span>
+        <span> {{seccionActual}}</span>
 
 
         <span class="example-spacer"></span>

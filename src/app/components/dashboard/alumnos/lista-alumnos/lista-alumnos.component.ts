@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { FormAbmAlumnosComponent } from './form-abm-alumnos/form-abm-alumnos.component';
@@ -16,7 +16,7 @@ import { DocentesService } from 'src/app/services/docentes.service';
   styleUrls: ['./lista-alumnos.component.scss'],
 })
 
-export class ListaAlumnosComponent {
+export class ListaAlumnosComponent implements OnInit {
 
   authUserObs$: Observable<Usuario | null>;
 
@@ -85,6 +85,12 @@ export class ListaAlumnosComponent {
       .subscribe(
         (data) => (this.dataSource = new MatTableDataSource(data as any))
       );
+  }
+  ngOnInit(): void {
+   
+   this.activatedRoute.firstChild?.params.subscribe((queryParam)=>{
+    console.log(queryParam)
+   })
   }
 
 
