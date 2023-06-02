@@ -29,7 +29,7 @@
         <mat-form-field [formGroup]="registerForm" appearance="fill">
           <mat-label>Contraseña</mat-label>
   
-          <input [formControl]="passwordControl" matInput>
+          <input [formControl]="passwordControl" matInput type="password">
           <mat-error *ngIf="passwordControl.invalid">Minimo 3 caracteres</mat-error>
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
@@ -49,8 +49,8 @@
       
       <div>
         <mat-form-field appearance="fill">
-            <mat-label>Inscripcion a cursos</mat-label>
-            <mat-select [(ngModel)]="selectedValue" name="role" [formControl]="roleControl" multiple>
+            <mat-label>Seleccionar Rol</mat-label>
+            <mat-select [(ngModel)]="selectedValue" name="role" [formControl]="roleControl">
               <mat-option *ngFor="let role of rolesDisponibles" [value]="role" >
                 {{role}}
               </mat-option>

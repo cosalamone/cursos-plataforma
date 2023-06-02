@@ -10,6 +10,8 @@ import { Usuario } from 'src/interfaces';
 })
 export class FormAbmUsuariosComponent {
 
+
+
   nombreApellidoControl = new FormControl('', [Validators.required]);
   emailControl = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],);
   passwordControl = new FormControl('', [Validators.required]);;
@@ -34,6 +36,8 @@ export class FormAbmUsuariosComponent {
       })
 
       if (data){
+        this.selectedValue = data.usuario.role
+
         this.registerForm.patchValue(data['usuario'])
       }
     }
