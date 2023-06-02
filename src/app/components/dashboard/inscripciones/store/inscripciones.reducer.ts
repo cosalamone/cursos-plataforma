@@ -1,6 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { InscripcionesActions } from './inscripciones.actions';
 import { Inscripcion } from 'src/interfaces';
+import { act } from '@ngrx/effects';
 
 export const inscripcionesFeatureKey = 'inscripciones';
 
@@ -67,6 +68,30 @@ on(InscripcionesActions.deleteInscripcionFailure, (state, action)=> {
     loading: false
   }
 
+}),
+
+on(InscripcionesActions.createInscripcion, (state)=> {
+  return {
+    ...state,
+    loading: true,
+  }
+}),
+
+on(InscripcionesActions.createInscripcionSuccess, (state, action)=>{
+  const newInscripcion= action.data;
+  return {
+    ...state,
+    loading: false,
+    inscripciones: [...state.inscripciones, newInscripcion]
+  }
+}),
+
+on(InscripcionesActions.createInscripcionFailure, (state, action)=>{
+  return {
+    ...state,
+    loading: false,
+    error:  action.error,
+  }
 })
 
 );

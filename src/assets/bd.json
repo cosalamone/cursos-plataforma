@@ -76,25 +76,25 @@
   "cursos": [
     {
       "id": 1,
-      "nombre": "Curso 1",
+      "nombre": "Angular",
       "duracion": 9,
       "docente": 4
     },
     {
       "id": 2,
-      "nombre": "Curso 2",
+      "nombre": "React",
       "duracion": 9,
       "docente": 2
     },
     {
       "id": 3,
-      "nombre": "Curso 3",
+      "nombre": "Vue",
       "duracion": 8,
       "docente": 2
     },
     {
       "id": 4,
-      "nombre": "Curso 4",
+      "nombre": "UX/UI",
       "duracion": 10,
       "docente": 1
     }
@@ -228,6 +228,30 @@
       "idCurso": 4,
       "idDocente": 1,
       "idAlumno": 10
+    },
+    {
+      "idAlumno": 2,
+      "idCurso": 3,
+      "idDocente": 2,
+      "id": 15
+    },
+    {
+      "idAlumno": 5,
+      "idCurso": 3,
+      "idDocente": 2,
+      "id": 16
+    },
+    {
+      "idAlumno": 5,
+      "idCurso": 3,
+      "idDocente": 2,
+      "id": 17
+    },
+    {
+      "idAlumno": 10,
+      "idCurso": 1,
+      "idDocente": 4,
+      "id": 18
     }
   ]
 }

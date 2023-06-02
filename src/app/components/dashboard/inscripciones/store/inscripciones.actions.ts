@@ -10,5 +10,10 @@ export const InscripcionesActions = createActionGroup({
     'Delete Inscripcion': props<{ id: number }>(),
     'Delete Inscripcion Success': props<{ data: number }>(),
     'Delete Inscripcion Failure': props<{ error: unknown }>(),
+    'Create Inscripcion': props<{ data: Inscripcion }>(),
+    'Create Inscripcion Success': props<{ data: Inscripcion }>(),
+    'Create Inscripcion Failure': props<{ error: Inscripcion }>(),
+
+
   }
 });
