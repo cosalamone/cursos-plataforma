@@ -27,10 +27,17 @@
 
     <div>
 
+
+
       <mat-form-field [formGroup]="registerForm" appearance="fill">
         <mat-label>Docente a cargo</mat-label>
-        <input [formControl]="docenteControl" matInput >
-        <mat-error *ngIf="docenteControl.invalid">Mínimo {{minLength}} caracteres</mat-error>
+
+        <mat-select [formControl]="docenteControl" [(ngModel)]="selectedValue" name="docente">
+          <mat-option *ngFor="let docente of listaDocentes" [value]="docente">
+            {{docente.nombre}} {{docente.apellido}}
+          </mat-option>
+
+        </mat-select>
         <mat-icon matSuffix></mat-icon>
 
 
@@ -40,7 +47,7 @@
 
 
     <div mat-dialog-actions>
-      <button (click)="cerrarDialog()" mat-button >
+      <button (click)="cerrarDialog()" mat-button>
         Cancelar
       </button>
 
