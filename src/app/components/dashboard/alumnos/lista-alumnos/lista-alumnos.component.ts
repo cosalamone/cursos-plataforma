@@ -70,18 +70,18 @@ export class ListaAlumnosComponent implements OnInit {
     // FX PARA OBTENER ARRAY DE ALUMNOS DE BD MEDIANTE API - Utiliza AlumnosService
     this.alumnosService
       .getAlumnos()
-      .pipe(
-        map((alumnos: Array<any>) => alumnos.map(alumno => ({
+      // .pipe(
+      //   map((alumnos: Array<any>) => alumnos.map(alumno => ({
 
-          id: alumno.id,
-          nombre: alumno.nombre,
-          apellido: alumno.apellido,
-          dni: alumno.dni,
-          telefono: this.formatTelefono(alumno.telefono),
-          email: alumno.email
+      //     id: alumno.id,
+      //     nombre: alumno.nombre,
+      //     apellido: alumno.apellido,
+      //     dni: alumno.dni,
+      //     telefono: this.formatTelefono(alumno.telefono),
+      //     email: alumno.email
 
-        })))
-      )
+      //   })))
+      // )
       .subscribe(
         (data) => (this.dataSource = new MatTableDataSource(data as any))
       );
@@ -123,7 +123,7 @@ export class ListaAlumnosComponent implements OnInit {
 
                   let maxIdInscripcion: number = Math.max(...inscripciones.map(x => x.id));
                   
-                
+                if (cursosPorInscribirse)
                   for (let unCurso of cursosPorInscribirse) {
 
 
@@ -137,7 +137,7 @@ export class ListaAlumnosComponent implements OnInit {
                     console.log(objetoInscripcion)
                     this.inscripcionesService.postNewInscripcion(objetoInscripcion).subscribe() 
 
-                  }
+                  } 
 
                 }
               })
