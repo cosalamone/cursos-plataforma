@@ -3,6 +3,12 @@
   height: 100vh;
 }
 
+.imgAvatar {
+  border-radius: 30px;
+  margin-left: 25%;
+  margin-bottom: 10px;
+}
+
 .example-sidenav-content {
   main {
     padding: 0rem;
@@ -17,13 +23,13 @@
   flex: 1 1 auto;
 }
 
-.mail{
+.mail {
   position: absolute;
   right: 5%;
   font-size: medium;
 }
 
-.plataforma{
+.plataforma {
   position: absolute;
   left: 35%;
 }

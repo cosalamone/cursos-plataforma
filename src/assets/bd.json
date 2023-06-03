@@ -107,16 +107,6 @@
       "id": 4
     },
     {
-      "nombre": "sda",
-      "duracion": "a2",
-      "docente": {
-        "id": 1,
-        "nombre": "Claudio",
-        "apellido": "Ferro"
-      },
-      "id": 5
-    },
-    {
       "nombre": "aaa",
       "duracion": "1",
       "docente": {
@@ -125,16 +115,6 @@
         "id": 4
       },
       "id": 6
-    },
-    {
-      "nombre": "nuevo",
-      "duracion": "1",
-      "docente": {
-        "id": 1,
-        "nombre": "Claudio",
-        "apellido": "Ferro"
-      },
-      "id": 7
     }
   ],
   "docentes": [
@@ -179,7 +159,8 @@
       "password": "maru",
       "token": "asdfghy987y6t5reswaq",
       "role": "admin",
-      "id": 1
+      "id": 1,
+      "img": "img_mujer1.png"
     },
     {
       "id": 2,
@@ -187,7 +168,8 @@
       "email": "pablo@mail.com",
       "password": "pablo",
       "token": "mnjubhygvfcdxsz2345yj",
-      "role": "user"
+      "role": "user",
+      "img": "img_pablo.png"
     },
     {
       "id": 3,
@@ -195,7 +177,8 @@
       "email": "carla@mail.com",
       "password": "carla",
       "token": "mjnh7g4de3f765vgnmds",
-      "role": "admin"
+      "role": "admin",
+      "img": "img_carla.png"
     },
     {
       "id": 4,
@@ -203,16 +186,10 @@
       "email": "fran@mail.com",
       "password": "fran",
       "token": "87hg65f4dxecvbjtvvb",
-      "role": "admin"
-    },
-    {
-      "nombreApellido": "nuevo usuario",
-      "email": "nuevo@mail.com",
-      "password": "asdasd",
-      "token": "hgrde32h",
-      "role": "user",
-      "id": 5
+      "role": "admin",
+      "img": "img_hombre1.png"
     }
+   
   ],
   "inscripciones": [
     {

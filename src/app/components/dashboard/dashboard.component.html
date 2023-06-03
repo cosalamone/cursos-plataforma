@@ -4,16 +4,20 @@
   <mat-drawer [opened]="true" #drawer class="example-sidenav" mode="side">
 
     <!-- datos de perfil de usuario logueado -->
-    <img width="50" height="50" src="../../assets/user-img.jpg">
+    <ng-container *ngIf="authUserObs$ | async as authUser">
+      <img width="50" height="50" src="../../assets/{{authUser.img}}" class="imgAvatar">
+    </ng-container>
+
     <p> {{(authUserObs$ | async)?.nombreApellido}} </p>
 
     <mat-nav-list *ngIf="authUserObs$ | async as authUser">
       <ng-container *ngFor="let link of links">
-        <a (click)="saveSeccionActual(link.title)" *ngIf="authUser.role === 'admin' || !link.requiresAdmin" [routerLink]="['/'+link.url]" mat-list-item>
+        <a (click)="saveSeccionActual(link.title)" *ngIf="authUser.role === 'admin' || !link.requiresAdmin"
+          [routerLink]="['/'+link.url]" mat-list-item>
           {{link.title}}
         </a>
       </ng-container>
-      
+
       <a (click)="logOut()" mat-list-item>
         Cerrar sesión
       </a>
