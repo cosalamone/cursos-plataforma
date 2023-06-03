@@ -25,6 +25,8 @@ export class ListaInscripcionesComponent implements OnInit {
   inscripciones: Inscripcion[] | undefined;
   alumno: Alumno | undefined;
   cursosInscriptos: Curso[] | undefined;
+  alumnos: Alumno[] = [];
+
 
   displayedColumns: string[] = [
     'idCurso',
@@ -44,7 +46,8 @@ export class ListaInscripcionesComponent implements OnInit {
     private matDialog: MatDialog,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private authService: AuthService,) {
+    private authService: AuthService,
+    private alumnosService: AlumnosService) {
 
     this.state$ = this.store.select(selectInscripcionesState)
 
@@ -55,9 +58,9 @@ export class ListaInscripcionesComponent implements OnInit {
         .getCursos()
         .subscribe(
           (dataCursos) => {
-            this.cursosInscriptos = dataCursos.filter(x => this.inscripciones?.some(insc => insc.idCurso === x.id))
+            // this.cursosInscriptos = dataCursos.filter(curso => this.inscripciones?.some(insc => insc.idCurso === curso.id))
 
-            this.dataSource = new MatTableDataSource(this.cursosInscriptos as any)
+            this.dataSource = new MatTableDataSource(dataCursos as any)
 
           }
         );
@@ -67,6 +70,7 @@ export class ListaInscripcionesComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(InscripcionesActions.loadInscripciones());
+
   }
 
   abrirFormABMInscripcion(): void{
@@ -77,9 +81,6 @@ export class ListaInscripcionesComponent implements OnInit {
         let newId =  Math.max(...this.dataSource.data.map(x => x.id)) + 1;
 
         inscripcion.id = newId;
-
-        // this.inscripcionesService.postNewInscripcion(inscripcion)
-        // .subscribe((inscripcion)=> console.log(inscripcion))
 
         this.dataSource.data = [...this.dataSource.data, inscripcion];
       }
