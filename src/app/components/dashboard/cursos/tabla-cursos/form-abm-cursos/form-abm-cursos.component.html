@@ -16,10 +16,10 @@
 
     <div>
       <mat-form-field [formGroup]="registerForm" appearance="fill">
-        <mat-label>Duracion del curso</mat-label>
+        <mat-label>Duracion (semanas)</mat-label>
 
-        <input [formControl]="duracionControl" matInput>
-        <mat-error *ngIf="duracionControl.invalid">Minimo {{minDuracion}} caracteres</mat-error>
+        <input [formControl]="duracionControl" matInput type="number">
+        <mat-error *ngIf="duracionControl.invalid">Minimo {{minDuracion}} carater</mat-error>
 
         <mat-icon matSuffix></mat-icon>
       </mat-form-field>
