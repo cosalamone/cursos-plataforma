@@ -26,6 +26,7 @@ export class ListaInscripcionesComponent implements OnInit {
   alumno: Alumno | undefined;
   cursosInscriptos: Curso[] | undefined;
   alumnos: Alumno[] | undefined;
+  cursos: Curso[] | undefined;
 
 
   displayedColumns: string[] = [
@@ -57,6 +58,7 @@ export class ListaInscripcionesComponent implements OnInit {
 
           this.dataSource = new MatTableDataSource(this.inscripciones as any) // tengo que modificar e imprimir el nbre del curso y del alumno
           this.alumnos = await firstValueFrom(this.alumnosService.getAlumnos())
+          this.cursos = await firstValueFrom(this.cursosService.getCursos())
           // this.cursosService
           //   .getCursos()
           //   .subscribe(
@@ -69,9 +71,15 @@ export class ListaInscripcionesComponent implements OnInit {
           //   );
         })
   }
+  
+  obtenerNombreCursoPorId(id:number):  String | undefined {
+    let curso = this.cursos?.find(x => x.id === id)
+    return `${curso?.nombre}`;
 
-  obtenerNombreApellidoAlumnoPorId(id:number): String | undefined{
-    let alumno = this.alumnos?.find(x=> x.id === id)
+  }
+
+  obtenerNombreApellidoAlumnoPorId(id: number): String | undefined {
+    let alumno = this.alumnos?.find(x => x.id === id)
     return `${alumno?.nombre} ${alumno?.apellido}`;
 
   }

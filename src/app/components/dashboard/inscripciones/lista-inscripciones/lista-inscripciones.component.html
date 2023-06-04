@@ -21,7 +21,7 @@
         <!-- Name Curso Column -->
         <ng-container matColumnDef="idCurso">
             <th mat-header-cell *matHeaderCellDef> Curso </th>
-            <td mat-cell *matCellDef="let inscripcion"> {{inscripcion.idCurso}}</td>
+            <td mat-cell *matCellDef="let inscripcion"> {{this.obtenerNombreCursoPorId(inscripcion.idCurso)}}</td>
         </ng-container>
 
         <!-- Cant Alumnos Inscrip Column -->
