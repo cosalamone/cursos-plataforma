@@ -4,6 +4,9 @@ import { Observable, map } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Location } from '@angular/common';
 
+import Swal from 'sweetalert2'
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +27,13 @@ export class AuthGuard implements CanActivate {
         map((usuarioAutenticado) => {
 
           if (!usuarioAutenticado) {
+
+            Swal.fire(
+              'Usuario inexistente o contraseña incorrecta',
+              'Verifique los datos ingresados',
+              'error'
+            )
+            
             return this.router.createUrlTree(['login'], { queryParams: { returnUrl: this.location.path() } })
           } else {
             return true

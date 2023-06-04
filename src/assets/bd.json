@@ -49,80 +49,40 @@
       "id": 6
     },
     {
-      "nombre": "laskdja",
-      "apellido": "asdad",
-      "email": "mail.2com@qweq.com",
-      "dni": "33333333",
-      "telefono": "33333333",
-      "cursos": [
-        {
-          "id": 1,
-          "nombre": "Angular",
-          "duracion": 9,
-          "docente": 4
-        }
-      ],
-      "id": 7
-    },
-    {
       "nombre": "nuevo",
       "apellido": "alumno",
       "email": "mail@mail.com",
       "dni": "55555555555",
       "telefono": "555555555",
       "id": 8
+    },
+    {
+      "nombre": "prueba",
+      "apellido": "alumno",
+      "email": "prueba@mail.com",
+      "dni": "66666666",
+      "telefono": "666666666",
+      "id": 9
     }
   ],
   "cursos": [
     {
-      "nombre": "Angular",
-      "duracion": "2",
-      "docente": {
-        "id": 1,
-        "nombre": "Claudio",
-        "apellido": "Ferro"
-      },
+      "nombre": "PARAPENTE",
+      "duracion": "3",
+      "docente": 6,
       "id": 1
     },
     {
-      "nombre": "React",
+      "nombre": "angular",
       "duracion": "2",
-      "docente": {
-        "id": 2,
-        "nombre": "Marcelo",
-        "apellido": "Rios"
-      },
+      "docente": 2,
       "id": 2
     },
     {
-      "nombre": "Vue",
-      "duracion": "1",
-      "docente": {
-        "id": 1,
-        "nombre": "Claudio",
-        "apellido": "Ferro"
-      },
-      "id": 3
-    },
-    {
-      "nombre": "UX/UI",
+      "nombre": "react",
       "duracion": "3",
-      "docente": {
-        "nombre": "mario",
-        "apellido": "bros",
-        "id": 4
-      },
-      "id": 4
-    },
-    {
-      "nombre": "aaa",
-      "duracion": "1",
-      "docente": {
-        "nombre": "mario",
-        "apellido": "bros",
-        "id": 4
-      },
-      "id": 6
+      "docente": 3,
+      "id": 3
     }
   ],
   "docentes": [
@@ -154,9 +114,6 @@
     {
       "nombre": "asdas",
       "apellido": "asda",
-      "curso": [
-        "Javascript"
-      ],
       "id": 6
     }
   ],
@@ -338,6 +295,36 @@
         "id": 4
       },
       "idAlumno": 8
+    },
+    {
+      "id": 25,
+      "idCurso": 1,
+      "idDocente": {
+        "id": 1,
+        "nombre": "Claudio",
+        "apellido": "Ferro"
+      },
+      "idAlumno": 9
+    },
+    {
+      "id": 26,
+      "idCurso": 2,
+      "idDocente": {
+        "id": 2,
+        "nombre": "Marcelo",
+        "apellido": "Rios"
+      },
+      "idAlumno": 9
+    },
+    {
+      "id": 27,
+      "idCurso": 3,
+      "idDocente": {
+        "id": 1,
+        "nombre": "Claudio",
+        "apellido": "Ferro"
+      },
+      "idAlumno": 9
     }
   ]
 }
