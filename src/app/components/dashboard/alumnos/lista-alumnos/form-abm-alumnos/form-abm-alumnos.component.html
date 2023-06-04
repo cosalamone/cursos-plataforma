@@ -18,7 +18,7 @@
       <mat-form-field [formGroup]="registerForm" appearance="fill">
         <mat-label>Apellido</mat-label>
 
-        <input [formControl]="apellidoControl" matInput type="number">
+        <input [formControl]="apellidoControl" matInput >
         <mat-error *ngIf="apellidoControl.invalid">Minimo {{nombreApellidoMinLength}} caracteres</mat-error>
 
         <mat-icon matSuffix></mat-icon>
@@ -54,7 +54,7 @@
       <mat-form-field [formGroup]="registerForm" appearance="fill">
         <mat-label>Telefono</mat-label>
 
-        <input [formControl]="telefonoControl" matInput  >
+        <input [formControl]="telefonoControl" matInput  type="number">
         <mat-error *ngIf="telefonoControl.invalid">Mínimo {{telefonoMinLength}} dígitos</mat-error>
 
         <mat-icon matSuffix>phone</mat-icon>
