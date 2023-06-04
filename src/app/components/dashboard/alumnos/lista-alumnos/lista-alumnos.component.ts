@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { InscripcionesService } from 'src/app/services/inscripciones.service';
 import { DocentesService } from 'src/app/services/docentes.service';
+import { ListaInscripcionesComponent } from '../../inscripciones/lista-inscripciones/lista-inscripciones.component';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -62,7 +63,8 @@ export class ListaAlumnosComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private inscripcionesService: InscripcionesService,
-    private docentesService: DocentesService
+    private docentesService: DocentesService,
+    private listaInscripciones: ListaInscripcionesComponent
   ) {
 
     this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
@@ -70,27 +72,15 @@ export class ListaAlumnosComponent implements OnInit {
     // FX PARA OBTENER ARRAY DE ALUMNOS DE BD MEDIANTE API - Utiliza AlumnosService
     this.alumnosService
       .getAlumnos()
-      // .pipe(
-      //   map((alumnos: Array<any>) => alumnos.map(alumno => ({
-
-      //     id: alumno.id,
-      //     nombre: alumno.nombre,
-      //     apellido: alumno.apellido,
-      //     dni: alumno.dni,
-      //     telefono: this.formatTelefono(alumno.telefono),
-      //     email: alumno.email
-
-      //   })))
-      // )
       .subscribe(
         (data) => (this.dataSource = new MatTableDataSource(data as any))
       );
   }
   ngOnInit(): void {
-   
-   this.activatedRoute.firstChild?.params.subscribe((queryParam)=>{
-    console.log(queryParam)
-   })
+
+    this.activatedRoute.firstChild?.params.subscribe((queryParam) => {
+      console.log(queryParam)
+    })
   }
 
 
@@ -103,41 +93,41 @@ export class ListaAlumnosComponent implements OnInit {
       if (valor) {
 
 
-        let cursosPorInscribirse: Curso[] = valor.cursos; 
+        let cursosPorInscribirse: Curso[] = valor.cursos;
 
         valor.cursos = undefined; // borro datos de los cursos registrandolos como undefined asi no se guardan en BD
 
-        let alumno: Alumno = valor  
+        let alumno: Alumno = valor
         let newId = Math.max(...this.dataSource.data.map(x => x.id)) + 1;
-        
+
         alumno.id = newId;
         this.dataSource.data = [...this.dataSource.data, alumno];
 
 
         this.alumnosService.postNewAlumno(alumno)
-        .subscribe((alumno) => {
-            if (alumno){
-              this.inscripcionesService.getInscripciones().subscribe((datos) => { 
+          .subscribe((alumno) => {
+            if (alumno) {
+              this.inscripcionesService.getInscripciones().subscribe((datos) => {
                 if (datos) {
                   let inscripciones = datos
 
                   let maxIdInscripcion: number = Math.max(...inscripciones.map(x => x.id));
-                  
-                if (cursosPorInscribirse)
-                  for (let unCurso of cursosPorInscribirse) {
+
+                  if (cursosPorInscribirse)
+                    for (let unCurso of cursosPorInscribirse) {
 
 
 
-                    let objetoInscripcion: Inscripcion = {
-                      id: ++maxIdInscripcion,
-                      idCurso: unCurso.id,
-                      idDocente: unCurso.docente, 
-                      idAlumno: alumno.id
+                      let objetoInscripcion: Inscripcion = {
+                        id: ++maxIdInscripcion,
+                        idCurso: unCurso.id,
+                        idDocente: unCurso.docente,
+                        idAlumno: alumno.id
+                      }
+                      console.log(objetoInscripcion)
+                      this.inscripcionesService.postNewInscripcion(objetoInscripcion).subscribe()
+
                     }
-                    console.log(objetoInscripcion)
-                    this.inscripcionesService.postNewInscripcion(objetoInscripcion).subscribe() 
-
-                  } 
 
                 }
               })
@@ -188,9 +178,22 @@ export class ListaAlumnosComponent implements OnInit {
     this.dataSource.data.splice(posicionAEliminar, 1);
 
     this.alumnosService.deleteAlumno(idAlumnoAEliminar)
-      .subscribe()
+      .subscribe();
+
+
+
+    this.inscripcionesService.getInscripcionesPorDeIdAlumno(idAlumnoAEliminar) // borra bien de alumnos, y cursos, no de inscripciones** 
+      .subscribe((inscripcionesPorEliminar) => {
+
+        for (let inscripcionPorEliminar of inscripcionesPorEliminar) {
+          this.inscripcionesService.eliminarInscripcionPorId(inscripcionPorEliminar.id)
+          this.listaInscripciones.eliminarInscripcionPorId(inscripcionPorEliminar.id)
+        }
+
+      });
 
     this.dataSource.data = [...this.dataSource.data];
+
   }
 
   detalleAlumno(alumnoId: number): void {

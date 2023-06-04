@@ -6,6 +6,8 @@ import { FormAbmAlumnosComponent } from './form-abm-alumnos/form-abm-alumnos.com
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AlumnosRoutingModule } from '../alumnos-routing.module';
 import { AlumnosComponent } from '../alumnos/alumnos.component';
+import { InscripcionesModule } from '../../inscripciones/lista-inscripciones/inscripciones.module';
+import { ListaInscripcionesComponent } from '../../inscripciones/lista-inscripciones/lista-inscripciones.component';
 
 
 
@@ -17,7 +19,10 @@ import { AlumnosComponent } from '../alumnos/alumnos.component';
     DetalleAlumnoComponent,
     TablaCursosPorIdAlumnoComponent,
     FormAbmAlumnosComponent,
-    AlumnosComponent
+    AlumnosComponent, 
+  ],
+  providers: [
+    ListaInscripcionesComponent
   ],
   imports: [
     SharedModule,

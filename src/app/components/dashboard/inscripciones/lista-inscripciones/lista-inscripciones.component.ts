@@ -59,16 +59,7 @@ export class ListaInscripcionesComponent implements OnInit {
           this.dataSource = new MatTableDataSource(this.inscripciones as any) // tengo que modificar e imprimir el nbre del curso y del alumno
           this.alumnos = await firstValueFrom(this.alumnosService.getAlumnos())
           this.cursos = await firstValueFrom(this.cursosService.getCursos())
-          // this.cursosService
-          //   .getCursos()
-          //   .subscribe(
-          //     (dataCursos) => {
-          //       // this.cursosInscriptos = dataCursos.filter(curso => this.inscripciones?.some(insc => insc.idCurso === curso.id))
-
-          //       this.dataSource = new MatTableDataSource(dataCursos as any)
-
-          //     }
-          //   );
+    
         })
   }
   
@@ -107,7 +98,8 @@ export class ListaInscripcionesComponent implements OnInit {
   detalleAlumnosInscriptos() { }
 
   eliminarInscripcionPorId(id: number): void {
-    this.store.dispatch(InscripcionesActions.deleteInscripcion({ id }))
-  } // se usa en el html de la futura tabla de inscripciones - 
+    this.store.dispatch(InscripcionesActions.deleteInscripcion({ id }));
+    this.store.dispatch(InscripcionesActions.loadInscripciones());
+  } 
 
 }
