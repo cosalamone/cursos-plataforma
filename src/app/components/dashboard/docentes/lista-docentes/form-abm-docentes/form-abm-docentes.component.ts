@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CursosService } from 'src/app/services/cursos.service';
+import { Curso } from 'src/interfaces';
 import { Docente } from 'src/interfaces/docente';
 
 @Component({
@@ -17,7 +19,7 @@ export class FormAbmDocentesComponent {
 
   selectedValue: string | undefined;
 
-  cursos = ['Javascript','Angular','Vue']
+  cursos: Curso[] | undefined;
 
 
   registerForm: FormGroup;
@@ -25,6 +27,7 @@ export class FormAbmDocentesComponent {
 
 
   constructor(public formBuilder: FormBuilder,
+    private cursosService: CursosService,
     private dialogRef: MatDialogRef<FormAbmDocentesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { docente: Docente }) {
 
@@ -37,6 +40,8 @@ export class FormAbmDocentesComponent {
     if (data) {
       this.registerForm.patchValue(data['docente'])
     }
+
+    this.obtenerCursos()
   }
 
   guardar(): void {
@@ -49,6 +54,13 @@ export class FormAbmDocentesComponent {
 
   cerrarDialog() {
     this.dialogRef.close();
+  }
+
+  obtenerCursos(){
+    this.cursosService.getCursos()
+    .subscribe((cursos)=> {
+      this.cursos = cursos 
+      })
   }
 
 }

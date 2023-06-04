@@ -30,7 +30,7 @@
             <mat-label>Cursos a cargo</mat-label>
             <mat-select [(ngModel)]="selectedValue" name="curso" [formControl]="cursosControl" multiple>
               <mat-option *ngFor="let curso of cursos" [value]="curso" >
-                {{curso}}
+                {{curso.nombre}}
               </mat-option>
             </mat-select>
         </mat-form-field>
