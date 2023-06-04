@@ -18,7 +18,7 @@
       <mat-form-field [formGroup]="registerForm" appearance="fill">
         <mat-label>Apellido</mat-label>
 
-        <input [formControl]="apellidoControl" matInput>
+        <input [formControl]="apellidoControl" matInput type="number">
         <mat-error *ngIf="apellidoControl.invalid">Minimo {{nombreApellidoMinLength}} caracteres</mat-error>
 
         <mat-icon matSuffix></mat-icon>
@@ -29,7 +29,7 @@
 
       <mat-form-field [formGroup]="registerForm" appearance="fill">
         <mat-label>DNI</mat-label>
-        <input [formControl]="dniControl" matInput >
+        <input [formControl]="dniControl" matInput type="number" >
         <mat-error *ngIf="dniControl.invalid">Mínimo {{dniMinLength}} dígitos</mat-error>
         <mat-icon matSuffix></mat-icon>
 

@@ -63,6 +63,22 @@
       "dni": "66666666",
       "telefono": "666666666",
       "id": 9
+    },
+    {
+      "nombre": "alumno nuevo",
+      "apellido": "alumno nuevo",
+      "email": "mail@mail.com",
+      "dni": "9999999999",
+      "telefono": "9999999999",
+      "id": 10
+    },
+    {
+      "nombre": "asdad",
+      "apellido": "asdada",
+      "email": "mail@mail.com",
+      "dni": 12313131,
+      "telefono": "12313131",
+      "id": 11
     }
   ],
   "cursos": [
@@ -241,90 +257,10 @@
       "id": 18
     },
     {
-      "idAlumno": 3,
-      "idCurso": 5,
-      "idDocente": "asd",
-      "id": 19
-    },
-    {
-      "idAlumno": 1,
+      "id": 28,
       "idCurso": 1,
-      "idDocente": {
-        "id": 1,
-        "nombre": "Claudio",
-        "apellido": "Ferro"
-      },
-      "id": 20
-    },
-    {
-      "idAlumno": 3,
-      "idCurso": 6,
-      "idDocente": {
-        "nombre": "mario",
-        "apellido": "bros",
-        "id": 4
-      },
-      "id": 21
-    },
-    {
-      "idAlumno": 2,
-      "idCurso": 6,
-      "idDocente": {
-        "nombre": "mario",
-        "apellido": "bros",
-        "id": 4
-      },
-      "id": 22
-    },
-    {
-      "id": 23,
-      "idCurso": 4,
-      "idDocente": {
-        "nombre": "mario",
-        "apellido": "bros",
-        "id": 4
-      },
-      "idAlumno": 8
-    },
-    {
-      "id": 24,
-      "idCurso": 6,
-      "idDocente": {
-        "nombre": "mario",
-        "apellido": "bros",
-        "id": 4
-      },
-      "idAlumno": 8
-    },
-    {
-      "id": 25,
-      "idCurso": 1,
-      "idDocente": {
-        "id": 1,
-        "nombre": "Claudio",
-        "apellido": "Ferro"
-      },
-      "idAlumno": 9
-    },
-    {
-      "id": 26,
-      "idCurso": 2,
-      "idDocente": {
-        "id": 2,
-        "nombre": "Marcelo",
-        "apellido": "Rios"
-      },
-      "idAlumno": 9
-    },
-    {
-      "id": 27,
-      "idCurso": 3,
-      "idDocente": {
-        "id": 1,
-        "nombre": "Claudio",
-        "apellido": "Ferro"
-      },
-      "idAlumno": 9
+      "idDocente": 6,
+      "idAlumno": 10
     }
   ]
 }
