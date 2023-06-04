@@ -20,8 +20,10 @@ export class LogInComponent implements OnInit {
 
   }
   
-  emailControl = new FormControl('', [Validators.required]);// agregar validaciones
-  passwordControl = new FormControl('', [Validators.required]);// agregar validaciones
+  minLength: number = 3;
+
+  emailControl = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],);// agregar validaciones
+  passwordControl = new FormControl('', [Validators.required, Validators.minLength(this.minLength)]);// agregar validaciones
 
   authForm = new FormGroup({
     email: this.emailControl,
@@ -46,6 +48,14 @@ export class LogInComponent implements OnInit {
     setTimeout(() => {
       this.router.navigateByUrl(this.returnUrl)
     }, 100)
+  }
+
+  getErrorMessage() {
+    if (this.emailControl.hasError('required')) {
+      return 'Debe ingresar un correo';
+    }
+
+    return this.emailControl.hasError('pattern') ? 'Correo invalido' : '';
   }
 
 }
