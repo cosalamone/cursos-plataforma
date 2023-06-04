@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { InscripcionesActions } from '../store/inscripciones.actions';
-import { Observable } from 'rxjs';
+import { Observable, first, firstValueFrom } from 'rxjs';
 import { State } from '../store/inscripciones.reducer';
 import { selectInscripcionesState } from '../store/inscripciones.selectors';
 import { Alumno, Curso, Inscripcion } from 'src/interfaces';
@@ -25,7 +25,7 @@ export class ListaInscripcionesComponent implements OnInit {
   inscripciones: Inscripcion[] | undefined;
   alumno: Alumno | undefined;
   cursosInscriptos: Curso[] | undefined;
-  alumnos: Alumno[] = [];
+  alumnos: Alumno[] | undefined;
 
 
   displayedColumns: string[] = [
@@ -36,7 +36,6 @@ export class ListaInscripcionesComponent implements OnInit {
   ];
 
   dataSource!: MatTableDataSource<any, any>
-
 
   state$: Observable<State>
 
@@ -52,35 +51,42 @@ export class ListaInscripcionesComponent implements OnInit {
     this.state$ = this.store.select(selectInscripcionesState)
 
     this.inscripcionesService.getInscripciones()
-    .subscribe((objeInscripciones) => {
-      this.inscripciones = objeInscripciones;
+      .subscribe(
+        async (objeInscripciones) => {
+          this.inscripciones = objeInscripciones;
 
-      this.dataSource = new MatTableDataSource(this.inscripciones as any)
-      // this.cursosService
-      //   .getCursos()
-      //   .subscribe(
-      //     (dataCursos) => {
-      //       // this.cursosInscriptos = dataCursos.filter(curso => this.inscripciones?.some(insc => insc.idCurso === curso.id))
+          this.dataSource = new MatTableDataSource(this.inscripciones as any) // tengo que modificar e imprimir el nbre del curso y del alumno
+          this.alumnos = await firstValueFrom(this.alumnosService.getAlumnos())
+          // this.cursosService
+          //   .getCursos()
+          //   .subscribe(
+          //     (dataCursos) => {
+          //       // this.cursosInscriptos = dataCursos.filter(curso => this.inscripciones?.some(insc => insc.idCurso === curso.id))
 
-      //       this.dataSource = new MatTableDataSource(dataCursos as any)
+          //       this.dataSource = new MatTableDataSource(dataCursos as any)
 
-      //     }
-      //   );
-    })
+          //     }
+          //   );
+        })
   }
 
+  obtenerNombreApellidoAlumnoPorId(id:number): String | undefined{
+    let alumno = this.alumnos?.find(x=> x.id === id)
+    return `${alumno?.nombre} ${alumno?.apellido}`;
+
+  }
 
   ngOnInit(): void {
     this.store.dispatch(InscripcionesActions.loadInscripciones());
 
   }
 
-  abrirFormABMInscripcion(): void{
+  abrirFormABMInscripcion(): void {
     const dialog = this.matDialog.open(FormAbmInscripcionesComponent)
-    dialog.afterClosed().subscribe((valor)=>{
-      if(valor){
+    dialog.afterClosed().subscribe((valor) => {
+      if (valor) {
         let inscripcion: Inscripcion = valor;
-        let newId =  Math.max(...this.dataSource.data.map(x => x.id)) + 1;
+        let newId = Math.max(...this.dataSource.data.map(x => x.id)) + 1;
 
         inscripcion.id = newId;
 
@@ -90,7 +96,7 @@ export class ListaInscripcionesComponent implements OnInit {
   }
 
 
-  detalleAlumnosInscriptos(){}
+  detalleAlumnosInscriptos() { }
 
   eliminarInscripcionPorId(id: number): void {
     this.store.dispatch(InscripcionesActions.deleteInscripcion({ id }))
