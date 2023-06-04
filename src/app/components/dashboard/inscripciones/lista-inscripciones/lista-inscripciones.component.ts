@@ -29,9 +29,9 @@ export class ListaInscripcionesComponent implements OnInit {
 
 
   displayedColumns: string[] = [
+    'idInscripcion',
     'idCurso',
-    'name',
-    'cantAlumnos',
+    'idAlumno',
     'opciones'
   ];
 
@@ -54,16 +54,18 @@ export class ListaInscripcionesComponent implements OnInit {
     this.inscripcionesService.getInscripciones()
     .subscribe((objeInscripciones) => {
       this.inscripciones = objeInscripciones;
-      this.cursosService
-        .getCursos()
-        .subscribe(
-          (dataCursos) => {
-            // this.cursosInscriptos = dataCursos.filter(curso => this.inscripciones?.some(insc => insc.idCurso === curso.id))
 
-            this.dataSource = new MatTableDataSource(dataCursos as any)
+      this.dataSource = new MatTableDataSource(this.inscripciones as any)
+      // this.cursosService
+      //   .getCursos()
+      //   .subscribe(
+      //     (dataCursos) => {
+      //       // this.cursosInscriptos = dataCursos.filter(curso => this.inscripciones?.some(insc => insc.idCurso === curso.id))
 
-          }
-        );
+      //       this.dataSource = new MatTableDataSource(dataCursos as any)
+
+      //     }
+      //   );
     })
   }
 

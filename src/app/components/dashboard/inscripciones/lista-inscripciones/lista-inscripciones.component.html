@@ -13,21 +13,21 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 m-3">
 
         <!-- idCurso Column -->
-        <ng-container matColumnDef="idCurso">
+        <ng-container matColumnDef="idInscripcion">
             <th mat-header-cell *matHeaderCellDef> Id del Curso </th>
-            <td mat-cell *matCellDef="let curso"> {{curso.id}} </td>
+            <td mat-cell *matCellDef="let inscripcion"> {{inscripcion.id}} </td>
         </ng-container>
 
         <!-- Name Curso Column -->
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="idCurso">
             <th mat-header-cell *matHeaderCellDef> Curso </th>
-            <td mat-cell *matCellDef="let curso"> {{curso.nombre}}</td>
+            <td mat-cell *matCellDef="let inscripcion"> {{inscripcion.idCurso}}</td>
         </ng-container>
 
         <!-- Cant Alumnos Inscrip Column -->
-        <ng-container matColumnDef="cantAlumnos">
-            <th mat-header-cell *matHeaderCellDef> Cantidad de alumnos Inscriptos </th>
-            <td mat-cell *matCellDef="let curso"> Numero de cant de alumnos </td>
+        <ng-container matColumnDef="idAlumno">
+            <th mat-header-cell *matHeaderCellDef> Alumno </th>
+            <td mat-cell *matCellDef="let inscripcion"> {{inscripcion.idAlumno}}</td>
         </ng-container>
 
         <ng-container matColumnDef="opciones">
@@ -50,13 +50,7 @@
                     <span>Eliminar</span>
                   </button>
         
-                  <!-- Es la única que ven los user -->
-                  <!-- También la ven los admin -->
-        
-                  <button (click)="detalleAlumnosInscriptos()" mat-menu-item>
-                    <mat-icon>visibility</mat-icon>
-                    <span>Listado de alumnos</span>
-                  </button>
+              
         
                 </mat-menu>
               </ng-container>

@@ -63,6 +63,14 @@
         }
       ],
       "id": 7
+    },
+    {
+      "nombre": "nuevo",
+      "apellido": "alumno",
+      "email": "mail@mail.com",
+      "dni": "55555555555",
+      "telefono": "555555555",
+      "id": 8
     }
   ],
   "cursos": [
@@ -189,7 +197,6 @@
       "role": "admin",
       "img": "img_hombre1.png"
     }
-   
   ],
   "inscripciones": [
     {
@@ -311,6 +318,26 @@
         "id": 4
       },
       "id": 22
+    },
+    {
+      "id": 23,
+      "idCurso": 4,
+      "idDocente": {
+        "nombre": "mario",
+        "apellido": "bros",
+        "id": 4
+      },
+      "idAlumno": 8
+    },
+    {
+      "id": 24,
+      "idCurso": 6,
+      "idDocente": {
+        "nombre": "mario",
+        "apellido": "bros",
+        "id": 4
+      },
+      "idAlumno": 8
     }
   ]
 }
