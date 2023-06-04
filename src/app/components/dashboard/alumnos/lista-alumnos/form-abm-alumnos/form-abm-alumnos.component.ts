@@ -21,7 +21,7 @@ export class FormAbmAlumnosComponent {
   nombreControl = new FormControl('', [Validators.required, Validators.minLength(this.nombreApellidoMinLength)]);
   apellidoControl = new FormControl('', [Validators.required, Validators.minLength(this.nombreApellidoMinLength)]);
   emailControl = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],);
-  dniControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(this.dniMinLength)]);
+  dniControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1000000), Validators.max(99999999) ]);
   telefonoControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(this.telefonoMinLength)]);
   cursosControl = new FormControl('');
 
