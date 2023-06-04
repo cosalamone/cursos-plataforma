@@ -33,7 +33,7 @@
         <mat-label>Docente a cargo</mat-label>
 
         <mat-select [formControl]="docenteControl" [(ngModel)]="selectedValue" name="docente">
-          <mat-option *ngFor="let docente of listaDocentes" [value]="docente">
+          <mat-option *ngFor="let docente of listaDocentes" [value]="docente.id">
             {{docente.nombre}} {{docente.apellido}}
           </mat-option>
 
