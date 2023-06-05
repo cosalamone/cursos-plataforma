@@ -116,6 +116,14 @@
       "token": "87hg65f4dxecvbjtvvb",
       "role": "admin",
       "img": "img_hombre1.png"
+    },
+    {
+      "nombreApellido": "Santiago Flores",
+      "email": "santi@mail.com",
+      "password": "santi",
+      "token": "123456fds",
+      "role": "user",
+      "id": 5
     }
   ],
   "inscripciones": [
@@ -162,16 +170,10 @@
       "id": 8
     },
     {
-      "idAlumno": 4,
-      "idCurso": 1,
-      "idDocente": 6,
-      "id": 9
-    },
-    {
       "idAlumno": 2,
-      "idCurso": 3,
-      "idDocente": 3,
-      "id": 10
+      "idCurso": 2,
+      "idDocente": 2,
+      "id": 9
     }
   ]
 }
