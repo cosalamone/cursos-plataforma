@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { CursosService } from 'src/app/services/cursos.service';
-import { Alumno, Curso } from 'src/interfaces';
+import { Alumno, Curso, Inscripcion } from 'src/interfaces';
 import { InscripcionesActions } from '../../store/inscripciones.actions';
 import { DialogRef } from '@angular/cdk/dialog';
 
@@ -44,6 +44,7 @@ export class FormAbmInscripcionesComponent implements OnInit, OnDestroy {
       idCurso: this.idCursoControl,
       idDocente: this.idDocenteControl,
     })
+    
 
     this.cursoSeleccionadoControl.valueChanges.pipe(
       takeUntil(this.destroyed$)
@@ -89,7 +90,7 @@ export class FormAbmInscripcionesComponent implements OnInit, OnDestroy {
 
   guardarInscripcion(): void {
     this.store.dispatch(InscripcionesActions.createInscripcion({
-      data: this.inscripcionForm.value,
+      data: this.inscripcionForm.value as Inscripcion,
     }))
 
     this.dialogRef.close();

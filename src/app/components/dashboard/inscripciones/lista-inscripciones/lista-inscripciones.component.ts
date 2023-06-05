@@ -50,17 +50,19 @@ export class ListaInscripcionesComponent implements OnInit {
     private alumnosService: AlumnosService) {
 
     this.state$ = this.store.select(selectInscripcionesState)
-
-    this.inscripcionesService.getInscripciones()
-      .subscribe(
-        async (objeInscripciones) => {
-          this.inscripciones = objeInscripciones;
-
+    
+    this.state$.subscribe(
+      async (newState) => {
+        if(!newState.error){
+          
+          this.inscripciones = newState.inscripciones;
+          
           this.dataSource = new MatTableDataSource(this.inscripciones as any) // tengo que modificar e imprimir el nbre del curso y del alumno
           this.alumnos = await firstValueFrom(this.alumnosService.getAlumnos())
           this.cursos = await firstValueFrom(this.cursosService.getCursos())
-    
-        })
+
+        }
+      });
   }
   
   obtenerNombreCursoPorId(id:number):  String | undefined {
@@ -95,11 +97,8 @@ export class ListaInscripcionesComponent implements OnInit {
   }
 
 
-  detalleAlumnosInscriptos() { }
-
   eliminarInscripcionPorId(id: number): void {
     this.store.dispatch(InscripcionesActions.deleteInscripcion({ id }));
-    this.store.dispatch(InscripcionesActions.loadInscripciones());
   } 
 
 }

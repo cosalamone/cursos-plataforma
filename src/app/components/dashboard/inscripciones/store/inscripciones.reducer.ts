@@ -64,7 +64,7 @@ on(InscripcionesActions.deleteInscripcionSuccess, (state, action)=> {
 on(InscripcionesActions.deleteInscripcionFailure, (state, action)=> {
   return {
     ...state,
-    errpr: action.error,
+    error: action.error,
     loading: false
   }
 
