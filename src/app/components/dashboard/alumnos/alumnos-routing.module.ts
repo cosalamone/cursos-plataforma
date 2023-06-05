@@ -9,7 +9,7 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
 const routes: Routes = [
   {
     path: '',
-    component: AlumnosComponent, //Muestra el componente Alumnos - solo tiene <router-outlet>  que es quien renderiza los children
+    component: AlumnosComponent,
     children: [
         {
             path: ':idAlumno',
@@ -20,7 +20,6 @@ const routes: Routes = [
             component: ListaAlumnosComponent
         }
     ]
-    // tengo que mostrar  DetalleAlumno = es un comp distinto que no se renderiza sobre lista-alumnos
   }
 ]
 

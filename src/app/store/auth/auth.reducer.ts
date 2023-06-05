@@ -26,7 +26,7 @@ export const authReducer = createReducer(
 
     on(QuitarUsuarioAutenticado, (currentState) => {
         return {
-            authUser: null, // o devovler el inicialState = null
+            authUser: null, 
             token: null
         }
     })

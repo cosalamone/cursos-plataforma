@@ -20,11 +20,11 @@ export class InscripcionesService {
     return this.http.get<Array<Inscripcion>>('http://localhost:3000/inscripciones?idCurso=' + idCurso)
   }
 
-  getInscripcionesPorDeIdAlumno(idAlumno: number | undefined): Observable<Array<Inscripcion>>{ // get inscrip 
+  getInscripcionesPorDeIdAlumno(idAlumno: number | undefined): Observable<Array<Inscripcion>>{ 
     return this.http.get<Array<Inscripcion>>('http://localhost:3000/inscripciones?idAlumno=' + idAlumno)
   }
 
-  getInscripcionesPorIdDocente(idDocente:number | undefined): Observable<Array<Inscripcion>>{ // get iniscrip
+  getInscripcionesPorIdDocente(idDocente:number | undefined): Observable<Array<Inscripcion>>{ 
     return this.http.get<Array<Inscripcion>>('http://localhost:3000/inscripciones?idAlumno=' + idDocente)
   }
 
@@ -32,7 +32,6 @@ export class InscripcionesService {
     return this.http.post<Inscripcion>('http://localhost:3000/inscripciones', inscripcion)
   }
 
-  // consultar si se considera que está mal estas 2 fx delete -- unificar 
   eliminarInscripcionPorId(idInscripcion: number | undefined){
     return this.http.delete('http://localhost:3000/inscripciones/' + idInscripcion )
   }

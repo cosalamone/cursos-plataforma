@@ -15,7 +15,6 @@ import { selectAuthUser } from '../store/auth/auth.selectors';
 })
 export class AuthService {
 
-  // private authUser$ = new BehaviorSubject<Usuario | null>(null);  Reemplazado por Store
 
   constructor(private router: Router,
     private http: HttpClient,
@@ -67,7 +66,7 @@ export class AuthService {
             localStorage.setItem('perfil', usuarioAutenticado.role)
             this.establecerUsuarioAutenticado(usuarioAutenticado, usuarioAutenticado.token);
           }
-          return !!usuarioAutenticado; // lo transforma en un boolean
+          return !!usuarioAutenticado; 
         })
       )
 

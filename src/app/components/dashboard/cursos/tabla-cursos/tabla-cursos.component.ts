@@ -54,7 +54,6 @@ export class TablaCursosComponent {
     this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
 
 
-    // FX PARA OBTENER ARRAY DE CURSOS DE CURSOS.JSON (A FUTURO UNA API) - Utiliza CursosService
     this.cursosService
       .getCursos()
       .subscribe(

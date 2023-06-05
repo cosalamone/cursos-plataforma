@@ -37,25 +37,6 @@ export class ListaAlumnosComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
-  formatTelefono(telefono: number | string) {
-
-    // Convert number to string
-
-    const numberString = telefono.toString();
-
-    // Split string into three parts
-
-    const part1 = numberString.slice(0, 3);
-    const part2 = numberString.slice(3, 6);
-    const part3 = numberString.slice(6);
-
-    // Return formatted string
-
-    return `(${part1}) ${part2}-${part3}`;
-
-  }
-
   constructor(
     private matDialog: MatDialog,
     private alumnosService: AlumnosService,
@@ -69,13 +50,13 @@ export class ListaAlumnosComponent implements OnInit {
 
     this.authUserObs$ = this.authService.obtenerUsuarioAutenticado();
 
-    // FX PARA OBTENER ARRAY DE ALUMNOS DE BD MEDIANTE API - Utiliza AlumnosService
     this.alumnosService
       .getAlumnos()
       .subscribe(
         (data) => (this.dataSource = new MatTableDataSource(data as any))
       );
   }
+
   ngOnInit(): void {
 
     this.activatedRoute.firstChild?.params.subscribe((queryParam) => {
@@ -88,7 +69,6 @@ export class ListaAlumnosComponent implements OnInit {
   abrirFormABMAlumnos(): void {
     const dialog = this.matDialog.open(FormAbmAlumnosComponent);
 
-    // Creando un nuevo array en el dataSource
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
 
@@ -148,7 +128,6 @@ export class ListaAlumnosComponent implements OnInit {
       },
     });
 
-    // find alumno and replace - guardar todo en datasource para que se imprima nueva tabla
     dialog.afterClosed().subscribe((valor) => {
       if (valor) {
         let alumno: Alumno = valor;

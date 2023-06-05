@@ -9,7 +9,7 @@ import { TablaCursosComponent } from './tabla-cursos/tabla-cursos.component';
 const routes: Routes = [
   {
     path: '',
-    component: CursosComponent, //Muestra Cursos - solo tiene <router-outlet>  que es quien renderiza los children
+    component: CursosComponent,
     children: [
       {
         path: ':idCurso',

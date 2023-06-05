@@ -35,11 +35,9 @@ export class DetalleDocentesComponent {
 
   ) {
 
-    // para ver el detalle del docente
     this.docentesService.getDocentesPorId(parseInt(this.activatesRoute.snapshot.params['idDocente']))
       .subscribe((docente) => this.docente = docente)
 
-    // para ver el detalle de los cursos que tiene a cargo el Docente --> con una tabla --> no tendrá la opcion de eliminarse
     this.inscripcionesService.getInscripcionesPorIdDocente(parseInt(this.activatesRoute.snapshot.params['idDocente']))
       .subscribe((data) => {
         this.inscripciones = data

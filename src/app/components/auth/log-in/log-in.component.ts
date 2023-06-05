@@ -22,8 +22,8 @@ export class LogInComponent implements OnInit {
   
   minLength: number = 3;
 
-  emailControl = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],);// agregar validaciones
-  passwordControl = new FormControl('', [Validators.required, Validators.minLength(this.minLength)]);// agregar validaciones
+  emailControl = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],);
+  passwordControl = new FormControl('', [Validators.required, Validators.minLength(this.minLength)]);
 
   authForm = new FormGroup({
     email: this.emailControl,
@@ -41,7 +41,7 @@ export class LogInComponent implements OnInit {
       this.authForm.markAllAsTouched();
     } else {
       this.authService.logIn({
-        ...(this.authForm.value as Usuario) //revisar datos de usuario vs los enviado en el form
+        ...(this.authForm.value as Usuario) 
       })
     }
 

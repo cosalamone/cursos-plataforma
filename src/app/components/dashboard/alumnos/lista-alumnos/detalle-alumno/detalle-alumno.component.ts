@@ -34,12 +34,10 @@ export class DetalleAlumnoComponent {
     private cursosService: CursosService,
   ) {
 
-    // para ver el detalle del alumno
     this.alumnosService.getAlumnoPorId(parseInt(this.activatedRoute.snapshot.params['idAlumno']))
       .subscribe((alumno) => this.alumno = alumno)
 
 
-    // para ver el detalle de los cursos en los que está inscripto este alumno --> con una tabla, donde pueda eliminarse la inscripcion del curso 
     this.inscripcionesService.getInscripcionesPorDeIdAlumno(parseInt(this.activatedRoute.snapshot.params['idAlumno']))
       .subscribe((data) => {
         this.inscripciones = data;

@@ -34,7 +34,7 @@ export class ListaDocentesComponent {
     private matDialog: MatDialog,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    ) {
+  ) {
 
     let listaDocentes = docentesService.getDocentes();
     const listaDocentesObs$ = from(listaDocentes)
@@ -45,44 +45,42 @@ export class ListaDocentesComponent {
   }
 
 
-  abrirFormABMDocentes(){
+  abrirFormABMDocentes() {
     const dialog = this.matDialog.open(FormAbmDocentesComponent);
 
-    dialog.afterClosed().subscribe((valor)=> {
-      if (valor){
+    dialog.afterClosed().subscribe((valor) => {
+      if (valor) {
         let docente: Docente = valor;
         let newId = Math.max(...this.dataSource.data.map(x => x.id)) + 1;
-        
-        
-        // docente.curso = valor seleccionado en <select>
+
         docente.id = newId;
 
         this.docentesService.postNewDocente(docente)
-        .subscribe()
-        this.dataSource.data=[...this.dataSource.data, docente]
+          .subscribe()
+        this.dataSource.data = [...this.dataSource.data, docente]
       }
     })
   }
 
-  editarDocente(docente: Docente){
+  editarDocente(docente: Docente) {
     const dialog = this.matDialog.open(FormAbmDocentesComponent, {
       data: {
         docente,
       },
     });
 
-    dialog.afterClosed().subscribe((valor)=>{
-      if(valor){
-        let docente: Docente= valor;
+    dialog.afterClosed().subscribe((valor) => {
+      if (valor) {
+        let docente: Docente = valor;
         let idDocenteAModificar = docente.id;
-        let posicionAEditar= this.dataSource.data.findIndex(
-          (docente)=> docente.id === idDocenteAModificar
+        let posicionAEditar = this.dataSource.data.findIndex(
+          (docente) => docente.id === idDocenteAModificar
         );
 
         this.dataSource.data[posicionAEditar] = docente;
 
         this.docentesService.putDocente(docente, idDocenteAModificar)
-        .subscribe()
+          .subscribe()
 
         this.dataSource = new MatTableDataSource(this.dataSource.data)
       }
@@ -90,26 +88,26 @@ export class ListaDocentesComponent {
 
   }
 
-eliminarDocente(docente: Docente): void{
- let idDocenteAEliminar = docente.id;
- let posicionAEliminar= this.dataSource.data.findIndex(
-  (docente: Docente) => docente.id === idDocenteAEliminar
- );
+  eliminarDocente(docente: Docente): void {
+    let idDocenteAEliminar = docente.id;
+    let posicionAEliminar = this.dataSource.data.findIndex(
+      (docente: Docente) => docente.id === idDocenteAEliminar
+    );
 
 
- this.dataSource.data.splice(posicionAEliminar, 1);
+    this.dataSource.data.splice(posicionAEliminar, 1);
 
- this.docentesService.deleteDocente(idDocenteAEliminar)
- .subscribe()
- this.dataSource.data= [...this.dataSource.data];
+    this.docentesService.deleteDocente(idDocenteAEliminar)
+      .subscribe()
+    this.dataSource.data = [...this.dataSource.data];
 
-}
+  }
 
 
-detalleDocente(docenteId: number): void {
-this.router.navigate([docenteId], {
-  relativeTo: this.activatedRoute
-})
-}
+  detalleDocente(docenteId: number): void {
+    this.router.navigate([docenteId], {
+      relativeTo: this.activatedRoute
+    })
+  }
 
 }
