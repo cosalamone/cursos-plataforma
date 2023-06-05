@@ -11,13 +11,12 @@
           {{usuario?.nombreApellido}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>This is the primary content of the panel.</p>
     </mat-expansion-panel>
   
    
   
     <!-- Telefono -->
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
           Token
@@ -26,11 +25,10 @@
           {{usuario?.token}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
     </mat-expansion-panel>
   
     <!-- E-mail -->
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
           E-mail
@@ -39,19 +37,7 @@
           {{usuario?.email}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
     </mat-expansion-panel>
   
-    <!-- Cursos a los que está inscripto -->
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Cursos
-        </mat-panel-title>
-        <mat-panel-description>
-          Cargar cursos
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
+   
   </mat-accordion>
