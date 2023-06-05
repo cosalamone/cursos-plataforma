@@ -25,7 +25,6 @@ export class FormAbmAlumnosComponent {
   telefonoControl = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(this.telefonoMinLength)]);
   cursosControl = new FormControl('');
 
-  selectedValue: Curso[] | undefined;
   cursos!: Curso[];
 
 
@@ -44,13 +43,11 @@ export class FormAbmAlumnosComponent {
       email: this.emailControl,
       dni: this.dniControl,
       telefono: this.telefonoControl,
-      cursos: this.cursosControl,
 
     })
 
     if (data) {
       this.registerForm.patchValue(data['alumno']);
-      this.selectedValue = data.alumno?.cursos as Curso[] | undefined;
     }
 
     this.obtenerCursos()

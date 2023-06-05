@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CursosRoutingModule } from '../cursos-routing.module.module';
 import { FormAbmCursosComponent } from './form-abm-cursos/form-abm-cursos.component';
 import { CursosComponent } from '../cursos/cursos.component';
+import { ListaInscripcionesComponent } from '../../inscripciones/lista-inscripciones/lista-inscripciones.component';
 
 
 @NgModule({
@@ -13,6 +14,9 @@ import { CursosComponent } from '../cursos/cursos.component';
     DetalleCursoComponent,
     FormAbmCursosComponent,
     CursosComponent
+  ],
+  providers:[
+    ListaInscripcionesComponent
   ],
   imports: [
     SharedModule,

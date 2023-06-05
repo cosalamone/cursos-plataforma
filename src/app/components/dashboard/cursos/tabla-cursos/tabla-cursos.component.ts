@@ -8,6 +8,8 @@ import { FormAbmCursosComponent } from './form-abm-cursos/form-abm-cursos.compon
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable, firstValueFrom } from 'rxjs';
 import { DocentesService } from 'src/app/services/docentes.service';
+import { InscripcionesService } from 'src/app/services/inscripciones.service';
+import { ListaInscripcionesComponent } from '../../inscripciones/lista-inscripciones/lista-inscripciones.component';
 
 
 @Component({
@@ -43,6 +45,8 @@ export class TablaCursosComponent {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private docentesService: DocentesService,
+    private inscripcionesService: InscripcionesService,
+    private listaInscripciones : ListaInscripcionesComponent
 
 
   ) {
@@ -78,7 +82,8 @@ export class TablaCursosComponent {
 
         valor.docente.id
         let curso: Curso = valor;
-        let newId = Math.max(...this.dataSource.data.map(x => x.id)) + 1;
+        
+        let newId = this.dataSource.data.length > 0? Math.max(...this.dataSource.data.map(x => x.id)) + 1 : 1;
 
         curso.id = newId;
 
@@ -123,6 +128,18 @@ export class TablaCursosComponent {
 
     this.cursosService.deleteCurso(idCursoAEliminar)
       .subscribe()
+
+    this.inscripcionesService.getInscripciones()
+      .subscribe((inscripciones) => {
+
+       let inscripcionesPorEliminar = inscripciones.filter(f=>f.idCurso === idCursoAEliminar);
+       
+        for (let inscripcionPorEliminar of inscripcionesPorEliminar) {
+          this.inscripcionesService.eliminarInscripcionPorId(inscripcionPorEliminar.id)
+          this.listaInscripciones.eliminarInscripcionPorId(inscripcionPorEliminar.id)
+        }
+
+      });
 
     this.dataSource.data = [...this.dataSource.data];
 

@@ -182,7 +182,7 @@ export class ListaAlumnosComponent implements OnInit {
 
 
 
-    this.inscripcionesService.getInscripcionesPorDeIdAlumno(idAlumnoAEliminar) // borra bien de alumnos, y cursos, no de inscripciones** 
+    this.inscripcionesService.getInscripcionesPorDeIdAlumno(idAlumnoAEliminar)
       .subscribe((inscripcionesPorEliminar) => {
 
         for (let inscripcionPorEliminar of inscripcionesPorEliminar) {
