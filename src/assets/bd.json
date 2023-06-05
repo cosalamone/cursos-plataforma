@@ -1,14 +1,6 @@
 {
   "alumnos": [
     {
-      "id": 2,
-      "nombre": "aaq",
-      "apellido": "Cerezo",
-      "email": "mail@mail.com",
-      "dni": 123644,
-      "telefono": "12313131"
-    },
-    {
       "nombre": "pedro",
       "apellido": "alfonzo",
       "email": "mail@mai.com",
@@ -31,25 +23,27 @@
       "dni": 33333333,
       "telefono": 333333333,
       "id": 5
+    },
+    {
+      "nombre": "asd",
+      "apellido": "das",
+      "email": "asd@asd.com",
+      "dni": 1231233,
+      "telefono": 546784323,
+      "id": 6
     }
   ],
   "cursos": [
     {
-      "nombre": "PARAPENTE",
-      "duracion": "3",
-      "docente": 6,
-      "id": 1
-    },
-    {
       "nombre": "angular",
-      "duracion": "2",
-      "docente": 2,
+      "duracion": 3,
+      "docente": 1,
       "id": 2
     },
     {
       "nombre": "react",
       "duracion": "3",
-      "docente": 3,
+      "docente": 5,
       "id": 3
     }
   ],
@@ -58,16 +52,6 @@
       "id": 1,
       "nombre": "Claudio",
       "apellido": "Ferro"
-    },
-    {
-      "id": 2,
-      "nombre": "Marcelo",
-      "apellido": "Rios"
-    },
-    {
-      "nombre": "Pablo",
-      "apellido": "Pereyra",
-      "id": 3
     },
     {
       "nombre": "mario",
@@ -128,12 +112,6 @@
   ],
   "inscripciones": [
     {
-      "id": 1,
-      "idCurso": 1,
-      "idDocente": 6,
-      "idAlumno": 3
-    },
-    {
       "id": 2,
       "idCurso": 2,
       "idDocente": 2,
@@ -170,10 +148,22 @@
       "id": 8
     },
     {
-      "idAlumno": 2,
+      "idAlumno": 3,
       "idCurso": 2,
       "idDocente": 2,
-      "id": 9
+      "id": 10
+    },
+    {
+      "id": 11,
+      "idCurso": 2,
+      "idDocente": 2,
+      "idAlumno": 6
+    },
+    {
+      "id": 12,
+      "idCurso": 3,
+      "idDocente": 3,
+      "idAlumno": 6
     }
   ]
 }

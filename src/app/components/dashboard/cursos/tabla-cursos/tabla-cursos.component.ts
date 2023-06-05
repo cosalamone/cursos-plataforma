@@ -63,7 +63,8 @@ export class TablaCursosComponent {
 
   obtenerNombreApellidoDocentePorId(id: number): String | undefined {
 
-    let docente= this.docentes.find(x => x.id === id);
+    let docente= this.docentes?.find(x => x.id === id);
+    if (!docente) return "<Sin docente asignado>";
     return `${docente?.nombre} ${docente?.apellido}`;
   }
 

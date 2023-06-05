@@ -53,9 +53,9 @@ export class ListaInscripcionesComponent implements OnInit {
     
     this.state$.subscribe(
       async (newState) => {
-        if(!newState.error){
+        if(!newState?.error){
           
-          this.inscripciones = newState.inscripciones;
+          this.inscripciones = newState?.inscripciones;
           
           this.dataSource = new MatTableDataSource(this.inscripciones as any) // tengo que modificar e imprimir el nbre del curso y del alumno
           this.alumnos = await firstValueFrom(this.alumnosService.getAlumnos())

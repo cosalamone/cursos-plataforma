@@ -22,7 +22,7 @@ export class FormAbmCursosComponent {
   docenteControl = new FormControl('', [Validators.required, Validators.minLength(this.minLength)])
   cursosControl = new FormControl('', [Validators.required]);
 
-  selectedValue: string | undefined;
+  selectedValue: number | undefined;
   // cursos = ['Javascript','Angular','Vue'];
 
   registerForm: FormGroup;
@@ -44,6 +44,7 @@ export class FormAbmCursosComponent {
 
     if (data) {
       this.registerForm.patchValue(data['curso']);
+      this.selectedValue = data.curso.docente;
     }
   }
 
