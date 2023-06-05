@@ -51,6 +51,7 @@ export class LogInComponent implements OnInit {
   }
 
   getErrorMessage() {
+    
     if (this.emailControl.hasError('required')) {
       return 'Debe ingresar un correo';
     }

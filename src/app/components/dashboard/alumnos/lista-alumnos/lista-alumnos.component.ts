@@ -59,9 +59,7 @@ export class ListaAlumnosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.activatedRoute.firstChild?.params.subscribe((queryParam) => {
-      console.log(queryParam)
-    })
+    this.activatedRoute.firstChild?.params.subscribe()
   }
 
 
@@ -104,7 +102,7 @@ export class ListaAlumnosComponent implements OnInit {
                         idDocente: unCurso.docente,
                         idAlumno: alumno.id
                       }
-                      console.log(objetoInscripcion)
+                     
                       this.inscripcionesService.postNewInscripcion(objetoInscripcion).subscribe()
 
                     }

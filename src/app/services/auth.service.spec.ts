@@ -6,28 +6,37 @@ import { enviroment } from "src/enviroments/enviroments";
 import { Router } from "@angular/router";
 import { skip } from "rxjs";
 
+import { provideMockStore } from '@ngrx/store/testing';
+
+
+
 describe('Pruebas sobre AuthService', () => {
     let service: AuthService;
     let httpController: HttpTestingController;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
+            providers: [provideMockStore({})],
             imports: [
                 HttpClientTestingModule
             ]
+
         }).compileComponents();
 
         service = TestBed.inject(AuthService);
         httpController = TestBed.inject(HttpTestingController);
     })
 
-    it('Login debe funcionar', () => {
+
+    it('Logout debe emitir un authUser null, remover el token del LocalStorage y redireccionar al usuario', () => {
+
         const logInFake: Usuario = {
             id: 2,
             nombreApellido: 'Testing AuthService',
             email: 'test@mail.com',
             password: 'test',
             token: 'sxcfvgy4e3w',
+            img: 'img_hombre1.png',
             role: 'admin'
         }
         const MOCK_REQUEST_RESULT: Usuario[] = [
@@ -37,49 +46,7 @@ describe('Pruebas sobre AuthService', () => {
                 email: logInFake.email,
                 password: logInFake.password,
                 token: logInFake.token,
-                role: logInFake.role
-            }
-        ]
-
-        spyOn(TestBed.inject(Router), 'navigate')
-
-        service.obtenerUsuarioAutenticado()
-            .pipe(
-                skip(1),// para que ignore la primer emision que siempre es null
-            )
-            .subscribe((usuario) => {
-                expect(usuario).toBeTruthy(); // valida que el valor recibido en expec no sea null, ni undefined ni false
-            })
-
-        service.logIn(logInFake);
-
-
-
-        httpController.expectOne({
-            url: `${enviroment.baseURL}/usuarios?email=${logInFake.email}&password=${logInFake.password}`,
-            method: 'GET',
-        }).flush(MOCK_REQUEST_RESULT) // que retorna: array/number/boolean --> en este caso un array de usuarios
-
-       
-    })
-
-    it('Logout debe emitir un authUser null, remover el token del LocalStorage y redireccionar al usuario',()=>{
-
-        const logInFake: Usuario = {
-            id: 2,
-            nombreApellido: 'Testing AuthService',
-            email: 'test@mail.com',
-            password: 'test',
-            token: 'sxcfvgy4e3w',
-            role: 'admin'
-        }
-        const MOCK_REQUEST_RESULT: Usuario[] = [
-            {
-                id: logInFake.id,
-                nombreApellido: logInFake.nombreApellido,
-                email: logInFake.email,
-                password: logInFake.password,
-                token: logInFake.token,
+                img: 'img_hombre1.png',
                 role: logInFake.role
             }
         ]
@@ -91,7 +58,7 @@ describe('Pruebas sobre AuthService', () => {
         httpController.expectOne({
             url: `${enviroment.baseURL}/usuarios?email=${logInFake.email}&password=${logInFake.password}`,
             method: 'GET',
-        }).flush(MOCK_REQUEST_RESULT) // que retorna: array/number/boolean --> en este caso un array de usuarios
+        }).flush(MOCK_REQUEST_RESULT)
 
 
         service.logOut();

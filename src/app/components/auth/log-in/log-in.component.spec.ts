@@ -23,7 +23,7 @@ describe('Pruebas de LogInComponent', () => {
                 BrowserAnimationsModule,
                 RouterTestingModule
             ],
-            providers:[ // reemplazar un servicio real por un Mock para los test
+            providers:[ 
                 {
                     provide: AuthService,
                     useClass: AuthServiceMock,
@@ -31,9 +31,9 @@ describe('Pruebas de LogInComponent', () => {
             ]
         }).compileComponents();
 
-        const fixture = TestBed.createComponent(LogInComponent); // instancia el componente
-        component = fixture.componentInstance; // obtengo acceso a todas los metodos de la clase
-        fixture.detectChanges(); // debe llamarse antes de que se ejecute cada prueba
+        const fixture = TestBed.createComponent(LogInComponent); 
+        component = fixture.componentInstance;
+        fixture.detectChanges(); 
     });
 
 
