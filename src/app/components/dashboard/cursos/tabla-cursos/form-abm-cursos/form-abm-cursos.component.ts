@@ -23,7 +23,6 @@ export class FormAbmCursosComponent {
   cursosControl = new FormControl('', [Validators.required]);
 
   selectedValue: number | undefined;
-  // cursos = ['Javascript','Angular','Vue'];
 
   registerForm: FormGroup;
 

@@ -28,7 +28,6 @@ export class FormAbmInscripcionesComponent implements OnInit, OnDestroy {
   idDocenteControl = new FormControl<number | null>(null, [Validators.required]);
 
   destroyed$ = new Subject<void>()
-  // PARA LA NUEVA INSCRIP, SELECCIONO EL ALUMNO, EL CURSO - FALTA BUSCAR EL DOCENTE Y CREAR EL ID
 
   constructor(public formBuilder: FormBuilder,
     private alumnosService: AlumnosService,

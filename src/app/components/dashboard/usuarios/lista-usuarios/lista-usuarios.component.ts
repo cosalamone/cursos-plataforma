@@ -76,7 +76,6 @@ export class ListaUsuariosComponent  {
       }
     });
 
-    // find alumno and replace - guardar todo en datasource para que se imprima nueva tabla
     dialog.afterClosed().subscribe((valor)=> {
       if (valor) {
         let usuario: Usuario = valor;
